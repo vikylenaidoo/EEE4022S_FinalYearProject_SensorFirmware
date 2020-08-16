@@ -1,0 +1,11 @@
+content_assist_disabled_computers=org.eclipse.cdt.ui.textProposalCategory\u0000org.eclipse.cdt.ui.parserProposalCategory\u0000
+content_assist_parameters_background=25,25,25
+content_assist_parameters_foreground=255,255,255
+content_assist_proposals_background=25,25,25
+content_assist_proposals_foreground=255,255,255
+eclipse.preferences.version=1
+inactiveCodeColor=97,97,97
+sourceHoverBackgroundColor.SystemDefault=false
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

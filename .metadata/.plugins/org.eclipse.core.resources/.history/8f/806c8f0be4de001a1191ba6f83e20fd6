@@ -1,0 +1,440 @@
+/*
+ * bmx055.h
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+
+#ifndef TASKS_BMX055_H_
+#define TASKS_BMX055_H_
+
+/**
+	SPI 4 wire interface
+	Maximum frequency (VDDIO>1.75): 	10 MHz
+	Automatic selection (CPOL,CPHA): 	default (0,0) & (1,1)
+	CSB status: 						idle 1 & active 0
+**/
+
+//------------------------DEVICE IDs-----------------------------------//
+// eight-bit device ID are ACC = 0xFA, GYRO = 0x0F, MAG = 0x32
+#define BMX055_ACC_ID  0xFA		// ID of BMX055 accelerometer
+#define BMX055_GYRO_ID 0x0F		// ID of BMX055 gyroscope
+#define BMX055_MAG_ID  0x32		// ID of BMX055 magnetometer
+
+
+
+//------------------------ ACCELEROMETER REGISTERS---------------------------------------//
+#define BMX055_ACC_CHIP_ID			0x00   	//ro, should return 0xFA
+//#define BMX055_ACC_Reserved		0x01
+#define BMX055_ACC_D_X_LSB			0x02	//ro
+#define BMX055_ACC_D_X_MSB			0x03	//ro
+#define BMX055_ACC_D_Y_LSB			0x04	//ro
+#define BMX055_ACC_D_Y_MSB			0x05	//ro
+#define BMX055_ACC_D_Z_LSB			0x06	//ro
+#define BMX055_ACC_D_Z_MSB			0x07	//ro
+#define BMX055_ACC_D_TEMP			0x08	//ro
+#define BMX055_ACC_INT_STATUS_0		0x09	//ro
+#define BMX055_ACC_INT_STATUS_1		0x0A	//ro
+#define BMX055_ACC_INT_STATUS_2		0x0B	//ro
+#define BMX055_ACC_INT_STATUS_3		0x0C	//ro
+//#define BMX055_ACC_Reserved		0x0D
+#define BMX055_ACC_FIFO_STATUS		0x0E	//ro
+#define BMX055_ACC_PMU_RANGE		0x0F	//w/r
+#define BMX055_ACC_PMU_BW			0x10	//w/r
+#define BMX055_ACC_PMU_LPW			0x11	//w/r
+#define BMX055_ACC_PMU_LOW_POWER	0x12	//w/r
+#define BMX055_ACC_D_HBW			0x13	//w/r
+#define BMX055_ACC_BGW_SOFTRESET	0x14	//wo
+//#define BMX055_ACC_Reserved		0x15
+#define BMX055_ACC_INT_EN_0			0x16	//w/r
+#define BMX055_ACC_INT_EN_1			0x17	//w/r
+#define BMX055_ACC_INT_EN_2			0x18	//w/r
+#define BMX055_ACC_INT_MAP_0		0x19	//w/r
+#define BMX055_ACC_INT_MAP_1		0x1A	//w/r
+#define BMX055_ACC_INT_MAP_2		0x1B	//w/r
+//#define BMX055_ACC_Reserved		0x1C
+//#define BMX055_ACC_Reserved		0x1D
+#define BMX055_ACC_INT_SRC			0x1E	//w/r
+//#define BMX055_ACC_Reserved		0x1F
+#define BMX055_ACC_INT_OUT_CTRL		0x20	//w/r
+#define BMX055_ACC_INT_RST_LATCH	0x21	//w/r
+#define BMX055_ACC_INT_0			0x22	//w/r
+#define BMX055_ACC_INT_1			0x23	//w/r
+#define BMX055_ACC_INT_2			0x24	//w/r
+#define BMX055_ACC_INT_3			0x25	//w/r
+#define BMX055_ACC_INT_4			0x26	//w/r
+#define BMX055_ACC_INT_5			0x27	//w/r
+#define BMX055_ACC_INT_6			0x28	//w/r
+#define BMX055_ACC_INT_7			0x29	//w/r
+#define BMX055_ACC_INT_8			0x2A	//w/r
+#define BMX055_ACC_INT_9			0x2B	//w/r
+#define BMX055_ACC_INT_A			0x2C	//w/r
+#define BMX055_ACC_INT_B			0x2D	//w/r
+#define BMX055_ACC_INT_C			0x2E	//w/r
+#define BMX055_ACC_INT_D			0x2F	//w/r
+#define BMX055_ACC_FIFO_CONFIG_0	0x30	//w/r
+//#define BMX055_ACC_Reserved		0x31
+#define BMX055_ACC_PMU_SELF_TEST	0x32	//w/r
+#define BMX055_ACC_TRIM_NVM_CTRL	0x33	//w/r
+#define BMX055_ACC_BGW_SPI3_WDT		0x34	//w/r
+//#define BMX055_ACC_Reserved		0x35
+#define BMX055_ACC_OFC_CTRL			0x36	//w/r
+#define BMX055_ACC_OFC_SETTING		0x37	//w/r
+#define BMX055_ACC_OFC_OFFSET_X		0x38	//w/r
+#define BMX055_ACC_OFC_OFFSET_Y 	0x39	//w/r
+#define BMX055_ACC_OFC_OFFSET_Z		0x3A	//w/r
+#define BMX055_ACC_TRIM_GP0			0x3B	//w/r
+#define BMX055_ACC_TRIM_GP1			0x3C	//w/r
+//#define BMX055_ACC_Reserved		0x3D
+#define BMX055_ACC_FIFO_CONFIG_1	0x3E	//w/r
+#define BMX055_ACC_FIFO_DATA		0x3F	//ro
+
+//--------------------------------ACCELEROMETER PIN MASK--------------------------------//
+
+// BMX055_ACC_CHIP_ID				0x00
+#define ACC_CHIP_ID_CHIP_ID			0xFF
+
+// BMX055_ACC_Reserved				0x01
+
+// BMX055_ACC_D_X_LSB				0x02
+#define ACC_D_X_LSB_X_LSB			0xF0
+#define ACC_D_X_LSB_NEW_DATA		0x01
+
+// BMX055_ACC_D_X_MSB				0x03
+#define ACC_D_X_MSB_X_MSB			0xFF
+
+// BMX055_ACC_D_Y_LSB				0x04
+#define ACC_D_Y_LSB_Y_LSB			0xF0
+#define ACC_D_Y_LSB_NEW_DATA		0x01
+
+// BMX055_ACC_D_Y_MSB				0x05
+#define ACC_D_Y_MSB_Y_MSB			0xFF
+
+// BMX055_ACC_D_Z_LSB				0x06
+#define ACC_D_Z_LSB_Z_LSB			0xF0
+#define ACC_D_Z_LSB_NEW_DATA		0x01
+
+// BMX055_ACC_D_Z_MSB				0x07
+#define ACC_D_Z_MSB_Z_MSB			0xFF
+
+// BMX055_ACC_D_TEMP				0x08
+#define ACC_D_TEMP_TEMP				0xFF
+
+// BMX055_ACC_INT_STATUS_0				0x09
+#define ACC_INT_STATUS_0_FLAT			0x80
+#define ACC_INT_STATUS_0_ORIENT			0x40
+#define ACC_INT_STATUS_0_S_TAP			0x20
+#define ACC_INT_STATUS_0_D_TAP			0x10
+#define ACC_INT_STATUS_0_SLO_NOT_MOT	0x08
+#define ACC_INT_STATUS_0_SLOPE			0x04
+#define ACC_INT_STATUS_0_HIGH			0x02
+#define ACC_INT_STATUS_0_INT			0x01
+
+// BMX055_ACC_INT_STATUS_1				0x0A
+#define ACC_INT_STATUS_1_DATA			0x80
+#define ACC_INT_STATUS_1_FIFO_WM		0x40
+#define ACC_INT_STATUS_1_FIFO_FULL		0x20
+
+// BMX055_ACC_INT_STATUS_2				0x0B
+#define ACC_INT_STATUS_0_TAP_SIGN		0x80
+#define ACC_INT_STATUS_0_TAP_F_Z		0x40
+#define ACC_INT_STATUS_0_TAP_F_Y		0x20
+#define ACC_INT_STATUS_0_TAP_F_X		0x10
+#define ACC_INT_STATUS_0_SLOPE_SIGN		0x08
+#define ACC_INT_STATUS_0_SLOPE_F_Z		0x04
+#define ACC_INT_STATUS_0_SLOPE_F_Y		0x02
+#define ACC_INT_STATUS_0_SLOPE_F_X		0x01
+
+// BMX055_ACC_INT_STATUS_3				0x0C
+#define ACC_INT_STATUS_3_FLAT			0x80
+#define ACC_INT_STATUS_3_ORIENT_Z		0x40
+#define ACC_INT_STATUS_0_ORIENT_YX		0x30
+#define ACC_INT_STATUS_0_HIGH_SIGN		0x08
+#define ACC_INT_STATUS_0_HIGH_F_Z		0x04
+#define ACC_INT_STATUS_0_HIGH_F_Y		0x02
+#define ACC_INT_STATUS_0_HIGH_F_X		0x01
+
+// BMX055_ACC_Reserved					0x0D
+
+// BMX055_ACC_FIFO_STATUS				0x0E
+#define ACC_FIFO_STATUS_OVERRUN			0x80
+#define ACC_FIFO_STATUS_FRAME_CNT		0xEF
+
+// BMX055_ACC_PMU_RANGE					0x0F
+#define ACC_PMU_RANGE_02				0x03
+#define ACC_PMU_RANGE_04				0x05
+#define ACC_PMU_RANGE_08				0x08
+#define ACC_PMU_RANGE_16				0x0C
+
+// BMX055_ACC_PMU_BW					0x10
+#define ACC_PMU_BW_7_81					0x08
+#define ACC_PMU_BW_15_63				0x09
+#define ACC_PMU_BW_31_14				0x0A
+#define ACC_PMU_BW_62_5					0x0B
+#define ACC_PMU_BW_125					0x0C
+#define ACC_PMU_BW_250					0x0D
+#define ACC_PMU_BW_500					0x0E
+#define ACC_PMU_BW_1000					0x0F
+
+#define ACC_PMU_ODR_15_625				0x08
+#define ACC_PMU_ODR_31_25				0x09
+#define ACC_PMU_ODR_62_5				0x0A
+#define ACC_PMU_ODR_125					0x0B
+#define ACC_PMU_ODR_250					0x0C
+#define ACC_PMU_ODR_500					0x0D
+#define ACC_PMU_ODR_1000				0x0E
+#define ACC_PMU_ODR_2000				0x0F
+
+// BMX055_ACC_PMU_LPW					0x11
+#define ACC_PWR_NORMAL					0x00
+#define ACC_PWR_DEEP_SUSPEND			0x20
+#define ACC_PWR_LOW_POWER				0x40
+#define ACC_PWR_SUSPEND					0x80
+#define ACC_SLEEP_DUR_RESET				0b11100001
+#define ACC_SLEEP_DUR_500us				0b00000000
+#define ACC_SLEEP_DUR_500us_1			0b00001010
+#define ACC_SLEEP_DUR_1ms				0b00001100
+#define ACC_SLEEP_DUR_2ms				0b00001110
+#define ACC_SLEEP_DUR_4ms				0b00010000
+#define ACC_SLEEP_DUR_6ms				0b00010010
+#define ACC_SLEEP_DUR_10ms				0b00010100
+#define ACC_SLEEP_DUR_25ms				0b00010110
+#define ACC_SLEEP_DUR_50ms				0b00011000
+#define ACC_SLEEP_DUR_100ms				0b00011010
+#define ACC_SLEEP_DUR_500ms				0b00011100
+#define ACC_SLEEP_DUR_1s				0b00011110
+
+// BMX055_ACC_PMU_LOW_POWER				0x12
+#define ACC_PMU_LOW_POWER_RESET			0b10011111
+#define ACC_PMU_LOW_POWER_LOWPOWER		0x40
+#define ACC_PMU_LOW_POWER_SLEEPTIMER	0x20
+
+// BMX055_ACC_D_HBW						0x13
+#define ACC_D_HBW_DATA_RESET			0x3F
+#define ACC_D_HBW_DATA_HIGH_BW			0x80
+#define ACC_D_HBW_SHADOW_DIS			0x40
+
+// BMX055_ACC_BGW_SOFTRESET				0x14
+#define ACC_BWG_SOFTRESET_RESET			0x00
+#define ACC_BWG_SOFTRESET				0xB6
+
+// BMX055_ACC_Reserved					0x15
+
+// BMX055_ACC_INT_EN_0					0x16
+#define ACC_INT_EN_0_FLAT				0x80
+#define ACC_INT_EN_0_ORIENT				0x40
+#define ACC_INT_EN_0_S_TAP				0x20
+#define ACC_INT_EN_0_D_TAP				0x10
+#define ACC_INT_EN_0_RESET				0x08
+#define ACC_INT_EN_0_SLOPE_Z			0x04
+#define ACC_INT_EN_0_SLOPE_Y			0x02
+#define ACC_INT_EN_0_SLOPE_X			0x01
+
+// BMX055_ACC_INT_EN_1					0x17
+#define ACC_INT_EN_1_RESET				0x80
+#define ACC_INT_EN_1_FWM				0x40
+#define ACC_INT_EN_1_FFULL				0x20
+#define ACC_INT_EN_1_DATA				0x10
+#define ACC_INT_EN_1_LOW				0x08
+#define ACC_INT_EN_1_HIGH_Z				0x04
+#define ACC_INT_EN_1_HIGH_Y				0x02
+#define ACC_INT_EN_1_HIGH_X				0x01
+
+// BMX055_ACC_INT_EN_2					0x18
+#define ACC_INT_EN_2_RESET				0xF0
+#define ACC_INT_EN_2_SLO_NO_MOT_SEL		0x08
+#define ACC_INT_EN_2_SLO_NO_MOT_Z		0x04
+#define ACC_INT_EN_2_SLO_NO_MOT_Y		0x02
+#define ACC_INT_EN_2_SLO_NO_MOT_X		0x01
+
+// BMX055_ACC_INT_MAP_0					0x19
+#define ACC_INT_MAP_0_FLAT_1			0x80
+#define ACC_INT_MAP_0_ORIENT_1			0x40
+#define ACC_INT_MAP_0_S_TAP_1			0x20
+#define ACC_INT_MAP_0_D_TAP_1			0x10
+#define ACC_INT_MAP_0_SLO_NO_MOT_1		0x08
+#define ACC_INT_MAP_0_SLOPE_1			0x04
+#define ACC_INT_MAP_0_HIGH_1			0x02
+#define ACC_INT_MAP_0_LOW_1				0x01
+
+// BMX055_ACC_INT_MAP_1					0x1A
+#define ACC_INT_MAP_1_RESET				0x18
+#define ACC_INT_MAP_1_DATA_2			0x80
+#define ACC_INT_MAP_1_FWM_2				0x40
+#define ACC_INT_MAP_1_FFULL_2			0x20
+#define ACC_INT_MAP_1_FFULL_1			0x04
+#define ACC_INT_MAP_1_FWM_1				0x02
+#define ACC_INT_MAP_1_DATA_1			0x01
+
+// BMX055_ACC_INT_MAP_2					0x1B
+#define ACC_INT_MAP_0_FLAT_2			0x80
+#define ACC_INT_MAP_0_ORIENT_2			0x40
+#define ACC_INT_MAP_0_S_TAP_2			0x20
+#define ACC_INT_MAP_0_D_TAP_2			0x10
+#define ACC_INT_MAP_0_SLO_NO_MOT_2		0x08
+#define ACC_INT_MAP_0_SLOPE_2			0x04
+#define ACC_INT_MAP_0_HIGH_2			0x02
+#define ACC_INT_MAP_0_LOW_2				0x01
+
+// BMX055_ACC_Reserved					0x1C
+// BMX055_ACC_Reserved					0x1D
+
+// BMX055_ACC_INT_SRC					0x1E
+#define ACC_INT_SRC_DATA				0x20
+#define ACC_INT_SRC_TAP					0x10
+#define ACC_INT_SRC_SLO_NO_MOT			0x08
+#define ACC_INT_SRC_SLOPE				0x04
+#define ACC_INT_SRC_HIGH				0x02
+#define ACC_INT_SRC_LOW					0x01
+
+// BMX055_ACC_Reserved					0x1F
+
+// BMX055_ACC_INT_OUT_CTRL				0x20
+#define ACC_INT_OUT_CTRL_RESET			0x05
+#define ACC_INT_OUT_CTRL_2_OD			0x08
+#define ACC_INT_OUT_CTRL_2_LVL			0x04
+#define ACC_INT_OUT_CTRL_1_OD			0x02
+#define ACC_INT_OUT_CTRL_1_LVL			0x01
+
+// BMX055_ACC_INT_RST_LATCH				0x21
+#define ACC_INT_RST_LATCH_RESET			0x80
+#define ACC_INT_RST_LATCH_NON			0x00
+#define ACC_INT_RST_LATCH_250ms			0x01
+#define ACC_INT_RST_LATCH_500ms			0x02
+#define ACC_INT_RST_LATCH_1s			0x03
+#define ACC_INT_RST_LATCH_2s			0x04
+#define ACC_INT_RST_LATCH_4s			0x05
+#define ACC_INT_RST_LATCH_8s			0x06
+#define ACC_INT_RST_LATCH_LATCHED		0x07
+#define ACC_INT_RST_LATCH_NON_1			0x08
+#define ACC_INT_RST_LATCH_250us			0x09
+#define ACC_INT_RST_LATCH_500us			0x0A
+#define ACC_INT_RST_LATCH_1ms			0x0B
+#define ACC_INT_RST_LATCH_12_5ms		0x0C
+#define ACC_INT_RST_LATCH_25ms			0x0D
+#define ACC_INT_RST_LATCH_50ms			0x0E
+#define ACC_INT_RST_LATCH_LATCHED1		0x0F
+
+
+// BMX055_ACC_INT_0						0x22
+#define ACC_INT_0_LOW_DUR				0xFF
+
+// BMX055_ACC_INT_1						0x23
+#define ACC_INT_1_LOW_TH				0xFF
+
+// BMX055_ACC_INT_2						0x24
+#define ACC_INT_2_HIGH_HY				0xC0
+#define ACC_INT_2_LOW_MODE				0x04
+#define ACC_INT_2_LOW_HY				0x03
+
+// BMX055_ACC_INT_3						0x25
+#define ACC_INT_3_HIGH_DUR				0xFF
+
+// BMX055_ACC_INT_4						0x26
+#define ACC_INT_4_HIGH_TH				0xFF
+
+// BMX055_ACC_INT_5						0x27
+#define ACC_INT_5_SLO_NO_MOT_DUR		0xFC
+#define ACC_INT_5_SLOPE_DUR				0x03
+
+// BMX055_ACC_INT_6						0x28
+#define ACC_INT_6_SLOPE_TH				0xFF
+
+// BMX055_ACC_INT_7						0x29
+#define ACC_INT_7_SLO_NO_MOT_TH			0xFF
+
+// BMX055_ACC_INT_8						0x2A
+#define ACC_INT_8_TAP_QUIET				0x80
+#define ACC_INT_8_TAP_SHOCK				0x40
+#define ACC_INT_8_TAP_DUR				0x07
+
+// BMX055_ACC_INT_9						0x2B
+#define ACC_INT_9_TAP_SAMP				0xC0
+#define ACC_INT_9_TAP_TH				0x1F
+
+// BMX055_ACC_INT_A						0x2C
+#define ACC_INT_A_ORIENT_HYST			0x70
+#define ACC_INT_A_ORIENT_BLOCKING		0x0C
+#define ACC_INT_A_ORIENT_MODE			0x03
+
+// BMX055_ACC_INT_B						0x2D
+#define ACC_INT_B_ORIENT_UD_EN			0x40
+#define ACC_INT_B_ORIENT_THETA			0x3F
+
+// BMX055_ACC_INT_C						0x2E
+#define ACC_INT_C_FLAT_THETA			0x3F
+
+// BMX055_ACC_INT_D						0x2F
+#define ACC_INT_D_FLAT_HOLD_TIME		0x30
+#define ACC_INT_D_FLAT_HY				0x07
+
+// BMX055_ACC_FIFO_CONFIG_0				0x30
+#define ACC_FIFO_CONFIG_WM_LEVEL		0x3F
+
+// BMX055_ACC_Reserved					0x31
+
+// BMX055_ACC_PMU_SELF_TEST				0x32
+#define ACC_PMU_SELF_TEST_AMP			0x10
+#define ACC_PMU_SELF_TEST_SIGN			0x04
+#define ACC_PMU_SELF_TEST_AXIS			0x03
+
+// BMX055_ACC_TRIM_NVM_CTRL				0x33
+#define ACC_TRIM_NVM_CTRL_REMAIN		0xF0
+#define ACC_TRIM_NVM_CTRL_LOAD			0x08
+#define ACC_TRIM_NVM_CTRL_RDY			0x04
+#define ACC_TRIM_NVM_CTRL_PROG_TRIG		0x02
+#define ACC_TRIM_NVM_CTRL_PROG_MODE		0x01
+
+// BMX055_ACC_BGW_SPI3_WDT				0x34
+#define ACC_BGW_SPI3_WDT_I2C_WDT_EN		0x04
+#define ACC_BGW_SPI3_WDT_I2C_WDT_SEL	0x02
+#define ACC_BGW_SPI3_WDT_I2C_WDT_SPI3	0x01
+
+// BMX055_ACC_Reserved					0x35
+
+// BMX055_ACC_OFC_CTRL					0x36
+#define ACC_OFC_CTRL_OFFSET_RESET		0x80
+#define ACC_OFC_CTRL_CAL_TRIGGER		0x60
+#define ACC_OFC_CTRL_CAL_READY			0x10
+#define ACC_OFC_CTRL_HP_Z_EN			0x04
+#define ACC_OFC_CTRL_HP_Y_EN			0x02
+#define ACC_OFC_CTRL_HP_X_EN			0x01
+
+// BMX055_ACC_OFC_SETTING				0x37
+#define ACC_OFC_SETTING_OFFSET_TARGET_Z	0x60
+#define ACC_OFC_SETTING_OFFSET_TARGET_Y	0x18
+#define ACC_OFC_SETTING_OFFSET_TARGET_X	0x06
+#define ACC_OFC_SETTING_CUT_OFF			0x01
+
+// BMX055_ACC_OFC_OFFSET_X				0x38
+#define ACC_OFC_OFFSET_OFFSET_X			0xFF
+
+// BMX055_ACC_OFC_OFFSET_Y 				0x39
+#define ACC_OFC_OFFSET_OFFSET_Y			0xFF
+
+// BMX055_ACC_OFC_OFFSET_Z				0x3A
+#define ACC_OFC_OFFSET_OFFSET_Z			0xFF
+
+// BMX055_ACC_TRIM_GP0					0x3B
+#define ACC_TRIM_GP0_GP0				0xFF
+
+// BMX055_ACC_TRIM_GP1					0x3C
+#define ACC_TRIM_GP1_GP1				0xFF
+
+// BMX055_ACC_Reserved					0x3D
+
+// BMX055_ACC_FIFO_CONFIG_1				0x3E
+#define ACC_FIFO_CONFIG_1_MODE			0xC0
+#define ACC_FIFO_CONFIG_1_DATA_SELECT	0x03
+
+// BMX055_ACC_FIFO_DATA					0x3F
+#define ACC_FIFO_DATA_OUTPUT			0xFF
+
+
+
+
+
+
+
+
+#endif /* TASKS_BMX055_H_ */

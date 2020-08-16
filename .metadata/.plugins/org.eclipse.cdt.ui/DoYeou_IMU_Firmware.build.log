@@ -1,0 +1,15 @@
+12:04:06 **** Rebuild of configuration Debug for project DoYeou_IMU_Firmware ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c ../src/tiny_printf.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F4XX -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/Device/STM32F4xx/Include -I../Libraries/STM32F4xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src/tiny_printf.o 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32F4XX -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/Device/STM32F4xx/Include -I../Libraries/STM32F4xx_StdPeriph_Driver/inc -g -Wa,--warn -x assembler-with-cpp -specs=nano.specs -o src/startup_stm32f40xx.o ../src/startup_stm32f40xx.s 
+arm-atollic-eabi-gcc -c ../Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F4XX -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/Device/STM32F4xx/Include -I../Libraries/STM32F4xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o 
+arm-atollic-eabi-gcc -c ../src/main.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F4XX -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/Device/STM32F4xx/Include -I../Libraries/STM32F4xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src/main.o 
+In file included from ../src/main.h:16:0,
+                 from ../src/main.c:14:
+../src/tasks/memory.h:28:22: fatal error: fatfs/ff.h: No such file or directory
+ #include "fatfs/ff.h"
+                      ^
+compilation terminated.
+
+12:04:11 Build Finished (took 5s.41ms)
+

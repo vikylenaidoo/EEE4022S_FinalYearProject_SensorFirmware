@@ -1,0 +1,93 @@
+/*
+ * bmp280.h
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+
+#ifndef TASKS_BMP280_H_
+#define TASKS_BMP280_H_
+
+//--------------------------REGISTERS------------------------------//
+#define BMP280_DIGT1_LSB		0x88
+#define BMP280_DIGT1_MSB		0x89
+#define BMP280_DIGT2_LSB		0x8A
+#define BMP280_DIGT2_MSB		0x8B
+#define BMP280_DIGT3_LSB		0x8C
+#define BMP280_DIGT3_MSB		0x8D
+#define BMP280_DIGP1_LSB		0x8E
+#define BMP280_DIGP1_MSB		0x8F
+#define BMP280_DIGP2_LSB		0x90
+#define BMP280_DIGP2_MSB		0x91
+#define BMP280_DIGP3_LSB		0x92
+#define BMP280_DIGP3_MSB		0x93
+#define BMP280_DIGP4_LSB		0x94
+#define BMP280_DIGP4_MSB		0x95
+#define BMP280_DIGP5_LSB		0x96
+#define BMP280_DIGP5_MSB		0x97
+#define BMP280_DIGP6_LSB		0x98
+#define BMP280_DIGP6_MSB		0x99
+#define BMP280_DIGP7_LSB		0x9A
+#define BMP280_DIGP7_MSB		0x9B
+#define BMP280_DIGP8_LSB		0x9C
+#define BMP280_DIGP8_MSB		0x9D
+#define BMP280_DIGP9_LSB		0x9E
+#define BMP280_DIGP9_MSB		0x9F
+//#define BMP280_RESERVED		0xA0
+//#define BMP280_RESERVED		0xA1
+#define BMP280_ID				0xD0 //should return 0x58
+#define BMP280_RESET			0xE0
+#define BMP280_STATUS			0xF3
+#define BMP280_CTRL_MEAS		0xF4
+#define BMP280_CONFIG			0xF5
+#define BMP280_PRESS_MSB		0xF7
+#define BMP280_PRESS_LSB		0xF8
+#define BMP280_PRESS_XLSB		0xF9
+#define BMP280_TEMP_MSB			0xFA
+#define BMP280_TEMP_LSB			0xFB
+#define BMP280_TEMP_XLSB		0xFC
+
+
+//------------------------------BMP280 PIN MASK------------------------------------//
+
+//for calib registers 0x88 to 0xA1
+#define BMP280_CALIB			0xFF //for reading all calibration data DIGTx and DIGPx
+
+//#define BMP280_ID				0xD0 //should return 0x58
+#define BMP_280_ID_CHIP_ID		0xFF
+
+//#define BMP280_RESET			0xE0
+#define BMP280_RESET_RESET			0xFF
+
+//#define BMP280_STATUS			0xF3
+#define BMP280_STATUS_MEASURING	0b00001000
+#define BMP280_STATUS_IM_UPDATE	0b00000001
+
+//#define BMP280_CTRL_MEAS		0xF4
+#define BMP280_CTRL_MEAS		0xF4
+
+//#define BMP280_CONFIG			0xF5
+//#define BMP280_PRESS_MSB		0xF7
+//#define BMP280_PRESS_LSB		0xF8
+//#define BMP280_PRESS_XLSB		0xF9
+//#define BMP280_TEMP_MSB			0xFA
+//#define BMP280_TEMP_LSB			0xFB
+//#define BMP280_TEMP_XLSB		0xFC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif /* TASKS_BMP280_H_ */

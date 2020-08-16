@@ -1,0 +1,83 @@
+/*
+ * sensor.h
+ *
+ *  Created on	:	Mar 06, 2019
+ *      Author	:	Do Yeou Ku
+ *  Description	:	A header file for sensor.c
+ *  				The "seror.h/c" is the low-level implementation of Bosch sensors and include:
+ *  				- initialization of multi-slave spi communication interface:
+ *  					- 2 line full duplex
+ *  					- 4.5 MHz frequency
+ *  					- high CPOL and 2 edge CPHA (mode 11)
+ *  					- first bit MSB
+ *  					- 8-bit data size
+ *  					- software set of chip select
+ *  				- static function(s) to write/send a single/multiple byte-block
+ *  				- static function(s) to check the device id
+ *  				- public function(s) to initialize:
+ *  					- communication interface
+ *  					- data buffers
+ *  					- data current buffer pointer
+ *  					- data current pointer position in the buffer
+ *  				- public function(s) to de-initialize
+ *  				- public function(s) to configure the device according to the SCONFIG struct
+ *  				- public function(s) to retrieve measurements from the sensor(s)
+ */
+
+#ifndef TASKS_SENSORIO_H_
+#define TASKS_SENSORIO_H_
+
+/* Includes ------------------------------------------------------------------*/
+#include "stm32f4xx.h"
+
+/*/tasks Includes ------------------------------------------------------------*/
+#include "tasks/bmx055.h"
+#include "tasks/var.h"
+
+/* Public defines ------------------------------------------------------------*/
+#define ACCEL_DATA_LENGTH	7
+#define GYRO_DATA_LENGTH	6
+#define MAG_DATA_LENGTH		8
+#define MAX_DATA_LENGTH		20
+
+#define SENSOR_BUFFER_NUMBER		15
+#define SENSOR_LOG_BUFFER_SIZE		2048
+
+/* Public variables ----------------------------------------------------------*/
+volatile uint8_t		sensor_log_start;
+volatile int			sensor_log_wait;
+
+volatile uint8_t		sensor_crnt_buffer;
+volatile int			sensor_crnt_pos;
+
+uint8_t* sensor_buffer [15];
+
+uint8_t S_BUFFER0 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER1 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER2 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER3 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER4 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER5 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER6 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER7 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER8 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER9 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER10 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER11 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER12 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER13 [SENSOR_LOG_BUFFER_SIZE];
+uint8_t S_BUFFER14 [SENSOR_LOG_BUFFER_SIZE];
+
+/* Function prototypes -------------------------------------------------------*/
+void sensor_initialize (void);
+void sensor_deinitialize (void);
+
+Sensor_StatusTypeDef sensor_check_id (void);
+Sensor_StatusTypeDef sensor_configure (volatile Sensor_ConfigTypeDef*);
+Sensor_StatusTypeDef accel_read (uint8_t*, uint8_t);
+Sensor_StatusTypeDef gyro_read (uint8_t*, uint8_t);
+Sensor_StatusTypeDef mag_read (uint8_t*, uint8_t);
+
+/* Interrupt Service Routine (ISR) -------------------------------------------*/
+
+#endif /* TASKS_SENSORIO_H_ */
