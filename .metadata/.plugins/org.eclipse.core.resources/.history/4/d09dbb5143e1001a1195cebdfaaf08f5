@@ -1,0 +1,24 @@
+/*
+ * spi.h
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+
+#ifndef TASKS_SPI_H_
+#define TASKS_SPI_H_
+
+//-----------------------INCLUDES----------------------------------------//
+
+//---------------------TASKS INCLUDES-----------------------------------//
+
+//---------------------PUBLIC DEFINES---------------------------------//
+
+//-------------------PUBLIC VARIABLES----------------------------------//
+
+//--------------------FUNCTION HEADERS----------------------------------//
+void spi_initialise(void);
+void
+
+
+#endif /* TASKS_SPI_H_ */

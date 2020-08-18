@@ -1,0 +1,3 @@
+spi.c:32:13:cs_deselect	16	static
+spi.c:45:13:cs_select	16	static
+spi.c:60:6:spi_initialise	40	static

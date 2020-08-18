@@ -1,0 +1,57 @@
+/*
+ * spi.c
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+//---------------------------------INCLUDES-----------------------------------------//
+#include "spi.h"
+
+//-------------------------------PRIVATE DEFINES---------------------------------//
+
+//------------------------------STATIC FUNCTIONS--------------------------------//
+
+//------------------------------PUBLIC FUNCTIONS-----------------------------------//
+
+/**
+ * @brief intialise all clock and registers needed for spi. assign and initialise all gpio pins needed
+ * @return void
+ */
+void spi_initialise(void){
+
+	//enable SPI clock: APB2 for SPI1
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+	//enable GPIO clock for SCK, MOSI, MISO
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+	//enable GPIO clock for CS pins
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
+
+	//SPI GPIO configurations:
+
+	/* Configure SPI Chip Select pin */
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+
+	/* SPI Accelerometer CS pin configuration */
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_ACC_CS;
+	GPIO_Init(GPIO_BOSCH_ACC_CS, &GPIO_InitStructure);
+
+	/* SPI Gyroscope CS pin configuration */
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_GYRO_CS;
+	GPIO_Init(GPIO_BOSCH_GYRO_CS, &GPIO_InitStructure);
+
+	/* SPI Magnetometer CS pin configuration */
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_MAG_CS;
+	GPIO_Init(GPIO_BOSCH_MAG_CS, &GPIO_InitStructure);
+
+	/* SPI Barometer CS pin configuration */
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_BARO_CS;
+	GPIO_Init(GPIO_BOSCH_BARO_CS, &GPIO_InitStructure);
+
+
+
+
+
+}

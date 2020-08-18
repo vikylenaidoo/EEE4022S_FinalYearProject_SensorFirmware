@@ -1681,9 +1681,21 @@ Discarded input sections
  .text          0x0000000000000000        0x0 src/tasks/spi.o
  .data          0x0000000000000000        0x0 src/tasks/spi.o
  .bss           0x0000000000000000        0x0 src/tasks/spi.o
- .debug_line    0x0000000000000000        0x0 src/tasks/spi.o
- .debug_str     0x0000000000000000      0x139 src/tasks/spi.o
+ .text.cs_deselect
+                0x0000000000000000       0x5c src/tasks/spi.o
+ .text.cs_select
+                0x0000000000000000       0x5c src/tasks/spi.o
+ .text.spi_initialise
+                0x0000000000000000      0x150 src/tasks/spi.o
+ .debug_info    0x0000000000000000      0x4d8 src/tasks/spi.o
+ .debug_abbrev  0x0000000000000000      0x153 src/tasks/spi.o
+ .debug_aranges
+                0x0000000000000000       0x30 src/tasks/spi.o
+ .debug_ranges  0x0000000000000000       0x20 src/tasks/spi.o
+ .debug_line    0x0000000000000000      0x23b src/tasks/spi.o
+ .debug_str     0x0000000000000000      0x55c src/tasks/spi.o
  .comment       0x0000000000000000       0x7d src/tasks/spi.o
+ .debug_frame   0x0000000000000000       0x7c src/tasks/spi.o
  .ARM.attributes
                 0x0000000000000000       0x39 src/tasks/spi.o
  .text          0x0000000000000000        0x0 src/tasks/uart.o
@@ -2454,14 +2466,18 @@ FSMC_PCCARDInit                                   Libraries/STM32F4xx_StdPeriph_
 FSMC_PCCARDStructInit                             Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.o
 GPIO_DeInit                                       Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_Init                                         Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                                                  src/tasks/spi.o
 GPIO_PinAFConfig                                  Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                                                  src/tasks/spi.o
 GPIO_PinLockConfig                                Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ReadInputData                                Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ReadInputDataBit                             Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ReadOutputData                               Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ReadOutputDataBit                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ResetBits                                    Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                                                  src/tasks/spi.o
 GPIO_SetBits                                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                                                  src/tasks/spi.o
 GPIO_StructInit                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_ToggleBits                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_Write                                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -2586,6 +2602,7 @@ PWR_WakeUpPinCmd                                  Libraries/STM32F4xx_StdPeriph_
 PendSV_Handler                                    src/stm32f4xx_it.o
                                                   src/startup_stm32f40xx.o
 RCC_AHB1PeriphClockCmd                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                                                  src/tasks/spi.o
 RCC_AHB1PeriphClockLPModeCmd                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
 RCC_AHB1PeriphResetCmd                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
                                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -2610,6 +2627,7 @@ RCC_APB1PeriphResetCmd                            Libraries/STM32F4xx_StdPeriph_
                                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dac.o
                                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_can.o
 RCC_APB2PeriphClockCmd                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                                                  src/tasks/spi.o
 RCC_APB2PeriphClockLPModeCmd                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
 RCC_APB2PeriphResetCmd                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
                                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
@@ -2753,7 +2771,9 @@ SPI2_IRQHandler                                   src/startup_stm32f40xx.o
 SPI3_IRQHandler                                   src/startup_stm32f40xx.o
 SPI_BiDirectionalLineConfig                       Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_CalculateCRC                                  Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                                                  src/tasks/spi.o
 SPI_Cmd                                           Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                                                  src/tasks/spi.o
 SPI_DataSizeConfig                                Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_GetCRC                                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_GetCRCPolynomial                              Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2767,6 +2787,7 @@ SPI_I2S_ITConfig                                  Libraries/STM32F4xx_StdPeriph_
 SPI_I2S_ReceiveData                               Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_I2S_SendData                                  Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_Init                                          Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                                                  src/tasks/spi.o
 SPI_NSSInternalSoftwareConfig                     Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_SSOutputCmd                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
 SPI_StructInit                                    Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2969,6 +2990,7 @@ main                                              src/main.o
 printf                                            src/tiny_printf.o
 puts                                              src/tiny_printf.o
 siprintf                                          src/tiny_printf.o
+spi_initialise                                    src/tasks/spi.o
 sprintf                                           src/tiny_printf.o
 strlen                                            /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-strlen.o)
                                                   src/tiny_printf.o

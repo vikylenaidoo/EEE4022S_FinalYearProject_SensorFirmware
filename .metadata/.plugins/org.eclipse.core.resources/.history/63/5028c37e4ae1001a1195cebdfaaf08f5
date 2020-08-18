@@ -1,0 +1,28 @@
+/*
+ * spi.c
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+//---------------------------------INCLUDES-----------------------------------------//
+#include "spi.h"
+
+//-------------------------------PRIVATE DEFINES---------------------------------//
+
+//------------------------------STATIC FUNCTIONS--------------------------------//
+
+//------------------------------PUBLIC FUNCTIONS-----------------------------------//
+
+/**
+ * @brief intialise all clock and registers needed for spi. assign and initialise all gpio pins needed
+ * @return void
+ */
+void spi_initialise(void){
+
+	//enable SPI clock: APB2 for SPI1
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+	//enable GPIO clock for SCK, MOSI, MISO pins
+	RCC_AHB1PeriphClockCmd();
+
+
+}

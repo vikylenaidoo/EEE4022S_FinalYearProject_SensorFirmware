@@ -1,0 +1,32 @@
+/*
+ * spi.h
+ *
+ *  Created on: 15 Aug 2020
+ *      Author: vikylenaidoo
+ */
+
+#ifndef TASKS_SPI_H_
+#define TASKS_SPI_H_
+
+//-----------------------INCLUDES----------------------------------------//
+
+//---------------------TASKS INCLUDES-----------------------------------//
+
+//---------------------PUBLIC DEFINES---------------------------------//
+
+typedef enum {
+	CS_Acc 	= 0,
+	CS_Gyro = 1,
+	CS_Mag 	= 2,
+	CS_Baro = 3
+
+} SPI_ChipSelectTypeDef;
+
+//-------------------PUBLIC VARIABLES----------------------------------//
+
+//--------------------FUNCTION HEADERS----------------------------------//
+void spi_initialise(void);
+void read()
+
+
+#endif /* TASKS_SPI_H_ */
