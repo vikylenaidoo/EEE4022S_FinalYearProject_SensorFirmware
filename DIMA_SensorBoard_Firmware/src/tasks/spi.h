@@ -12,6 +12,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_spi.h"
 #include "stm32f4xx_gpio.h"
+#include "var.h"
 //---------------------TASKS INCLUDES-----------------------------------//
 
 //---------------------PUBLIC DEFINES---------------------------------//
@@ -35,14 +36,14 @@ uint8_t spi_read_single(
 		uint8_t addr //start address to read from
 		);
 
-void spi_read_burst(
+Sensor_StatusTypeDef spi_read_burst(
 		SPI_ChipSelectTypeDef cs, //chip select
 		uint8_t addr, //start address to read from
 		uint8_t* buffer, //buffer to store read result
 		uint8_t length // length of the buffer
 		);
 
-void spi_write_single(
+Sensor_StatusTypeDef spi_write_single(
 		SPI_ChipSelectTypeDef cs, //chip select
 		uint8_t data_out, //data to be written
 		uint8_t addr // address to write to

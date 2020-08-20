@@ -1628,6 +1628,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 src/tasks/spi.o
  .data          0x0000000000000000        0x0 src/tasks/spi.o
  .bss           0x0000000000000000        0x0 src/tasks/spi.o
+ .text.spi_read_burst
+                0x0000000000000000       0x62 src/tasks/spi.o
  .text          0x0000000000000000        0x0 src/tasks/uart.o
  .data          0x0000000000000000        0x0 src/tasks/uart.o
  .bss           0x0000000000000000        0x0 src/tasks/uart.o
@@ -1780,7 +1782,7 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x0000000008000188      0xa6c
+.text           0x0000000008000188      0xa8c
                 0x0000000008000188                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000188       0x40 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
@@ -1965,87 +1967,88 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000008000b10       0x42 src/tasks/spi.o
                 0x0000000008000b10                spi_read_single
  .text.spi_write_single
-                0x0000000008000b52       0x42 src/tasks/spi.o
+                0x0000000008000b52       0x60 src/tasks/spi.o
                 0x0000000008000b52                spi_write_single
+ *fill*         0x0000000008000bb2        0x2 
  .text.__libc_init_array
-                0x0000000008000b94       0x48 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
-                0x0000000008000b94                __libc_init_array
+                0x0000000008000bb4       0x48 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+                0x0000000008000bb4                __libc_init_array
  *(.glue_7)
- .glue_7        0x0000000008000bdc        0x0 linker stubs
+ .glue_7        0x0000000008000bfc        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008000bdc        0x0 linker stubs
+ .glue_7t       0x0000000008000bfc        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008000bdc        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x0000000008000bfc        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  *(.init)
- .init          0x0000000008000bdc        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
-                0x0000000008000bdc                _init
- .init          0x0000000008000be0        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
+ .init          0x0000000008000bfc        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
+                0x0000000008000bfc                _init
+ .init          0x0000000008000c00        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
  *(.fini)
- .fini          0x0000000008000be8        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
-                0x0000000008000be8                _fini
- .fini          0x0000000008000bec        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
-                0x0000000008000bf4                . = ALIGN (0x4)
-                0x0000000008000bf4                _etext = .
+ .fini          0x0000000008000c08        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
+                0x0000000008000c08                _fini
+ .fini          0x0000000008000c0c        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
+                0x0000000008000c14                . = ALIGN (0x4)
+                0x0000000008000c14                _etext = .
 
-.vfp11_veneer   0x0000000008000bf4        0x0
- .vfp11_veneer  0x0000000008000bf4        0x0 linker stubs
+.vfp11_veneer   0x0000000008000c14        0x0
+ .vfp11_veneer  0x0000000008000c14        0x0 linker stubs
 
-.v4_bx          0x0000000008000bf4        0x0
- .v4_bx         0x0000000008000bf4        0x0 linker stubs
+.v4_bx          0x0000000008000c14        0x0
+ .v4_bx         0x0000000008000c14        0x0 linker stubs
 
-.iplt           0x0000000008000bf4        0x0
- .iplt          0x0000000008000bf4        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+.iplt           0x0000000008000c14        0x0
+ .iplt          0x0000000008000c14        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.rel.dyn        0x0000000008000bf4        0x0
- .rel.iplt      0x0000000008000bf4        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+.rel.dyn        0x0000000008000c14        0x0
+ .rel.iplt      0x0000000008000c14        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.rodata         0x0000000008000bf4        0x0
-                0x0000000008000bf4                . = ALIGN (0x4)
+.rodata         0x0000000008000c14        0x0
+                0x0000000008000c14                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x0000000008000bf4                . = ALIGN (0x4)
+                0x0000000008000c14                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000000008000bf4        0x0
-                0x0000000008000bf4                __exidx_start = .
+.ARM            0x0000000008000c14        0x0
+                0x0000000008000c14                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008000bf4                __exidx_end = .
+                0x0000000008000c14                __exidx_end = .
 
-.preinit_array  0x0000000008000bf4        0x0
-                0x0000000008000bf4                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000000008000c14        0x0
+                0x0000000008000c14                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000000008000bf4                PROVIDE (__preinit_array_end, .)
+                0x0000000008000c14                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000008000bf4        0x4
-                0x0000000008000bf4                PROVIDE (__init_array_start, .)
+.init_array     0x0000000008000c14        0x4
+                0x0000000008000c14                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008000bf4        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
-                0x0000000008000bf8                PROVIDE (__init_array_end, .)
+ .init_array    0x0000000008000c14        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+                0x0000000008000c18                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000008000bf8        0x4
+.fini_array     0x0000000008000c18        0x4
                 [!provide]                        PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008000bf8        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+ .fini_array    0x0000000008000c18        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end, .)
-                0x0000000008000bfc                _sidata = LOADADDR (.data)
+                0x0000000008000c1c                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000        0x0 load address 0x0000000008000bfc
+.data           0x0000000020000000        0x0 load address 0x0000000008000c1c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data*)
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _edata = .
-                0x0000000008000bfc                _siccmram = LOADADDR (.ccmram)
+                0x0000000008000c1c                _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000bfc
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000c1c
  .igot.plt      0x0000000020000000        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x0000000008000bfc
+.ccmram         0x0000000010000000        0x0 load address 0x0000000008000c1c
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)
@@ -2117,7 +2120,7 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000000000273       0x22 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
 OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x2e8c
+.debug_info     0x0000000000000000     0x2f4d
  .debug_info    0x0000000000000000      0x628 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_info    0x0000000000000628      0xc98 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_info    0x00000000000012c0      0xb1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2126,9 +2129,9 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_info    0x0000000000001f9a      0x154 src/stm32f4xx_it.o
  .debug_info    0x00000000000020ee      0x5dd src/system_stm32f4xx.o
  .debug_info    0x00000000000026cb      0x1d0 src/tasks/bosch_sensor_handler.o
- .debug_info    0x000000000000289b      0x5f1 src/tasks/spi.o
+ .debug_info    0x000000000000289b      0x6b2 src/tasks/spi.o
 
-.debug_abbrev   0x0000000000000000      0xa48
+.debug_abbrev   0x0000000000000000      0xa69
  .debug_abbrev  0x0000000000000000      0x1b8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_abbrev  0x00000000000001b8      0x1f8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_abbrev  0x00000000000003b0      0x17a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2137,9 +2140,9 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_abbrev  0x00000000000005dd       0x78 src/stm32f4xx_it.o
  .debug_abbrev  0x0000000000000655      0x158 src/system_stm32f4xx.o
  .debug_abbrev  0x00000000000007ad       0xe2 src/tasks/bosch_sensor_handler.o
- .debug_abbrev  0x000000000000088f      0x1b9 src/tasks/spi.o
+ .debug_abbrev  0x000000000000088f      0x1da src/tasks/spi.o
 
-.debug_aranges  0x0000000000000000      0x440
+.debug_aranges  0x0000000000000000      0x448
  .debug_aranges
                 0x0000000000000000       0x88 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_aranges
@@ -2157,9 +2160,9 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_aranges
                 0x00000000000003c0       0x28 src/tasks/bosch_sensor_handler.o
  .debug_aranges
-                0x00000000000003e8       0x58 src/tasks/spi.o
+                0x00000000000003e8       0x60 src/tasks/spi.o
 
-.debug_ranges   0x0000000000000000      0x3b8
+.debug_ranges   0x0000000000000000      0x3c0
  .debug_ranges  0x0000000000000000       0x78 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_ranges  0x0000000000000078      0x170 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_ranges  0x00000000000001e8       0xd0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2168,20 +2171,20 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_ranges  0x00000000000002e8       0x50 src/stm32f4xx_it.o
  .debug_ranges  0x0000000000000338       0x20 src/system_stm32f4xx.o
  .debug_ranges  0x0000000000000358       0x18 src/tasks/bosch_sensor_handler.o
- .debug_ranges  0x0000000000000370       0x48 src/tasks/spi.o
+ .debug_ranges  0x0000000000000370       0x50 src/tasks/spi.o
 
-.debug_line     0x0000000000000000     0x1844
+.debug_line     0x0000000000000000     0x1857
  .debug_line    0x0000000000000000      0x35f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_line    0x000000000000035f      0x5b7 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_line    0x0000000000000916      0x46f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_line    0x0000000000000d85      0x1a4 src/main.o
- .debug_line    0x0000000000000f29       0x7a src/startup_stm32f40xx.o
- .debug_line    0x0000000000000fa3      0x211 src/stm32f4xx_it.o
- .debug_line    0x00000000000011b4      0x203 src/system_stm32f4xx.o
- .debug_line    0x00000000000013b7      0x1dc src/tasks/bosch_sensor_handler.o
- .debug_line    0x0000000000001593      0x2b1 src/tasks/spi.o
+ .debug_line    0x0000000000000d85      0x193 src/main.o
+ .debug_line    0x0000000000000f18       0x7a src/startup_stm32f40xx.o
+ .debug_line    0x0000000000000f92      0x211 src/stm32f4xx_it.o
+ .debug_line    0x00000000000011a3      0x203 src/system_stm32f4xx.o
+ .debug_line    0x00000000000013a6      0x1cb src/tasks/bosch_sensor_handler.o
+ .debug_line    0x0000000000001571      0x2e6 src/tasks/spi.o
 
-.debug_str      0x0000000000000000     0x12d4
+.debug_str      0x0000000000000000     0x12ea
  .debug_str     0x0000000000000000      0x4fa Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
                                         0x550 (size before relaxing)
  .debug_str     0x00000000000004fa      0x6b1 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
@@ -2196,8 +2199,8 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
                                         0x42f (size before relaxing)
  .debug_str     0x0000000000001169       0x99 src/tasks/bosch_sensor_handler.o
                                         0x328 (size before relaxing)
- .debug_str     0x0000000000001202       0xd2 src/tasks/spi.o
-                                        0x5c1 (size before relaxing)
+ .debug_str     0x0000000000001202       0xe8 src/tasks/spi.o
+                                        0x646 (size before relaxing)
 
 .comment        0x0000000000000000       0x7c
  .comment       0x0000000000000000       0x7c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -2210,7 +2213,7 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .comment       0x000000000000007c       0x7d src/tasks/bosch_sensor_handler.o
  .comment       0x000000000000007c       0x7d src/tasks/spi.o
 
-.debug_frame    0x0000000000000000     0x1094
+.debug_frame    0x0000000000000000     0x10bc
  .debug_frame   0x0000000000000000      0x23c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_frame   0x000000000000023c      0x6fc Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_frame   0x0000000000000938      0x3f4 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
@@ -2218,8 +2221,8 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_frame   0x0000000000000d5c      0x110 src/stm32f4xx_it.o
  .debug_frame   0x0000000000000e6c       0x7c src/system_stm32f4xx.o
  .debug_frame   0x0000000000000ee8       0x58 src/tasks/bosch_sensor_handler.o
- .debug_frame   0x0000000000000f40      0x128 src/tasks/spi.o
- .debug_frame   0x0000000000001068       0x2c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+ .debug_frame   0x0000000000000f40      0x150 src/tasks/spi.o
+ .debug_frame   0x0000000000001090       0x2c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
 
 .stabstr        0x0000000000000000       0x3f
  .stabstr       0x0000000000000000       0x3f /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libnosys.a(write.o)
@@ -3047,6 +3050,7 @@ sensor_check_id                                   src/tasks/bosch_sensor_handler
 siprintf                                          src/tiny_printf.o
 spi_initialise                                    src/tasks/spi.o
                                                   src/main.o
+spi_read_burst                                    src/tasks/spi.o
 spi_read_single                                   src/tasks/spi.o
                                                   src/tasks/bosch_sensor_handler.o
 spi_write_single                                  src/tasks/spi.o

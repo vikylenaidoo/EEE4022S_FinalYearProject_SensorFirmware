@@ -22,6 +22,37 @@ static void sensor_mag_power_control(FunctionalState cmd){
 		spi_write_single(SPI_CS_Mag, 0x00, BMX055_MAG_PWR_CR1);
 	}
 }
+
+/**
+ * @brief	initialise bmp280 barometer
+ *
+ * register			setting		value	bits	comment
+ * ----------------------------------------------------
+ * BMP_CTRL_MEAS	osrs_t		001		7,6,5	x1 sampling
+ * 					osrs_p		001		4,3,2	x1 sampling
+ * 					mode		00		1,0		initial=sleep mode. (force mode per measurement)
+ *
+ */
+static Sensor_StatusTypeDef bmp280_config(){
+	//write 001000100 to BMP_CTRL_MEAS
+	uint8_t calib_data = CTRL_MEAS_OSRS_P_1|CTRL_MEAS_OSRS_T_1;
+	return spi_write_single(SPI_CS_Baro, calib_data,BMP280_CTRL_MEAS);
+
+}
+
+/**
+ * @brief	configure bmx055 imu
+ *
+ * register			setting		value	bits	comment
+ * ----------------------------------------------------
+ *
+ */
+static Sensor_StatusTypeDef bmx055_config(){
+
+
+}
+
+
 //-----------------------------PUBLIC FUNCTIONS-------------------------------//
 
 /**

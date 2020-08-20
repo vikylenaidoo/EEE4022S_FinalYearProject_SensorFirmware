@@ -12,24 +12,15 @@
 #include "bmp280.h"
 #include "bmx055.h"
 #include "spi.h"
-
+#include "var.h"
 
 //------------------------ TYPE DEFINES --------------------------//
 
-typedef enum {
-	SENS_OK = 0,		/* 0: Successful */
-	SENS_ERROR,			/* 1: R/W Error */
-	SENS_NOTRDY,		/* 2: Not Ready */
-	SENS_PARERR,		/* 3: Invalid Parameter */
-	SENS_IDERR,			/* 4: Invalid ID */
-	SENS_CONFERR,		/* 5: Configuration Error */
-	SENS_INTCONFERR,	/* 6: Interrupt Configuration Error */
-}Sensor_StatusTypeDef;
 
 
 //------------------------FUNCTION HEADERS--------------------------//
 Sensor_StatusTypeDef sensor_check_id();
-
+Sensor_StatusTypeDef sensor_config();
 
 
 

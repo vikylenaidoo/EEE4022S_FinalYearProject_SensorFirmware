@@ -207,7 +207,7 @@ uint8_t spi_read_single(SPI_ChipSelectTypeDef cs, uint8_t addr){
  * @param	addr: start address to read from
  * @param	data_out: //data to be written
  */
-void spi_write_single(SPI_ChipSelectTypeDef cs, uint8_t data_out, uint8_t addr){
+Sensor_StatusTypeDef spi_write_single(SPI_ChipSelectTypeDef cs, uint8_t data_out, uint8_t addr){
 	cs_select(cs);
 
 	uint8_t token = 0x7F & addr;	//write control byte = address but with MSB=0
@@ -215,11 +215,40 @@ void spi_write_single(SPI_ChipSelectTypeDef cs, uint8_t data_out, uint8_t addr){
 	spi_tx(token);
 	spi_tx(data_out);
 
-
 	cs_deselect(cs);
+
+	token = spi_read_single(cs, addr);
+
+	if(token!=data_out){
+		return SENS_ERROR;
+	}
+
+	return SENS_OK;
 }
 
+/**
+ * @brief	read multiple bytes of data from spi
+ * @param 	cs: chip select
+ * @param	addr: start address to read from
+ * @param	buffer: //buffer to store read result
+ * @param	length // length of the buffer (how many bytes to read)
+ */
 
+Sensor_StatusTypeDef spi_read_burst(SPI_ChipSelectTypeDef cs, uint8_t addr, uint8_t* buffer, uint8_t length){
+	cs_select(cs);
+
+	uint8_t token = 0x80 | addr;	//read control byte = address but with MSB=1
+	spi_tx(token);			//send control byte
+
+	for(int i=0; i<length; i++){
+		*(buffer+i) = spi_rx(); 		// recieve data
+	}
+
+	cs_deselect(cs);
+
+	return SENS_OK;
+
+}
 
 
 
