@@ -8,6 +8,6 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#include "tasks/spi.h"
+#include "tasks/bosch_sensor_handler.h"
 
 #endif /* MAIN_H_ */

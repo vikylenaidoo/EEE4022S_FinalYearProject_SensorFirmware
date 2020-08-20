@@ -1,0 +1,2 @@
+bosch_sensor_handler.c:16:13:sensor_mag_power_control	16	static
+bosch_sensor_handler.c:29:22:sensor_check_id	16	static

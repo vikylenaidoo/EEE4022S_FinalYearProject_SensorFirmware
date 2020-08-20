@@ -1,3 +1,8 @@
-spi.c:32:13:cs_deselect	16	static
-spi.c:45:13:cs_select	16	static
-spi.c:60:6:spi_initialise	40	static
+spi.c:48:13:cs_deselect	16	static
+spi.c:61:13:cs_select	16	static
+spi.c:71:16:stm32_spi_rw	16	static
+spi.c:83:13:spi_tx	16	static
+spi.c:87:16:spi_rx	8	static
+spi.c:96:6:spi_initialise	40	static
+spi.c:192:9:spi_read_single	24	static
+spi.c:210:6:spi_write_single	24	static

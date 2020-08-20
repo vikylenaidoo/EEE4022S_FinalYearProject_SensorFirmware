@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;DIMA_SensorBoard_Firmware/src/tasks/var.h&apos;" deleteContents="false" description="Delete resource &apos;DIMA_SensorBoard_Firmware/src/tasks/var.h&apos;" element1="/DIMA_SensorBoard_Firmware/src/tasks/var.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1597848042558"/>
+</session>

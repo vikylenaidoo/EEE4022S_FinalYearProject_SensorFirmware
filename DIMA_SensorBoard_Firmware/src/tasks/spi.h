@@ -30,9 +30,9 @@ typedef enum {
 
 void spi_initialise(void);
 
-void spi_read_single(
+uint8_t spi_read_single(
 		SPI_ChipSelectTypeDef cs, //chip select
-		uint8_t addr, //start address to read from
+		uint8_t addr //start address to read from
 		);
 
 void spi_read_burst(

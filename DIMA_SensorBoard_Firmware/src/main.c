@@ -44,10 +44,16 @@ SOFTWARE.
 **===========================================================================
 */
 int main(void){
+	spi_initialise();
 
+	Sensor_StatusTypeDef status;
+	//uint8_t chipid_gyro = spi_read_single(SPI_CS_Acc, BMX055_ACC_CHIP_ID|ACC_CHIP_ID_CHIP_ID);
+	do{
+		 status = sensor_check_id();
+	}while (status != SENS_OK);
 
 	while (1){
-
+		continue;
 	}
 
 

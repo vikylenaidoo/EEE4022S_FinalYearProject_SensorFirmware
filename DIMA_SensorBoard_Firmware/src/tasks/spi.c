@@ -80,6 +80,13 @@ static uint8_t stm32_spi_rw(uint8_t data_out){
 	return SPI_I2S_ReceiveData(SPI1);
 
 }
+static void spi_tx(uint8_t data){
+	stm32_spi_rw(data);
+}
+
+static uint8_t spi_rx(void){
+	return stm32_spi_rw(0xff);
+}
 //------------------------------PUBLIC FUNCTIONS-----------------------------------//
 
 /**
@@ -171,6 +178,10 @@ void spi_initialise(void){
 	SPI_CalculateCRC(SPI1, DISABLE);
 	SPI_Cmd(SPI1, ENABLE);
 
+	/* drain SPI */
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET) { ; } //wait for TX buffer to empty
+	uint8_t dummyread = SPI_I2S_ReceiveData(SPI1);
+	if (dummyread) { ; }
 }
 
 /**
@@ -178,22 +189,15 @@ void spi_initialise(void){
  * @param 	cs: chip select
  * @param	addr: start address to read from
  */
-void spi_read_single(SPI_ChipSelectTypeDef cs, uint8_t addr){
+uint8_t spi_read_single(SPI_ChipSelectTypeDef cs, uint8_t addr){
 	cs_select(cs);
 
 	uint8_t token = 0x80 | addr;	//read control byte = address but with MSB=1
+	spi_tx(token);			//send control byte
 
-	/* Send command byte through the SPI peripheral */
-	SPI_I2S_SendData(SPI1, token);
-
-	/* Wait to receive a byte */
-	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET) { ; }
-
-	/* read the byte read from the SPI bus */
-	token = SPI_I2S_ReceiveData(SPI1);
+	token = spi_rx(); 		// recieve data
 
 	cs_deselect(cs);
-
 	return token;
 }
 
@@ -208,9 +212,9 @@ void spi_write_single(SPI_ChipSelectTypeDef cs, uint8_t data_out, uint8_t addr){
 
 	uint8_t token = 0x7F & addr;	//write control byte = address but with MSB=0
 
-	/* Send byte through the SPI peripheral */
-	SPI_I2S_SendData(SPI1, token);
-	SPI_I2S_SendData(SPI1, data_out);
+	spi_tx(token);
+	spi_tx(data_out);
+
 
 	cs_deselect(cs);
 }

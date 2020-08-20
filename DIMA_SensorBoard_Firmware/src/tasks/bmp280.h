@@ -8,6 +8,8 @@
 #ifndef TASKS_BMP280_H_
 #define TASKS_BMP280_H_
 
+#define BMP280_ID				0x58
+
 //--------------------------REGISTERS------------------------------//
 #define BMP280_DIGT1_LSB		0x88
 #define BMP280_DIGT1_MSB		0x89
@@ -101,13 +103,13 @@
 #define PRESS_XLSB				0b11110000
 
 //#define BMP280_TEMP_MSB		0xFA
-#define BMP280_TEMP_MSB			0xFF
+#define TEMP_MSB			0xFF
 
 //#define BMP280_TEMP_LSB		0xFB
-#define BMP280_TEMP_LSB			0xFF
+#define TEMP_LSB			0xFF
 
 //#define BMP280_TEMP_XLSB		0xFC
-#define BMP280_TEMP_XLSB		0b11110000
+#define TEMP_XLSB		0b11110000
 
 
 
