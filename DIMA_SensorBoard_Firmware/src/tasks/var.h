@@ -21,4 +21,14 @@ typedef enum {
 }Sensor_StatusTypeDef;
 
 
+typedef struct{
+	uint8_t accel_rate;
+	uint8_t accel_range;
+	uint8_t gyro_rate;
+	uint8_t gyro_range;
+	uint8_t mag_rate;
+	uint8_t mag_range_xy;
+	uint8_t mag_range_z;
+}Sensor_ConfigTypeDef;
+
 #endif /* TASKS_VAR_H_ */

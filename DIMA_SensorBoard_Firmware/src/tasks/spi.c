@@ -241,7 +241,8 @@ Sensor_StatusTypeDef spi_read_burst(SPI_ChipSelectTypeDef cs, uint8_t addr, uint
 	spi_tx(token);			//send control byte
 
 	for(int i=0; i<length; i++){
-		*(buffer+i) = spi_rx(); 		// recieve data
+		token = spi_rx();
+		*(buffer+i) = token; // recieve data
 	}
 
 	cs_deselect(cs);

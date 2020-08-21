@@ -43,13 +43,74 @@ static Sensor_StatusTypeDef bmp280_config(){
 /**
  * @brief	configure bmx055 imu
  *
- * register			setting		value	bits	comment
- * ----------------------------------------------------
+ * use Sensor_ConfigTypeDef to set
+ * rates and ranges
  *
  */
-static Sensor_StatusTypeDef bmx055_config(){
+static Sensor_StatusTypeDef bmx055_config(Sensor_ConfigTypeDef *f){
+
+	//----------------ACCELEROMETER-------------------------//
+	/* Accelerometer measurement range
+	 * Default	: 0b(0000)0011 	= +-2g
+	 * Set		: user-defined*/
+	if(spi_write_single(SPI_CS_Acc, f->accel_range, BMX055_ACC_PMU_RANGE) != SENS_OK){
+		return SENS_CONFERR;
+	}
+	/* Accelerometer measurement output data rate
+	 * Default	: 0b(000)01111 	= 1000 Hz
+	 * Set		: user-defined*/
+	if(spi_write_single(SPI_CS_Acc, f->accel_rate, BMX055_ACC_PMU_BW) != SENS_OK){
+		return SENS_CONFERR;
+	}
+	/* Accelerometer power mode
+	 * Default	: 0b0000000(0) 	= normal mode
+	 * Set		: 0b0000000(0) 	= normal mode */
+	if(spi_write_single(SPI_CS_Acc, ACC_PWR_NORMAL, BMX055_ACC_PMU_LPW) != SENS_OK){
+		return SENS_CONFERR;
+	}
+
+	//-----------------------GYROSCOPE-----------------------//
+	/* Gyroscope measurement range
+	 * Default	: 0b(00000)000 	= +-2000d/s
+	 * Set		: user-defined*/
+	if(spi_write_single(SPI_CS_Gyro, f->gyro_range, BMX055_GYRO_RANGE) != SENS_OK){
+		return SENS_CONFERR;
+	}
+	/* Gyroscope measurement output data rate (bandwidth)
+	 * Default	: 0b(1000)0000 	= 2000 Hz with no filter
+	 * Set		: user-defined*/
+	if(spi_write_single(SPI_CS_Gyro, f->gyro_rate|GYRO_BW_RESET, BMX055_GYRO_BW) != SENS_OK){
+		return SENS_CONFERR;
+	}
+	/* Gyroscope power mode
+	 * Default	: 0b0(0)0(0)000(0)	= normal mode
+	 * Set		: 0b0(0)0(0)000(0)	= normal mode*/
+	if(spi_write_single(SPI_CS_Gyro, GYRO_LPM1_NORMAL_MODE, BMX055_GYRO_LPM1) != SENS_OK){
+		return SENS_CONFERR;
+	}
+
+	//----------------------MAGNETOMETER-------------------------//
+	//currently in sleep mode, force mode when reading data
+
+	/*Magneto meter xy repetitions
+	 *choose nXY=3 ==> REPXY=1 (see pg122 table37 and pg138 of datasheet)
+	 *default	: 0b00000000
+	 *set to	: 0b00000001 */
+	if(spi_write_single(SPI_CS_Mag, MAG_REP_XY_LOW_POWER_PRESET_REPXY, BMX055_MAG_REP_XY) != SENS_OK){
+		return SENS_CONFERR;
+	}
+
+	/*Magneto meter z repetitions
+	 *choose nZ=3 ==> REPZ=2 (see pg122 table37 and pg138 of datasheet)
+	 *default	: 0b00000000
+	 *set to	: 0b00000010 */
+	if(spi_write_single(SPI_CS_Mag, MAG_REP_Z_LOW_POWER_PRESET_REPZ, BMX055_MAG_REP_Z) != SENS_OK ){
+		return SENS_CONFERR;
+	}
 
 
+
+	return SENS_OK;
 }
 
 
@@ -85,7 +146,69 @@ Sensor_StatusTypeDef sensor_check_id(){
 
 }
 
+Sensor_StatusTypeDef sensor_config(){
+	if(bmp280_config() != SENS_OK){
+		return SENS_CONFERR;
+	}
 
+	//@TODO: decide rate and range
+	Sensor_ConfigTypeDef *f;
+	f->accel_range = ACC_PMU_RANGE_02;
+	f->accel_rate = ACC_PMU_BW_1000;
+	f->gyro_rate = GYRO_ODR_2000;
+	f->gyro_range = GYRO_RANGE_RANGE_2000;
+	if(bmx055_config(f) != SENS_OK){
+		return SENS_CONFERR;
+	}
+	return SENS_OK;
+}
+
+/**
+ * @brief	read x,y,z data from acc
+ * @param	buff: variable to store read values
+ * @param	lenght: how many bytes to read. recommended 6
+ * */
+Sensor_StatusTypeDef sensor_read_acc(uint8_t *buff, uint8_t length){
+	return spi_read_burst(SPI_CS_Acc, BMX055_ACC_D_X_LSB, buff, length);
+}
+
+/**
+ * @brief	read x,y,z data from gyro
+ * @param	buff: variable to store read values
+ * @param	lenght: how many bytes to read. recommended 6
+ * */
+Sensor_StatusTypeDef sensor_read_gyro(uint8_t *buff, uint8_t length){
+	return spi_read_burst(SPI_CS_Gyro, BMX055_GYRO_RATE_X_LSB, buff, length);
+}
+
+/**
+ * @brief	read x,y,z data from magneto
+ * @param	buff: variable to store read values
+ * @param	lenght: how many bytes to read. recommended 8
+ * */
+Sensor_StatusTypeDef sensor_read_mag(uint8_t *buff, uint8_t length){
+	//select forced mode
+	Sensor_StatusTypeDef status = spi_write_single(SPI_CS_Mag, MAG_PWR_CR2_FORCED_MODE, BMX055_MAG_PWR_CR2);
+	//read data
+	status= spi_read_burst(SPI_CS_Mag, BMX055_MAG_XOUT_LSB, buff, length);
+	return status;
+}
+
+
+/**
+ * @brief	read x,y,z data from baro
+ * @param	buff: variable to store read values
+ * @param	lenght: how many bytes to read. recommended 6
+ * */
+Sensor_StatusTypeDef sensor_read_baro(uint8_t *buff, uint8_t length){
+	//select forced mode
+	Sensor_StatusTypeDef status = spi_write_single(SPI_CS_Baro, CTRL_MEAS_MODE_FORCED, BMP280_CTRL_MEAS);
+	//read data
+	uint8_t mode1 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
+	status = spi_read_burst(SPI_CS_Baro, BMP280_PRESS_MSB, buff, length);
+	uint8_t mode2 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
+	return status;
+}
 
 
 

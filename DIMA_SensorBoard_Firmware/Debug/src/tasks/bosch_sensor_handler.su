@@ -1,2 +1,9 @@
 bosch_sensor_handler.c:17:13:sensor_mag_power_control	16	static
-bosch_sensor_handler.c:30:22:sensor_check_id	16	static
+bosch_sensor_handler.c:36:29:bmp280_config	16	static
+bosch_sensor_handler.c:50:29:bmx055_config	16	static
+bosch_sensor_handler.c:122:22:sensor_check_id	16	static
+bosch_sensor_handler.c:149:22:sensor_config	16	static
+bosch_sensor_handler.c:171:22:sensor_read_acc	16	static
+bosch_sensor_handler.c:180:22:sensor_read_gyro	16	static
+bosch_sensor_handler.c:189:22:sensor_read_mag	24	static
+bosch_sensor_handler.c:203:22:sensor_read_baro	24	static

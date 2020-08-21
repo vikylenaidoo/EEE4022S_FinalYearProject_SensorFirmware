@@ -2,19 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="BMX055_" key="selection"/>
-		<item value="true" key="casesensitive"/>
+		<item value="BMX055_ACC_DATA_READY" key="selection"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="BMX055_ACC_DATA_READY"/>
+			<item value="bmx055_delay"/>
 			<item value="BMX055_"/>
 			<item value="ACC_"/>
 			<item value="sensor_buffer"/>
 			<item value="buff"/>
 			<item value="EXTILine_ACCEL_IRQHandler"/>
 			<item value="sensor_check_id"/>
-			<item value="rcvr_data"/>
 		</list>
 		<list key="replacehistory">
 		</list>

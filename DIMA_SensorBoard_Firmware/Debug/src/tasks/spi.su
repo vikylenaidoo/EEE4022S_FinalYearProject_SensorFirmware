@@ -6,4 +6,4 @@ spi.c:87:16:spi_rx	8	static
 spi.c:96:6:spi_initialise	40	static
 spi.c:192:9:spi_read_single	24	static
 spi.c:210:22:spi_write_single	24	static
-spi.c:237:22:spi_read_burst	32	static
+spi.c:237:22:spi_read_burst	24	static
