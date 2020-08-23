@@ -9,5 +9,6 @@
 #define MAIN_H_
 
 #include "tasks/bosch_sensor_handler.h"
+#include "tasks/uart.h"
 
 #endif /* MAIN_H_ */

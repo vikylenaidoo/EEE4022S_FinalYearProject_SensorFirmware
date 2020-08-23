@@ -1,0 +1,20 @@
+/*
+ * uart.c
+ *
+ *  Created on: 	15 Aug 2020
+ *      Author: 	vikylenaidoo
+ *     Details:		low level UART driver
+ */
+
+//-----------------------------INLCUDES---------------------------//
+#include "uart.h"
+
+//------------------------STATIC FUNCTIONS-------------------//
+
+
+//-----------------------PUBLIC FUNCTIONS------------------//
+
+void uart_initialise(){
+
+
+}

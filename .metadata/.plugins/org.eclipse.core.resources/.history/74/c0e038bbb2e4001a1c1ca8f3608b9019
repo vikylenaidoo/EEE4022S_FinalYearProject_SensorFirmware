@@ -1,0 +1,29 @@
+/*
+ * uart.c
+ *
+ *  Created on: 	15 Aug 2020
+ *      Author: 	vikylenaidoo
+ *     Details:		low level UART driver
+ */
+
+//-----------------------------INLCUDES---------------------------//
+#include "uart.h"
+
+//------------------------STATIC FUNCTIONS-------------------//
+
+
+//-----------------------PUBLIC FUNCTIONS------------------//
+
+void uart_initialise(){
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+
+	/* Enable USART clock */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+	/* Enable GPIO clock for USART pins */
+	RCC_AHBPeriphClockCmd_USART_GNSS(RCC_AHBPeriph_USART_GNSS, ENABLE);
+
+
+
+}

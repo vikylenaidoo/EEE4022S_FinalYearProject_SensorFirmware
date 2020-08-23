@@ -1,0 +1,5 @@
+timeio.c:25:6:timestamp_on	24	static
+timeio.c:47:6:timestamp_initialize	8	static
+timeio.c:54:6:timestamp_enable	8	static
+timeio.c:60:6:timestamp_disable	8	static
+timeio.c:67:6:TIM3_IRQHandler	8	static

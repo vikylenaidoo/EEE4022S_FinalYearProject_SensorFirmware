@@ -1,0 +1,10 @@
+core_cm4.h:1465:22:NVIC_DisableIRQ	16	static
+interrupt.c:53:6:exti_on	32	static
+interrupt.c:151:6:add_prefix	24	static
+interrupt.c:174:6:check_overflow	4	static
+interrupt.c:191:6:exti_initialize	8	static
+interrupt.c:197:6:exti_deinitialize	24	static
+interrupt.c:225:6:EXTI0_IRQHandler	8	static
+interrupt.c:261:6:EXTI1_IRQHandler	8	static
+interrupt.c:296:6:EXTI3_IRQHandler	8	static
+interrupt.c:309:6:EXTI4_IRQHandler	8	static

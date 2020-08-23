@@ -30,14 +30,21 @@ static void sensor_mag_power_control(FunctionalState cmd){
  * ----------------------------------------------------
  * BMP_CTRL_MEAS	osrs_t		001		7,6,5	x1 sampling
  * 					osrs_p		001		4,3,2	x1 sampling
- * 					mode		00		1,0		initial=sleep mode. (force mode per measurement)
+ * 					mode		11		1,0		(set to normal mode)
  *
  */
 static Sensor_StatusTypeDef bmp280_config(){
 	//write 001000100 to BMP_CTRL_MEAS
-	uint8_t calib_data = CTRL_MEAS_OSRS_P_1|CTRL_MEAS_OSRS_T_1;
-	return spi_write_single(SPI_CS_Baro, calib_data,BMP280_CTRL_MEAS);
+	//uint8_t calib_data = CTRL_MEAS_OSRS_P_1|CTRL_MEAS_OSRS_T_1;
+	uint8_t calib_data = CTRL_MEAS_OSRS_P_1|CTRL_MEAS_OSRS_T_1|CTRL_MEAS_MODE_NORMAL;
 
+	if( spi_write_single(SPI_CS_Baro, calib_data, BMP280_CTRL_MEAS) != SENS_OK)
+		return SENS_CONFERR;
+
+	//if (spi_write_single(SPI_CS_Baro, 0x04, BMP280_CONFIG) != SENS_OK)
+		//return SENS_CONFERR;
+
+	return SENS_OK;
 }
 
 /**
@@ -202,11 +209,11 @@ Sensor_StatusTypeDef sensor_read_mag(uint8_t *buff, uint8_t length){
  * */
 Sensor_StatusTypeDef sensor_read_baro(uint8_t *buff, uint8_t length){
 	//select forced mode
-	Sensor_StatusTypeDef status = spi_write_single(SPI_CS_Baro, CTRL_MEAS_MODE_FORCED, BMP280_CTRL_MEAS);
+	//Sensor_StatusTypeDef status = spi_write_single(SPI_CS_Baro, CTRL_MEAS_MODE_FORCED, BMP280_CTRL_MEAS);
 	//read data
-	uint8_t mode1 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
-	status = spi_read_burst(SPI_CS_Baro, BMP280_PRESS_MSB, buff, length);
-	uint8_t mode2 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
+	//uint8_t mode1 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
+	Sensor_StatusTypeDef status = spi_read_burst(SPI_CS_Baro, BMP280_PRESS_MSB, buff, length);
+	//uint8_t mode2 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
 	return status;
 }
 

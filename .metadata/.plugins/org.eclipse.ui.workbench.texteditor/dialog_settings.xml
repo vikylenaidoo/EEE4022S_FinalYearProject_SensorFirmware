@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="BMX055_ACC_DATA_READY" key="selection"/>
+		<item value="GNSS_LOG_BUFFER" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="GNSS_LOG_Buffer"/>
+			<item value="tmp"/>
 			<item value="BMX055_ACC_DATA_READY"/>
 			<item value="bmx055_delay"/>
 			<item value="BMX055_"/>
 			<item value="ACC_"/>
 			<item value="sensor_buffer"/>
 			<item value="buff"/>
-			<item value="EXTILine_ACCEL_IRQHandler"/>
-			<item value="sensor_check_id"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -24,7 +24,7 @@
 		<item value="334" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="480" key="DIALOG_HEIGHT"/>
-		<item value="1537" key="DIALOG_X_ORIGIN"/>
-		<item value="215" key="DIALOG_Y_ORIGIN"/>
+		<item value="1098" key="DIALOG_X_ORIGIN"/>
+		<item value="442" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
