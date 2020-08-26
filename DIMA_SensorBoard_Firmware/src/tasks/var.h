@@ -8,7 +8,25 @@
 #ifndef TASKS_VAR_H_
 #define TASKS_VAR_H_
 
+//-------------------PUBLIC DEFINES----------------------//
+#define GNSS_RX_DMA_Priority			13
+#define GNSS_RX_DMA_Sub_Priority		0
 
+#define USART_RXNE_Priority				1
+#define USART_RXNE_Sub_Priority			0
+
+#define USART_IDLE_Priority				9
+#define USART_IDLE_Sub_Priority			0
+
+#define USART_RX_DMA_Priority			13
+#define USART_RX_DMA_Sub_Priority		0
+
+#define MEM2MEM_DMA_Priority			14
+#define MEM2MEM_DMA_Sub_Priority		0
+
+
+
+//----------------------TYPEDEFS-------------------------//
 
 typedef enum {
 	SENS_OK = 0,		/* 0: Successful */

@@ -34,6 +34,7 @@ int main(void){
 	status = sensor_config();
 
 	uart_initialise();
+
 	/*
 	uint16_t log_buffer_x[20];
 	uint16_t log_buffer_y[20];
@@ -49,15 +50,17 @@ int main(void){
 		uint16_t out;
 		uint8_t in[2];
 	};
-	*/
+
 
 	//uint8_t baro_buffer [6];
 	//uint8_t acc_buffer [6];
 	//uint8_t gyro_buffer [6];
 	//uint8_t mag_buffer [8];
+	*/
 
 	uint8_t data = 0;
 	while (1){
+
 		//sensor_read_baro(baro_buffer, 6);
 		//sensor_read_acc(acc_buffer, 6);
 		//sensor_read_gyro(gyro_buffer, 6);
@@ -75,8 +78,10 @@ int main(void){
 		log_buffer_z[index] = (uint16_t)data.out;
 		index++;
 		*/
-		data = uart_receive(UART_DEVICE_GNSS);
 
+		/*if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE))
+			data = uart_receive(UART_DEVICE_GNSS);
+		 */
 		for(int i=0; i<1000; i++){
 			for(int i=0; i<1000; i++){
 				continue;

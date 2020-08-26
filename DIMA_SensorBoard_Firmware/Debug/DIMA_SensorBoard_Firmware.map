@@ -13,6 +13,9 @@ Allocating common symbols
 Common symbol       size              file
 
 errno               0x4               /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libnosys.a(errno.o)
+GNSS_LOG_BUFFER     0x800             src/main.o
+GNSS_RX_BUFFER      0x800             src/main.o
+GNSS_DATA_LENGTH    0x1               src/main.o
 
 Discarded input sections
 
@@ -25,25 +28,12 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .text.NVIC_PriorityGroupConfig
                 0x0000000000000000       0x28 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .text.NVIC_Init
-                0x0000000000000000       0xc4 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .text.NVIC_SetVectorTable
                 0x0000000000000000       0x2c Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .text.NVIC_SystemLPConfig
                 0x0000000000000000       0x44 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .text.SysTick_CLKSourceConfig
                 0x0000000000000000       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_info    0x0000000000000000      0x54d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_abbrev  0x0000000000000000      0x172 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_aranges
-                0x0000000000000000       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_ranges  0x0000000000000000       0x30 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_line    0x0000000000000000      0x23d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_str     0x0000000000000000      0x47b Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .comment       0x0000000000000000       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .debug_frame   0x0000000000000000       0xd8 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
- .ARM.attributes
-                0x0000000000000000       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .text          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.o
  .data          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.o
  .bss           0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.o
@@ -453,21 +443,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .data          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .bss           0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_DeInit
-                0x0000000000000000      0x1a8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_Init
-                0x0000000000000000       0xb0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_StructInit
                 0x0000000000000000       0x6e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_Cmd  0x0000000000000000       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_PeriphIncOffsetSizeConfig
                 0x0000000000000000       0x36 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_FlowControllerConfig
                 0x0000000000000000       0x36 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_SetCurrDataCounter
                 0x0000000000000000       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_GetCurrDataCounter
-                0x0000000000000000       0x1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_DoubleBufferModeConfig
                 0x0000000000000000       0x3e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_DoubleBufferModeCmd
@@ -476,31 +459,12 @@ Discarded input sections
                 0x0000000000000000       0x2c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_GetCurrentMemoryTarget
                 0x0000000000000000       0x30 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_GetCmdStatus
-                0x0000000000000000       0x30 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_GetFIFOStatus
                 0x0000000000000000       0x24 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_GetFlagStatus
-                0x0000000000000000       0x78 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_ClearFlag
                 0x0000000000000000       0x5c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_ITConfig
-                0x0000000000000000       0x74 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text.DMA_GetITStatus
                 0x0000000000000000       0xb0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .text.DMA_ClearITPendingBit
-                0x0000000000000000       0x5c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_info    0x0000000000000000      0x74c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_abbrev  0x0000000000000000      0x168 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_aranges
-                0x0000000000000000       0xb0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_ranges  0x0000000000000000       0xa0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_line    0x0000000000000000      0x429 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_str     0x0000000000000000      0x5ef Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .comment       0x0000000000000000       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .debug_frame   0x0000000000000000      0x308 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
- .ARM.attributes
-                0x0000000000000000       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .text          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.o
  .data          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.o
  .bss           0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_exti.o
@@ -1541,14 +1505,10 @@ Discarded input sections
                 0x0000000000000000       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .text.USART_IrDACmd
                 0x0000000000000000       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .text.USART_DMACmd
-                0x0000000000000000       0x48 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .text.USART_ITConfig
-                0x0000000000000000       0x90 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .text.USART_GetFlagStatus
+                0x0000000000000000       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .text.USART_ClearFlag
                 0x0000000000000000       0x22 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .text.USART_GetITStatus
-                0x0000000000000000       0xb6 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .text.USART_ClearITPendingBit
                 0x0000000000000000       0x3a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .text          0x0000000000000000        0x0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.o
@@ -1620,6 +1580,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 src/tasks/uart.o
  .text.uart_send
                 0x0000000000000000       0x1c src/tasks/uart.o
+ .text.uart_receive
+                0x0000000000000000       0x38 src/tasks/uart.o
  .text          0x0000000000000000        0x0 src/tiny_printf.o
  .data          0x0000000000000000        0x0 src/tiny_printf.o
  .bss           0x0000000000000000        0x0 src/tiny_printf.o
@@ -1764,288 +1726,330 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x0000000008000188     0x1040
+.text           0x0000000008000188     0x1924
                 0x0000000008000188                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000188       0x40 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  *(.text*)
+ .text.NVIC_Init
+                0x00000000080001c8       0xc4 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+                0x00000000080001c8                NVIC_Init
+ .text.DMA_DeInit
+                0x000000000800028c      0x1a8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x000000000800028c                DMA_DeInit
+ .text.DMA_Init
+                0x0000000008000434       0xb0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x0000000008000434                DMA_Init
+ .text.DMA_Cmd  0x00000000080004e4       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x00000000080004e4                DMA_Cmd
+ .text.DMA_GetCurrDataCounter
+                0x000000000800051c       0x1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x000000000800051c                DMA_GetCurrDataCounter
+ .text.DMA_GetCmdStatus
+                0x0000000008000536       0x30 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x0000000008000536                DMA_GetCmdStatus
+ *fill*         0x0000000008000566        0x2 
+ .text.DMA_GetFlagStatus
+                0x0000000008000568       0x78 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x0000000008000568                DMA_GetFlagStatus
+ .text.DMA_ITConfig
+                0x00000000080005e0       0x74 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x00000000080005e0                DMA_ITConfig
+ .text.DMA_ClearITPendingBit
+                0x0000000008000654       0x5c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                0x0000000008000654                DMA_ClearITPendingBit
  .text.GPIO_Init
-                0x00000000080001c8      0x11c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
-                0x00000000080001c8                GPIO_Init
+                0x00000000080006b0      0x11c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x00000000080006b0                GPIO_Init
  .text.GPIO_SetBits
-                0x00000000080002e4       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
-                0x00000000080002e4                GPIO_SetBits
+                0x00000000080007cc       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x00000000080007cc                GPIO_SetBits
  .text.GPIO_ResetBits
-                0x0000000008000302       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
-                0x0000000008000302                GPIO_ResetBits
+                0x00000000080007ea       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x00000000080007ea                GPIO_ResetBits
  .text.GPIO_PinAFConfig
-                0x0000000008000320       0x92 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
-                0x0000000008000320                GPIO_PinAFConfig
- *fill*         0x00000000080003b2        0x2 
+                0x0000000008000808       0x92 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x0000000008000808                GPIO_PinAFConfig
+ *fill*         0x000000000800089a        0x2 
  .text.RCC_GetClocksFreq
-                0x00000000080003b4      0x150 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
-                0x00000000080003b4                RCC_GetClocksFreq
+                0x000000000800089c      0x150 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                0x000000000800089c                RCC_GetClocksFreq
  .text.RCC_AHB1PeriphClockCmd
-                0x0000000008000504       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
-                0x0000000008000504                RCC_AHB1PeriphClockCmd
+                0x00000000080009ec       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                0x00000000080009ec                RCC_AHB1PeriphClockCmd
  .text.RCC_APB2PeriphClockCmd
-                0x0000000008000544       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
-                0x0000000008000544                RCC_APB2PeriphClockCmd
+                0x0000000008000a2c       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                0x0000000008000a2c                RCC_APB2PeriphClockCmd
  .text.SPI_Init
-                0x0000000008000584       0x88 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x0000000008000584                SPI_Init
- .text.SPI_Cmd  0x000000000800060c       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x000000000800060c                SPI_Cmd
+                0x0000000008000a6c       0x88 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000a6c                SPI_Init
+ .text.SPI_Cmd  0x0000000008000af4       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000af4                SPI_Cmd
  .text.SPI_I2S_ReceiveData
-                0x000000000800064c       0x1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x000000000800064c                SPI_I2S_ReceiveData
+                0x0000000008000b34       0x1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000b34                SPI_I2S_ReceiveData
  .text.SPI_I2S_SendData
-                0x0000000008000666       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x0000000008000666                SPI_I2S_SendData
+                0x0000000008000b4e       0x1e Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000b4e                SPI_I2S_SendData
  .text.SPI_CalculateCRC
-                0x0000000008000684       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x0000000008000684                SPI_CalculateCRC
+                0x0000000008000b6c       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000b6c                SPI_CalculateCRC
  .text.SPI_I2S_GetFlagStatus
-                0x00000000080006c4       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
-                0x00000000080006c4                SPI_I2S_GetFlagStatus
+                0x0000000008000bac       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x0000000008000bac                SPI_I2S_GetFlagStatus
  .text.USART_Init
-                0x00000000080006fc      0x174 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
-                0x00000000080006fc                USART_Init
+                0x0000000008000be4      0x174 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000be4                USART_Init
  .text.USART_Cmd
-                0x0000000008000870       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
-                0x0000000008000870                USART_Cmd
+                0x0000000008000d58       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000d58                USART_Cmd
  .text.USART_ReceiveData
-                0x00000000080008b0       0x20 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
-                0x00000000080008b0                USART_ReceiveData
- .text.USART_GetFlagStatus
-                0x00000000080008d0       0x38 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
-                0x00000000080008d0                USART_GetFlagStatus
- .text.main     0x0000000008000908       0x5c src/main.o
-                0x0000000008000908                main
+                0x0000000008000d98       0x20 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000d98                USART_ReceiveData
+ .text.USART_DMACmd
+                0x0000000008000db8       0x48 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000db8                USART_DMACmd
+ .text.USART_ITConfig
+                0x0000000008000e00       0x90 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000e00                USART_ITConfig
+ .text.USART_GetITStatus
+                0x0000000008000e90       0xb6 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000008000e90                USART_GetITStatus
+ .text.main     0x0000000008000f46       0x52 src/main.o
+                0x0000000008000f46                main
  .text.Reset_Handler
-                0x0000000008000964       0x50 src/startup_stm32f40xx.o
-                0x0000000008000964                Reset_Handler
+                0x0000000008000f98       0x50 src/startup_stm32f40xx.o
+                0x0000000008000f98                Reset_Handler
  .text.Default_Handler
-                0x00000000080009b4        0x2 src/startup_stm32f40xx.o
-                0x00000000080009b4                RTC_Alarm_IRQHandler
-                0x00000000080009b4                HASH_RNG_IRQHandler
-                0x00000000080009b4                EXTI2_IRQHandler
-                0x00000000080009b4                TIM8_CC_IRQHandler
-                0x00000000080009b4                TIM1_CC_IRQHandler
-                0x00000000080009b4                DMA2_Stream5_IRQHandler
-                0x00000000080009b4                DMA1_Stream5_IRQHandler
-                0x00000000080009b4                PVD_IRQHandler
-                0x00000000080009b4                SDIO_IRQHandler
-                0x00000000080009b4                TAMP_STAMP_IRQHandler
-                0x00000000080009b4                CAN2_RX1_IRQHandler
-                0x00000000080009b4                EXTI3_IRQHandler
-                0x00000000080009b4                TIM8_TRG_COM_TIM14_IRQHandler
-                0x00000000080009b4                TIM1_UP_TIM10_IRQHandler
-                0x00000000080009b4                TIM8_UP_TIM13_IRQHandler
-                0x00000000080009b4                I2C3_ER_IRQHandler
-                0x00000000080009b4                EXTI0_IRQHandler
-                0x00000000080009b4                I2C2_EV_IRQHandler
-                0x00000000080009b4                DMA1_Stream2_IRQHandler
-                0x00000000080009b4                CAN1_RX0_IRQHandler
-                0x00000000080009b4                FPU_IRQHandler
-                0x00000000080009b4                OTG_HS_WKUP_IRQHandler
-                0x00000000080009b4                CAN2_SCE_IRQHandler
-                0x00000000080009b4                DMA2_Stream2_IRQHandler
-                0x00000000080009b4                SPI1_IRQHandler
-                0x00000000080009b4                TIM6_DAC_IRQHandler
-                0x00000000080009b4                TIM1_BRK_TIM9_IRQHandler
-                0x00000000080009b4                DCMI_IRQHandler
-                0x00000000080009b4                CAN2_RX0_IRQHandler
-                0x00000000080009b4                DMA2_Stream3_IRQHandler
-                0x00000000080009b4                USART6_IRQHandler
-                0x00000000080009b4                USART3_IRQHandler
-                0x00000000080009b4                CRYP_IRQHandler
-                0x00000000080009b4                CAN1_RX1_IRQHandler
-                0x00000000080009b4                UART5_IRQHandler
-                0x00000000080009b4                DMA2_Stream0_IRQHandler
-                0x00000000080009b4                TIM4_IRQHandler
-                0x00000000080009b4                I2C1_EV_IRQHandler
-                0x00000000080009b4                DMA1_Stream6_IRQHandler
-                0x00000000080009b4                DMA1_Stream1_IRQHandler
-                0x00000000080009b4                UART4_IRQHandler
-                0x00000000080009b4                TIM3_IRQHandler
-                0x00000000080009b4                RCC_IRQHandler
-                0x00000000080009b4                TIM8_BRK_TIM12_IRQHandler
-                0x00000000080009b4                Default_Handler
-                0x00000000080009b4                EXTI15_10_IRQHandler
-                0x00000000080009b4                ADC_IRQHandler
-                0x00000000080009b4                DMA1_Stream7_IRQHandler
-                0x00000000080009b4                TIM7_IRQHandler
-                0x00000000080009b4                CAN2_TX_IRQHandler
-                0x00000000080009b4                TIM5_IRQHandler
-                0x00000000080009b4                DMA2_Stream7_IRQHandler
-                0x00000000080009b4                I2C3_EV_IRQHandler
-                0x00000000080009b4                EXTI9_5_IRQHandler
-                0x00000000080009b4                RTC_WKUP_IRQHandler
-                0x00000000080009b4                ETH_WKUP_IRQHandler
-                0x00000000080009b4                SPI2_IRQHandler
-                0x00000000080009b4                OTG_HS_EP1_IN_IRQHandler
-                0x00000000080009b4                DMA1_Stream0_IRQHandler
-                0x00000000080009b4                CAN1_TX_IRQHandler
-                0x00000000080009b4                EXTI4_IRQHandler
-                0x00000000080009b4                FSMC_IRQHandler
-                0x00000000080009b4                ETH_IRQHandler
-                0x00000000080009b4                OTG_HS_EP1_OUT_IRQHandler
-                0x00000000080009b4                WWDG_IRQHandler
-                0x00000000080009b4                TIM2_IRQHandler
-                0x00000000080009b4                OTG_FS_WKUP_IRQHandler
-                0x00000000080009b4                TIM1_TRG_COM_TIM11_IRQHandler
-                0x00000000080009b4                OTG_HS_IRQHandler
-                0x00000000080009b4                EXTI1_IRQHandler
-                0x00000000080009b4                USART2_IRQHandler
-                0x00000000080009b4                I2C2_ER_IRQHandler
-                0x00000000080009b4                DMA2_Stream1_IRQHandler
-                0x00000000080009b4                CAN1_SCE_IRQHandler
-                0x00000000080009b4                FLASH_IRQHandler
-                0x00000000080009b4                DMA2_Stream4_IRQHandler
-                0x00000000080009b4                USART1_IRQHandler
-                0x00000000080009b4                OTG_FS_IRQHandler
-                0x00000000080009b4                SPI3_IRQHandler
-                0x00000000080009b4                DMA1_Stream4_IRQHandler
-                0x00000000080009b4                I2C1_ER_IRQHandler
-                0x00000000080009b4                DMA2_Stream6_IRQHandler
-                0x00000000080009b4                DMA1_Stream3_IRQHandler
+                0x0000000008000fe8        0x2 src/startup_stm32f40xx.o
+                0x0000000008000fe8                RTC_Alarm_IRQHandler
+                0x0000000008000fe8                HASH_RNG_IRQHandler
+                0x0000000008000fe8                EXTI2_IRQHandler
+                0x0000000008000fe8                TIM8_CC_IRQHandler
+                0x0000000008000fe8                TIM1_CC_IRQHandler
+                0x0000000008000fe8                DMA2_Stream5_IRQHandler
+                0x0000000008000fe8                DMA1_Stream5_IRQHandler
+                0x0000000008000fe8                PVD_IRQHandler
+                0x0000000008000fe8                SDIO_IRQHandler
+                0x0000000008000fe8                TAMP_STAMP_IRQHandler
+                0x0000000008000fe8                CAN2_RX1_IRQHandler
+                0x0000000008000fe8                EXTI3_IRQHandler
+                0x0000000008000fe8                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0000000008000fe8                TIM1_UP_TIM10_IRQHandler
+                0x0000000008000fe8                TIM8_UP_TIM13_IRQHandler
+                0x0000000008000fe8                I2C3_ER_IRQHandler
+                0x0000000008000fe8                EXTI0_IRQHandler
+                0x0000000008000fe8                I2C2_EV_IRQHandler
+                0x0000000008000fe8                DMA1_Stream2_IRQHandler
+                0x0000000008000fe8                CAN1_RX0_IRQHandler
+                0x0000000008000fe8                FPU_IRQHandler
+                0x0000000008000fe8                OTG_HS_WKUP_IRQHandler
+                0x0000000008000fe8                CAN2_SCE_IRQHandler
+                0x0000000008000fe8                SPI1_IRQHandler
+                0x0000000008000fe8                TIM6_DAC_IRQHandler
+                0x0000000008000fe8                TIM1_BRK_TIM9_IRQHandler
+                0x0000000008000fe8                DCMI_IRQHandler
+                0x0000000008000fe8                CAN2_RX0_IRQHandler
+                0x0000000008000fe8                DMA2_Stream3_IRQHandler
+                0x0000000008000fe8                USART6_IRQHandler
+                0x0000000008000fe8                USART3_IRQHandler
+                0x0000000008000fe8                CRYP_IRQHandler
+                0x0000000008000fe8                CAN1_RX1_IRQHandler
+                0x0000000008000fe8                UART5_IRQHandler
+                0x0000000008000fe8                TIM4_IRQHandler
+                0x0000000008000fe8                I2C1_EV_IRQHandler
+                0x0000000008000fe8                DMA1_Stream6_IRQHandler
+                0x0000000008000fe8                DMA1_Stream1_IRQHandler
+                0x0000000008000fe8                UART4_IRQHandler
+                0x0000000008000fe8                TIM3_IRQHandler
+                0x0000000008000fe8                RCC_IRQHandler
+                0x0000000008000fe8                TIM8_BRK_TIM12_IRQHandler
+                0x0000000008000fe8                Default_Handler
+                0x0000000008000fe8                EXTI15_10_IRQHandler
+                0x0000000008000fe8                ADC_IRQHandler
+                0x0000000008000fe8                DMA1_Stream7_IRQHandler
+                0x0000000008000fe8                TIM7_IRQHandler
+                0x0000000008000fe8                CAN2_TX_IRQHandler
+                0x0000000008000fe8                TIM5_IRQHandler
+                0x0000000008000fe8                DMA2_Stream7_IRQHandler
+                0x0000000008000fe8                I2C3_EV_IRQHandler
+                0x0000000008000fe8                EXTI9_5_IRQHandler
+                0x0000000008000fe8                RTC_WKUP_IRQHandler
+                0x0000000008000fe8                ETH_WKUP_IRQHandler
+                0x0000000008000fe8                SPI2_IRQHandler
+                0x0000000008000fe8                OTG_HS_EP1_IN_IRQHandler
+                0x0000000008000fe8                DMA1_Stream0_IRQHandler
+                0x0000000008000fe8                CAN1_TX_IRQHandler
+                0x0000000008000fe8                EXTI4_IRQHandler
+                0x0000000008000fe8                FSMC_IRQHandler
+                0x0000000008000fe8                ETH_IRQHandler
+                0x0000000008000fe8                OTG_HS_EP1_OUT_IRQHandler
+                0x0000000008000fe8                WWDG_IRQHandler
+                0x0000000008000fe8                TIM2_IRQHandler
+                0x0000000008000fe8                OTG_FS_WKUP_IRQHandler
+                0x0000000008000fe8                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0000000008000fe8                OTG_HS_IRQHandler
+                0x0000000008000fe8                EXTI1_IRQHandler
+                0x0000000008000fe8                USART2_IRQHandler
+                0x0000000008000fe8                I2C2_ER_IRQHandler
+                0x0000000008000fe8                DMA2_Stream1_IRQHandler
+                0x0000000008000fe8                CAN1_SCE_IRQHandler
+                0x0000000008000fe8                FLASH_IRQHandler
+                0x0000000008000fe8                DMA2_Stream4_IRQHandler
+                0x0000000008000fe8                OTG_FS_IRQHandler
+                0x0000000008000fe8                SPI3_IRQHandler
+                0x0000000008000fe8                DMA1_Stream4_IRQHandler
+                0x0000000008000fe8                I2C1_ER_IRQHandler
+                0x0000000008000fe8                DMA2_Stream6_IRQHandler
+                0x0000000008000fe8                DMA1_Stream3_IRQHandler
  .text.NMI_Handler
-                0x00000000080009b6        0xe src/stm32f4xx_it.o
-                0x00000000080009b6                NMI_Handler
+                0x0000000008000fea        0xe src/stm32f4xx_it.o
+                0x0000000008000fea                NMI_Handler
  .text.HardFault_Handler
-                0x00000000080009c4        0x6 src/stm32f4xx_it.o
-                0x00000000080009c4                HardFault_Handler
+                0x0000000008000ff8        0x6 src/stm32f4xx_it.o
+                0x0000000008000ff8                HardFault_Handler
  .text.MemManage_Handler
-                0x00000000080009ca        0x6 src/stm32f4xx_it.o
-                0x00000000080009ca                MemManage_Handler
+                0x0000000008000ffe        0x6 src/stm32f4xx_it.o
+                0x0000000008000ffe                MemManage_Handler
  .text.BusFault_Handler
-                0x00000000080009d0        0x6 src/stm32f4xx_it.o
-                0x00000000080009d0                BusFault_Handler
+                0x0000000008001004        0x6 src/stm32f4xx_it.o
+                0x0000000008001004                BusFault_Handler
  .text.UsageFault_Handler
-                0x00000000080009d6        0x6 src/stm32f4xx_it.o
-                0x00000000080009d6                UsageFault_Handler
+                0x000000000800100a        0x6 src/stm32f4xx_it.o
+                0x000000000800100a                UsageFault_Handler
  .text.SVC_Handler
-                0x00000000080009dc        0xe src/stm32f4xx_it.o
-                0x00000000080009dc                SVC_Handler
+                0x0000000008001010        0xe src/stm32f4xx_it.o
+                0x0000000008001010                SVC_Handler
  .text.DebugMon_Handler
-                0x00000000080009ea        0xe src/stm32f4xx_it.o
-                0x00000000080009ea                DebugMon_Handler
+                0x000000000800101e        0xe src/stm32f4xx_it.o
+                0x000000000800101e                DebugMon_Handler
  .text.PendSV_Handler
-                0x00000000080009f8        0xe src/stm32f4xx_it.o
-                0x00000000080009f8                PendSV_Handler
+                0x000000000800102c        0xe src/stm32f4xx_it.o
+                0x000000000800102c                PendSV_Handler
  .text.SysTick_Handler
-                0x0000000008000a06        0xe src/stm32f4xx_it.o
-                0x0000000008000a06                SysTick_Handler
+                0x000000000800103a        0xe src/stm32f4xx_it.o
+                0x000000000800103a                SysTick_Handler
  .text.SystemInit
-                0x0000000008000a14       0x6c src/system_stm32f4xx.o
-                0x0000000008000a14                SystemInit
+                0x0000000008001048       0x6c src/system_stm32f4xx.o
+                0x0000000008001048                SystemInit
  .text.SetSysClock
-                0x0000000008000a80       0xf8 src/system_stm32f4xx.o
+                0x00000000080010b4       0xf8 src/system_stm32f4xx.o
  .text.sensor_mag_power_control
-                0x0000000008000b78       0x2e src/tasks/bosch_sensor_handler.o
+                0x00000000080011ac       0x2e src/tasks/bosch_sensor_handler.o
  .text.bmp280_config
-                0x0000000008000ba6       0x2a src/tasks/bosch_sensor_handler.o
+                0x00000000080011da       0x2a src/tasks/bosch_sensor_handler.o
  .text.bmx055_config
-                0x0000000008000bd0       0xc8 src/tasks/bosch_sensor_handler.o
+                0x0000000008001204       0xc8 src/tasks/bosch_sensor_handler.o
  .text.sensor_check_id
-                0x0000000008000c98       0x6e src/tasks/bosch_sensor_handler.o
-                0x0000000008000c98                sensor_check_id
+                0x00000000080012cc       0x6e src/tasks/bosch_sensor_handler.o
+                0x00000000080012cc                sensor_check_id
  .text.sensor_config
-                0x0000000008000d06       0x46 src/tasks/bosch_sensor_handler.o
-                0x0000000008000d06                sensor_config
+                0x000000000800133a       0x46 src/tasks/bosch_sensor_handler.o
+                0x000000000800133a                sensor_config
  .text.cs_deselect
-                0x0000000008000d4c       0x64 src/tasks/spi.o
+                0x0000000008001380       0x64 src/tasks/spi.o
  .text.cs_select
-                0x0000000008000db0       0x64 src/tasks/spi.o
+                0x00000000080013e4       0x64 src/tasks/spi.o
  .text.stm32_spi_rw
-                0x0000000008000e14       0x3c src/tasks/spi.o
- .text.spi_tx   0x0000000008000e50       0x1a src/tasks/spi.o
- .text.spi_rx   0x0000000008000e6a       0x10 src/tasks/spi.o
- *fill*         0x0000000008000e7a        0x2 
+                0x0000000008001448       0x3c src/tasks/spi.o
+ .text.spi_tx   0x0000000008001484       0x1a src/tasks/spi.o
+ .text.spi_rx   0x000000000800149e       0x10 src/tasks/spi.o
+ *fill*         0x00000000080014ae        0x2 
  .text.spi_initialise
-                0x0000000008000e7c      0x168 src/tasks/spi.o
-                0x0000000008000e7c                spi_initialise
+                0x00000000080014b0      0x168 src/tasks/spi.o
+                0x00000000080014b0                spi_initialise
  .text.spi_read_single
-                0x0000000008000fe4       0x42 src/tasks/spi.o
-                0x0000000008000fe4                spi_read_single
+                0x0000000008001618       0x42 src/tasks/spi.o
+                0x0000000008001618                spi_read_single
  .text.spi_write_single
-                0x0000000008001026       0x60 src/tasks/spi.o
-                0x0000000008001026                spi_write_single
- *fill*         0x0000000008001086        0x2 
+                0x000000000800165a       0x60 src/tasks/spi.o
+                0x000000000800165a                spi_write_single
+ *fill*         0x00000000080016ba        0x2 
+ .text.reset_gnss_rx_buffer
+                0x00000000080016bc       0x34 src/tasks/uart.o
+ .text.reset_gnss_log_buffer
+                0x00000000080016f0       0x34 src/tasks/uart.o
+ .text.initialise_dma_gnss
+                0x0000000008001724      0x15c src/tasks/uart.o
  .text.uart_initialise
-                0x0000000008001088       0x98 src/tasks/uart.o
-                0x0000000008001088                uart_initialise
- .text.uart_receive
-                0x0000000008001120       0x48 src/tasks/uart.o
-                0x0000000008001120                uart_receive
+                0x0000000008001880       0xd4 src/tasks/uart.o
+                0x0000000008001880                uart_initialise
+ .text.DMA2_Stream2_IRQHandler
+                0x0000000008001954       0x5c src/tasks/uart.o
+                0x0000000008001954                DMA2_Stream2_IRQHandler
+ .text.DMA2_Stream0_IRQHandler
+                0x00000000080019b0       0x44 src/tasks/uart.o
+                0x00000000080019b0                DMA2_Stream0_IRQHandler
+ .text.USART1_IRQHandler
+                0x00000000080019f4       0x58 src/tasks/uart.o
+                0x00000000080019f4                USART1_IRQHandler
  .text.__libc_init_array
-                0x0000000008001168       0x48 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
-                0x0000000008001168                __libc_init_array
+                0x0000000008001a4c       0x48 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+                0x0000000008001a4c                __libc_init_array
  *(.glue_7)
- .glue_7        0x00000000080011b0        0x0 linker stubs
+ .glue_7        0x0000000008001a94        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00000000080011b0        0x0 linker stubs
+ .glue_7t       0x0000000008001a94        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00000000080011b0        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x0000000008001a94        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  *(.init)
- .init          0x00000000080011b0        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
-                0x00000000080011b0                _init
- .init          0x00000000080011b4        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
+ .init          0x0000000008001a94        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
+                0x0000000008001a94                _init
+ .init          0x0000000008001a98        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
  *(.fini)
- .fini          0x00000000080011bc        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
-                0x00000000080011bc                _fini
- .fini          0x00000000080011c0        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
-                0x00000000080011c8                . = ALIGN (0x4)
-                0x00000000080011c8                _etext = .
+ .fini          0x0000000008001aa0        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crti.o
+                0x0000000008001aa0                _fini
+ .fini          0x0000000008001aa4        0x8 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
+                0x0000000008001aac                . = ALIGN (0x4)
+                0x0000000008001aac                _etext = .
 
-.vfp11_veneer   0x00000000080011c8        0x0
- .vfp11_veneer  0x00000000080011c8        0x0 linker stubs
+.vfp11_veneer   0x0000000008001aac        0x0
+ .vfp11_veneer  0x0000000008001aac        0x0 linker stubs
 
-.v4_bx          0x00000000080011c8        0x0
- .v4_bx         0x00000000080011c8        0x0 linker stubs
+.v4_bx          0x0000000008001aac        0x0
+ .v4_bx         0x0000000008001aac        0x0 linker stubs
 
-.iplt           0x00000000080011c8        0x0
- .iplt          0x00000000080011c8        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+.iplt           0x0000000008001aac        0x0
+ .iplt          0x0000000008001aac        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.rel.dyn        0x00000000080011c8        0x0
- .rel.iplt      0x00000000080011c8        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+.rel.dyn        0x0000000008001aac        0x0
+ .rel.iplt      0x0000000008001aac        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.rodata         0x00000000080011c8        0x0
-                0x00000000080011c8                . = ALIGN (0x4)
+.rodata         0x0000000008001aac        0x0
+                0x0000000008001aac                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x00000000080011c8                . = ALIGN (0x4)
+                0x0000000008001aac                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x00000000080011c8        0x0
-                0x00000000080011c8                __exidx_start = .
+.ARM            0x0000000008001aac        0x0
+                0x0000000008001aac                __exidx_start = .
  *(.ARM.exidx*)
-                0x00000000080011c8                __exidx_end = .
+                0x0000000008001aac                __exidx_end = .
 
-.preinit_array  0x00000000080011c8        0x0
-                0x00000000080011c8                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000000008001aac        0x0
+                0x0000000008001aac                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x00000000080011c8                PROVIDE (__preinit_array_end, .)
+                0x0000000008001aac                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x00000000080011c8        0x4
-                0x00000000080011c8                PROVIDE (__init_array_start, .)
+.init_array     0x0000000008001aac        0x4
+                0x0000000008001aac                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x00000000080011c8        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
-                0x00000000080011cc                PROVIDE (__init_array_end, .)
+ .init_array    0x0000000008001aac        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+                0x0000000008001ab0                PROVIDE (__init_array_end, .)
 
-.fini_array     0x00000000080011cc        0x4
+.fini_array     0x0000000008001ab0        0x4
                 [!provide]                        PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00000000080011cc        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
+ .fini_array    0x0000000008001ab0        0x4 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end, .)
-                0x00000000080011d0                _sidata = LOADADDR (.data)
+                0x0000000008001ab4                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x10 load address 0x00000000080011d0
+.data           0x0000000020000000       0x10 load address 0x0000000008001ab4
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2054,12 +2058,12 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000020000000       0x10 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
                 0x0000000020000010                . = ALIGN (0x4)
                 0x0000000020000010                _edata = .
-                0x00000000080011e0                _siccmram = LOADADDR (.ccmram)
+                0x0000000008001ac4                _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x0000000020000010        0x0 load address 0x00000000080011e0
+.igot.plt       0x0000000020000010        0x0 load address 0x0000000008001ac4
  .igot.plt      0x0000000020000010        0x0 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x00000000080011e0
+.ccmram         0x0000000010000000        0x0 load address 0x0000000008001ac4
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)
@@ -2068,26 +2072,31 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x0000000020000010       0x1c
+.bss            0x0000000020000010     0x1020
                 0x0000000020000010                _sbss = .
                 0x0000000020000010                __bss_start__ = _sbss
  *(.bss)
  .bss           0x0000000020000010       0x1c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  *(.bss*)
  *(COMMON)
-                0x000000002000002c                . = ALIGN (0x4)
-                0x000000002000002c                _ebss = .
-                0x000000002000002c                __bss_end__ = _ebss
+ COMMON         0x000000002000002c     0x1001 src/main.o
+                0x000000002000002c                GNSS_LOG_BUFFER
+                0x000000002000082c                GNSS_RX_BUFFER
+                0x000000002000102c                GNSS_DATA_LENGTH
+                0x0000000020001030                . = ALIGN (0x4)
+ *fill*         0x000000002000102d        0x3 
+                0x0000000020001030                _ebss = .
+                0x0000000020001030                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002000002c      0x400
-                0x000000002000002c                . = ALIGN (0x4)
+                0x0000000020001030      0x400
+                0x0000000020001030                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (end, .)
                 [!provide]                        PROVIDE (_end, .)
-                0x000000002000002c                . = (. + _Min_Heap_Size)
-                0x000000002000042c                . = (. + _Min_Stack_Size)
- *fill*         0x000000002000002c      0x400 
-                0x000000002000042c                . = ALIGN (0x4)
+                0x0000000020001030                . = (. + _Min_Heap_Size)
+                0x0000000020001430                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020001030      0x400 
+                0x0000000020001430                . = ALIGN (0x4)
 
 .memory_b1_text
  *(.mb1text)
@@ -2108,134 +2117,156 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
  .ARM.attributes
                 0x0000000000000022       0x34 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  .ARM.attributes
-                0x0000000000000056       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x0000000000000056       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .ARM.attributes
-                0x000000000000008f       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                0x000000000000008f       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .ARM.attributes
-                0x00000000000000c8       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x00000000000000c8       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .ARM.attributes
-                0x0000000000000101       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000000000101       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .ARM.attributes
-                0x000000000000013a       0x39 src/main.o
+                0x000000000000013a       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
  .ARM.attributes
-                0x0000000000000173       0x21 src/startup_stm32f40xx.o
+                0x0000000000000173       0x39 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .ARM.attributes
-                0x0000000000000194       0x39 src/stm32f4xx_it.o
+                0x00000000000001ac       0x39 src/main.o
  .ARM.attributes
-                0x00000000000001cd       0x39 src/system_stm32f4xx.o
+                0x00000000000001e5       0x21 src/startup_stm32f40xx.o
  .ARM.attributes
-                0x0000000000000206       0x39 src/tasks/bosch_sensor_handler.o
+                0x0000000000000206       0x39 src/stm32f4xx_it.o
  .ARM.attributes
-                0x000000000000023f       0x39 src/tasks/spi.o
+                0x000000000000023f       0x39 src/system_stm32f4xx.o
  .ARM.attributes
-                0x0000000000000278       0x39 src/tasks/uart.o
+                0x0000000000000278       0x39 src/tasks/bosch_sensor_handler.o
  .ARM.attributes
-                0x00000000000002b1       0x34 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+                0x00000000000002b1       0x39 src/tasks/spi.o
  .ARM.attributes
-                0x00000000000002e5       0x22 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
+                0x00000000000002ea       0x39 src/tasks/uart.o
+ .ARM.attributes
+                0x0000000000000323       0x34 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000000000000357       0x22 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
 OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x4017
- .debug_info    0x0000000000000000      0x628 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
- .debug_info    0x0000000000000628      0xc98 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
- .debug_info    0x00000000000012c0      0xb1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_info    0x0000000000001dda      0x9d5 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_info    0x00000000000027af      0x18a src/main.o
- .debug_info    0x0000000000002939       0x9f src/startup_stm32f40xx.o
- .debug_info    0x00000000000029d8      0x154 src/stm32f4xx_it.o
- .debug_info    0x0000000000002b2c      0x5dd src/system_stm32f4xx.o
- .debug_info    0x0000000000003109      0x3ac src/tasks/bosch_sensor_handler.o
- .debug_info    0x00000000000034b5      0x6b2 src/tasks/spi.o
- .debug_info    0x0000000000003b67      0x4b0 src/tasks/uart.o
+.debug_info     0x0000000000000000     0x51be
+ .debug_info    0x0000000000000000      0x54d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+ .debug_info    0x000000000000054d      0x74c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .debug_info    0x0000000000000c99      0x628 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .debug_info    0x00000000000012c1      0xc98 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_info    0x0000000000001f59      0xb1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_info    0x0000000000002a73      0x9d5 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_info    0x0000000000003448      0x1ba src/main.o
+ .debug_info    0x0000000000003602       0x9f src/startup_stm32f40xx.o
+ .debug_info    0x00000000000036a1      0x154 src/stm32f4xx_it.o
+ .debug_info    0x00000000000037f5      0x5dd src/system_stm32f4xx.o
+ .debug_info    0x0000000000003dd2      0x3ac src/tasks/bosch_sensor_handler.o
+ .debug_info    0x000000000000417e      0x6b2 src/tasks/spi.o
+ .debug_info    0x0000000000004830      0x98e src/tasks/uart.o
 
-.debug_abbrev   0x0000000000000000      0xdf4
- .debug_abbrev  0x0000000000000000      0x1b8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
- .debug_abbrev  0x00000000000001b8      0x1f8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
- .debug_abbrev  0x00000000000003b0      0x17a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_abbrev  0x000000000000052a      0x182 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_abbrev  0x00000000000006ac       0xb9 src/main.o
- .debug_abbrev  0x0000000000000765       0x12 src/startup_stm32f40xx.o
- .debug_abbrev  0x0000000000000777       0x78 src/stm32f4xx_it.o
- .debug_abbrev  0x00000000000007ef      0x158 src/system_stm32f4xx.o
- .debug_abbrev  0x0000000000000947      0x173 src/tasks/bosch_sensor_handler.o
- .debug_abbrev  0x0000000000000aba      0x1da src/tasks/spi.o
- .debug_abbrev  0x0000000000000c94      0x160 src/tasks/uart.o
+.debug_abbrev   0x0000000000000000     0x11d8
+ .debug_abbrev  0x0000000000000000      0x172 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+ .debug_abbrev  0x0000000000000172      0x168 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .debug_abbrev  0x00000000000002da      0x1b8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .debug_abbrev  0x0000000000000492      0x1f8 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_abbrev  0x000000000000068a      0x17a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_abbrev  0x0000000000000804      0x182 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_abbrev  0x0000000000000986       0xdc src/main.o
+ .debug_abbrev  0x0000000000000a62       0x12 src/startup_stm32f40xx.o
+ .debug_abbrev  0x0000000000000a74       0x78 src/stm32f4xx_it.o
+ .debug_abbrev  0x0000000000000aec      0x158 src/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000000c44      0x173 src/tasks/bosch_sensor_handler.o
+ .debug_abbrev  0x0000000000000db7      0x1da src/tasks/spi.o
+ .debug_abbrev  0x0000000000000f91      0x247 src/tasks/uart.o
 
-.debug_aranges  0x0000000000000000      0x5b0
+.debug_aranges  0x0000000000000000      0x6d0
  .debug_aranges
-                0x0000000000000000       0x88 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+                0x0000000000000000       0x40 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .debug_aranges
-                0x0000000000000088      0x180 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+                0x0000000000000040       0xb0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .debug_aranges
-                0x0000000000000208       0xe0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+                0x00000000000000f0       0x88 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_aranges
-                0x00000000000002e8      0x100 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                0x0000000000000178      0x180 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_aranges
-                0x00000000000003e8       0x20 src/main.o
+                0x00000000000002f8       0xe0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
  .debug_aranges
-                0x0000000000000408       0x28 src/startup_stm32f40xx.o
+                0x00000000000003d8      0x100 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
  .debug_aranges
-                0x0000000000000430       0x60 src/stm32f4xx_it.o
+                0x00000000000004d8       0x20 src/main.o
  .debug_aranges
-                0x0000000000000490       0x30 src/system_stm32f4xx.o
+                0x00000000000004f8       0x28 src/startup_stm32f40xx.o
  .debug_aranges
-                0x00000000000004c0       0x60 src/tasks/bosch_sensor_handler.o
+                0x0000000000000520       0x60 src/stm32f4xx_it.o
  .debug_aranges
-                0x0000000000000520       0x60 src/tasks/spi.o
+                0x0000000000000580       0x30 src/system_stm32f4xx.o
  .debug_aranges
-                0x0000000000000580       0x30 src/tasks/uart.o
+                0x00000000000005b0       0x60 src/tasks/bosch_sensor_handler.o
+ .debug_aranges
+                0x0000000000000610       0x60 src/tasks/spi.o
+ .debug_aranges
+                0x0000000000000670       0x60 src/tasks/uart.o
 
-.debug_ranges   0x0000000000000000      0x508
- .debug_ranges  0x0000000000000000       0x78 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
- .debug_ranges  0x0000000000000078      0x170 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
- .debug_ranges  0x00000000000001e8       0xd0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_ranges  0x00000000000002b8       0xf0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_ranges  0x00000000000003a8       0x10 src/main.o
- .debug_ranges  0x00000000000003b8       0x20 src/startup_stm32f40xx.o
- .debug_ranges  0x00000000000003d8       0x50 src/stm32f4xx_it.o
- .debug_ranges  0x0000000000000428       0x20 src/system_stm32f4xx.o
- .debug_ranges  0x0000000000000448       0x50 src/tasks/bosch_sensor_handler.o
- .debug_ranges  0x0000000000000498       0x50 src/tasks/spi.o
- .debug_ranges  0x00000000000004e8       0x20 src/tasks/uart.o
+.debug_ranges   0x0000000000000000      0x608
+ .debug_ranges  0x0000000000000000       0x30 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+ .debug_ranges  0x0000000000000030       0xa0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .debug_ranges  0x00000000000000d0       0x78 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .debug_ranges  0x0000000000000148      0x170 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_ranges  0x00000000000002b8       0xd0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_ranges  0x0000000000000388       0xf0 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_ranges  0x0000000000000478       0x10 src/main.o
+ .debug_ranges  0x0000000000000488       0x20 src/startup_stm32f40xx.o
+ .debug_ranges  0x00000000000004a8       0x50 src/stm32f4xx_it.o
+ .debug_ranges  0x00000000000004f8       0x20 src/system_stm32f4xx.o
+ .debug_ranges  0x0000000000000518       0x50 src/tasks/bosch_sensor_handler.o
+ .debug_ranges  0x0000000000000568       0x50 src/tasks/spi.o
+ .debug_ranges  0x00000000000005b8       0x50 src/tasks/uart.o
 
-.debug_line     0x0000000000000000     0x2014
- .debug_line    0x0000000000000000      0x35f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
- .debug_line    0x000000000000035f      0x5b7 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
- .debug_line    0x0000000000000916      0x46f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_line    0x0000000000000d85      0x4c9 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_line    0x000000000000124e      0x1ba src/main.o
- .debug_line    0x0000000000001408       0x7a src/startup_stm32f40xx.o
- .debug_line    0x0000000000001482      0x211 src/stm32f4xx_it.o
- .debug_line    0x0000000000001693      0x203 src/system_stm32f4xx.o
- .debug_line    0x0000000000001896      0x268 src/tasks/bosch_sensor_handler.o
- .debug_line    0x0000000000001afe      0x2eb src/tasks/spi.o
- .debug_line    0x0000000000001de9      0x22b src/tasks/uart.o
+.debug_line     0x0000000000000000     0x2795
+ .debug_line    0x0000000000000000      0x23d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+ .debug_line    0x000000000000023d      0x429 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .debug_line    0x0000000000000666      0x35f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .debug_line    0x00000000000009c5      0x5b7 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_line    0x0000000000000f7c      0x46f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_line    0x00000000000013eb      0x4c9 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_line    0x00000000000018b4      0x1b8 src/main.o
+ .debug_line    0x0000000000001a6c       0x7a src/startup_stm32f40xx.o
+ .debug_line    0x0000000000001ae6      0x211 src/stm32f4xx_it.o
+ .debug_line    0x0000000000001cf7      0x203 src/system_stm32f4xx.o
+ .debug_line    0x0000000000001efa      0x268 src/tasks/bosch_sensor_handler.o
+ .debug_line    0x0000000000002162      0x2eb src/tasks/spi.o
+ .debug_line    0x000000000000244d      0x348 src/tasks/uart.o
 
-.debug_str      0x0000000000000000     0x1874
- .debug_str     0x0000000000000000      0x4fa Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+.debug_str      0x0000000000000000     0x2382
+ .debug_str     0x0000000000000000      0x42e Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+                                        0x47b (size before relaxing)
+ .debug_str     0x000000000000042e      0x3a6 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                        0x5ef (size before relaxing)
+ .debug_str     0x00000000000007d4      0x31b Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
                                         0x550 (size before relaxing)
- .debug_str     0x00000000000004fa      0x6b1 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_str     0x0000000000000aef      0x65f Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
                                         0x926 (size before relaxing)
- .debug_str     0x0000000000000bab      0x3b4 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_str     0x000000000000114e      0x3a7 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
                                         0x737 (size before relaxing)
- .debug_str     0x0000000000000f5f      0x423 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_str     0x00000000000014f5      0x423 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
                                         0x73c (size before relaxing)
- .debug_str     0x0000000000001382       0x9f src/main.o
-                                        0x2b3 (size before relaxing)
- .debug_str     0x0000000000001421       0xa6 src/stm32f4xx_it.o
+ .debug_str     0x0000000000001918       0xab src/main.o
+                                        0x2bf (size before relaxing)
+ .debug_str     0x00000000000019c3       0xa6 src/stm32f4xx_it.o
                                         0x29c (size before relaxing)
- .debug_str     0x00000000000014c7       0xe3 src/system_stm32f4xx.o
+ .debug_str     0x0000000000001a69       0x8f src/system_stm32f4xx.o
                                         0x42f (size before relaxing)
- .debug_str     0x00000000000015aa      0x178 src/tasks/bosch_sensor_handler.o
+ .debug_str     0x0000000000001af8      0x178 src/tasks/bosch_sensor_handler.o
                                         0x415 (size before relaxing)
- .debug_str     0x0000000000001722       0xe3 src/tasks/spi.o
+ .debug_str     0x0000000000001c70       0xdc src/tasks/spi.o
                                         0x646 (size before relaxing)
- .debug_str     0x0000000000001805       0x6f src/tasks/uart.o
-                                        0x536 (size before relaxing)
+ .debug_str     0x0000000000001d4c      0x636 src/tasks/uart.o
+                                        0xcb2 (size before relaxing)
 
 .comment        0x0000000000000000       0x7c
- .comment       0x0000000000000000       0x7c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .comment       0x0000000000000000       0x7c Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
                                          0x7d (size before relaxing)
+ .comment       0x000000000000007c       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .comment       0x000000000000007c       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .comment       0x000000000000007c       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .comment       0x000000000000007c       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
  .comment       0x000000000000007c       0x7d Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
@@ -2246,18 +2277,20 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .comment       0x000000000000007c       0x7d src/tasks/spi.o
  .comment       0x000000000000007c       0x7d src/tasks/uart.o
 
-.debug_frame    0x0000000000000000     0x16c4
- .debug_frame   0x0000000000000000      0x23c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
- .debug_frame   0x000000000000023c      0x6fc Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
- .debug_frame   0x0000000000000938      0x3f4 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
- .debug_frame   0x0000000000000d2c      0x490 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_frame   0x00000000000011bc       0x30 src/main.o
- .debug_frame   0x00000000000011ec      0x110 src/stm32f4xx_it.o
- .debug_frame   0x00000000000012fc       0x7c src/system_stm32f4xx.o
- .debug_frame   0x0000000000001378      0x154 src/tasks/bosch_sensor_handler.o
- .debug_frame   0x00000000000014cc      0x14c src/tasks/spi.o
- .debug_frame   0x0000000000001618       0x80 src/tasks/uart.o
- .debug_frame   0x0000000000001698       0x2c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
+.debug_frame    0x0000000000000000     0x1b74
+ .debug_frame   0x0000000000000000       0xd8 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+ .debug_frame   0x00000000000000d8      0x308 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+ .debug_frame   0x00000000000003e0      0x23c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
+ .debug_frame   0x000000000000061c      0x6fc Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
+ .debug_frame   0x0000000000000d18      0x3f4 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
+ .debug_frame   0x000000000000110c      0x490 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+ .debug_frame   0x000000000000159c       0x30 src/main.o
+ .debug_frame   0x00000000000015cc      0x110 src/stm32f4xx_it.o
+ .debug_frame   0x00000000000016dc       0x7c src/system_stm32f4xx.o
+ .debug_frame   0x0000000000001758      0x154 src/tasks/bosch_sensor_handler.o
+ .debug_frame   0x00000000000018ac      0x14c src/tasks/spi.o
+ .debug_frame   0x00000000000019f8      0x150 src/tasks/uart.o
+ .debug_frame   0x0000000000001b48       0x2c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-init.o)
 
 .stabstr        0x0000000000000000       0x3f
  .stabstr       0x0000000000000000       0x3f /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/../../../../arm-atollic-eabi/lib/armv7e-m/fpu/libnosys.a(write.o)
@@ -2451,9 +2484,11 @@ DMA1_Stream4_IRQHandler                           src/startup_stm32f40xx.o
 DMA1_Stream5_IRQHandler                           src/startup_stm32f40xx.o
 DMA1_Stream6_IRQHandler                           src/startup_stm32f40xx.o
 DMA1_Stream7_IRQHandler                           src/startup_stm32f40xx.o
-DMA2_Stream0_IRQHandler                           src/startup_stm32f40xx.o
+DMA2_Stream0_IRQHandler                           src/tasks/uart.o
+                                                  src/startup_stm32f40xx.o
 DMA2_Stream1_IRQHandler                           src/startup_stm32f40xx.o
-DMA2_Stream2_IRQHandler                           src/startup_stm32f40xx.o
+DMA2_Stream2_IRQHandler                           src/tasks/uart.o
+                                                  src/startup_stm32f40xx.o
 DMA2_Stream3_IRQHandler                           src/startup_stm32f40xx.o
 DMA2_Stream4_IRQHandler                           src/startup_stm32f40xx.o
 DMA2_Stream5_IRQHandler                           src/startup_stm32f40xx.o
@@ -2461,19 +2496,27 @@ DMA2_Stream6_IRQHandler                           src/startup_stm32f40xx.o
 DMA2_Stream7_IRQHandler                           src/startup_stm32f40xx.o
 DMA_ClearFlag                                     Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_ClearITPendingBit                             Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_Cmd                                           Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_DeInit                                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_DoubleBufferModeCmd                           Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_DoubleBufferModeConfig                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_FlowControllerConfig                          Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_GetCmdStatus                                  Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_GetCurrDataCounter                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_GetCurrentMemoryTarget                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_GetFIFOStatus                                 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_GetFlagStatus                                 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_GetITStatus                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_ITConfig                                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_Init                                          Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
+                                                  src/tasks/uart.o
 DMA_MemoryTargetConfig                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_PeriphIncOffsetSizeConfig                     Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
 DMA_SetCurrDataCounter                            Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
@@ -2552,6 +2595,12 @@ FSMC_PCCARDCmd                                    Libraries/STM32F4xx_StdPeriph_
 FSMC_PCCARDDeInit                                 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.o
 FSMC_PCCARDInit                                   Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.o
 FSMC_PCCARDStructInit                             Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_fsmc.o
+GNSS_DATA_LENGTH                                  src/tasks/uart.o
+                                                  src/main.o
+GNSS_LOG_BUFFER                                   src/tasks/uart.o
+                                                  src/main.o
+GNSS_RX_BUFFER                                    src/tasks/uart.o
+                                                  src/main.o
 GPIO_DeInit                                       Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
 GPIO_Init                                         Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
                                                   src/tasks/uart.o
@@ -2667,6 +2716,7 @@ MemManage_Handler                                 src/stm32f4xx_it.o
 NMI_Handler                                       src/stm32f4xx_it.o
                                                   src/startup_stm32f40xx.o
 NVIC_Init                                         Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
+                                                  src/tasks/uart.o
 NVIC_PriorityGroupConfig                          Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
 NVIC_SetVectorTable                               Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
 NVIC_SystemLPConfig                               Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
@@ -3008,7 +3058,8 @@ TIM_UpdateDisableConfig                           Libraries/STM32F4xx_StdPeriph_
 TIM_UpdateRequestConfig                           Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.o
 UART4_IRQHandler                                  src/startup_stm32f40xx.o
 UART5_IRQHandler                                  src/startup_stm32f40xx.o
-USART1_IRQHandler                                 src/startup_stm32f40xx.o
+USART1_IRQHandler                                 src/tasks/uart.o
+                                                  src/startup_stm32f40xx.o
 USART2_IRQHandler                                 src/startup_stm32f40xx.o
 USART3_IRQHandler                                 src/startup_stm32f40xx.o
 USART6_IRQHandler                                 src/startup_stm32f40xx.o
@@ -3019,12 +3070,14 @@ USART_ClockStructInit                             Libraries/STM32F4xx_StdPeriph_
 USART_Cmd                                         Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
                                                   src/tasks/uart.o
 USART_DMACmd                                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                                                  src/tasks/uart.o
 USART_DeInit                                      Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
 USART_GetFlagStatus                               Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
-                                                  src/tasks/uart.o
 USART_GetITStatus                                 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                                                  src/tasks/uart.o
 USART_HalfDuplexCmd                               Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
 USART_ITConfig                                    Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
+                                                  src/tasks/uart.o
 USART_Init                                        Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
                                                   src/tasks/uart.o
 USART_IrDACmd                                     Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
@@ -3114,5 +3167,4 @@ ts_itoa                                           src/tiny_printf.o
 uart_initialise                                   src/tasks/uart.o
                                                   src/main.o
 uart_receive                                      src/tasks/uart.o
-                                                  src/main.o
 uart_send                                         src/tasks/uart.o
