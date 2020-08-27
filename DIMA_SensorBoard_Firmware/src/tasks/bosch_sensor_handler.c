@@ -171,7 +171,7 @@ Sensor_StatusTypeDef sensor_config(){
 }
 
 /**
- * @brief	read x,y,z data from acc
+ * @brief	read x,y,z data from acc, LSB first
  * @param	buff: variable to store read values
  * @param	lenght: how many bytes to read. recommended 6
  * */
@@ -180,7 +180,7 @@ Sensor_StatusTypeDef sensor_read_acc(uint8_t *buff, uint8_t length){
 }
 
 /**
- * @brief	read x,y,z data from gyro
+ * @brief	read x,y,z data from gyro, LSB first
  * @param	buff: variable to store read values
  * @param	lenght: how many bytes to read. recommended 6
  * */
@@ -189,7 +189,7 @@ Sensor_StatusTypeDef sensor_read_gyro(uint8_t *buff, uint8_t length){
 }
 
 /**
- * @brief	read x,y,z data from magneto
+ * @brief	read x,y,z data from magneto, LSB first
  * @param	buff: variable to store read values
  * @param	lenght: how many bytes to read. recommended 8
  * */
@@ -203,7 +203,7 @@ Sensor_StatusTypeDef sensor_read_mag(uint8_t *buff, uint8_t length){
 
 
 /**
- * @brief	read x,y,z data from baro
+ * @brief	read pressure and temperature data from baro, MSB first
  * @param	buff: variable to store read values
  * @param	lenght: how many bytes to read. recommended 6
  * */
@@ -216,6 +216,79 @@ Sensor_StatusTypeDef sensor_read_baro(uint8_t *buff, uint8_t length){
 	//uint8_t mode2 = spi_read_single(SPI_CS_Baro, BMP280_CTRL_MEAS);
 	return status;
 }
+
+/*@brief	reall data from all sensors and pack into SensorData Struct
+ * */
+Sensor_StatusTypeDef sensor_read_all(){
+
+	uint8_t acc_buffer [ACC_READ_LENGTH];
+	uint8_t gyro_buffer [GYRO_READ_LENGTH];
+	uint8_t mag_buffer [MAG_READ_LENGTH];
+	uint8_t baro_buffer [BARO_READ_LENGTH];
+
+	//read acc data
+	if(sensor_read_acc(acc_buffer, ACC_READ_LENGTH) != SENS_OK)
+		return SENS_ERROR;
+
+	SensorDataGlobal.AccX_LSB = (acc_buffer[0])&ACC_MASK_LSB;
+	SensorDataGlobal.AccX_MSB = acc_buffer[1];
+	SensorDataGlobal.AccY_LSB = (acc_buffer[2])&ACC_MASK_LSB;
+	SensorDataGlobal.AccY_MSB = acc_buffer[3];
+	SensorDataGlobal.AccZ_LSB = (acc_buffer[4])&ACC_MASK_LSB;
+	SensorDataGlobal.AccZ_MSB = acc_buffer[5];
+
+	//read gyro data
+	if(sensor_read_gyro(gyro_buffer, GYRO_READ_LENGTH))
+		return SENS_ERROR;
+
+	SensorDataGlobal.GyroX_LSB = gyro_buffer[0];
+	SensorDataGlobal.GyroX_MSB = gyro_buffer[1];
+	SensorDataGlobal.GyroY_LSB = gyro_buffer[2];
+	SensorDataGlobal.GyroY_MSB = gyro_buffer[3];
+	SensorDataGlobal.GyroZ_LSB = gyro_buffer[4];
+	SensorDataGlobal.GyroZ_MSB = gyro_buffer[5];
+
+	//read mag data
+	if(sensor_read_mag(mag_buffer, MAG_READ_LENGTH)!= SENS_OK)
+		return SENS_ERROR;
+
+	SensorDataGlobal.MagX_LSB = mag_buffer[0]&MAG_MASK_XY_LSB;
+	SensorDataGlobal.MagX_MSB = mag_buffer[1];
+	SensorDataGlobal.MagY_LSB = mag_buffer[2]&MAG_MASK_XY_LSB;
+	SensorDataGlobal.MagY_MSB = mag_buffer[3];
+	SensorDataGlobal.MagZ_LSB = mag_buffer[4]&MAG_MASK_Z_LSB;
+	SensorDataGlobal.MagZ_MSB = mag_buffer[5];
+	SensorDataGlobal.MagHall_LSB = mag_buffer[6]&MAG_MASK_HALL_LSB;
+	SensorDataGlobal.MagHall_MSB = mag_buffer[7];
+
+	//read baro data
+	if(sensor_read_baro(baro_buffer, ACC_READ_LENGTH)!= SENS_OK)
+		return SENS_ERROR;
+
+	SensorDataGlobal.BaroPress_MSB = baro_buffer[0];
+	SensorDataGlobal.BaroPress_LSB = baro_buffer[1];
+	SensorDataGlobal.BaroPress_XLSB = baro_buffer[2]&BARO_MASK_XLSB;
+	SensorDataGlobal.BaroTemp_MSB = baro_buffer[3];
+	SensorDataGlobal.BaroTemp_LSB = baro_buffer[4];
+	SensorDataGlobal.BaroTemp_XLSB = baro_buffer[5]&BARO_MASK_XLSB;
+
+
+
+	return SENS_OK;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

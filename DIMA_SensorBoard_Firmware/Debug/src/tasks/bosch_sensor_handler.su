@@ -7,3 +7,4 @@ bosch_sensor_handler.c:178:22:sensor_read_acc	16	static
 bosch_sensor_handler.c:187:22:sensor_read_gyro	16	static
 bosch_sensor_handler.c:196:22:sensor_read_mag	24	static
 bosch_sensor_handler.c:210:22:sensor_read_baro	24	static
+bosch_sensor_handler.c:222:22:sensor_read_all	40	static

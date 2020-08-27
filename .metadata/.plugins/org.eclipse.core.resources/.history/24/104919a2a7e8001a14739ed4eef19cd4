@@ -1,0 +1,72 @@
+/*
+ * bosch_sensor_handler.h
+ *
+ *  Created on: 19 Aug 2020
+ *      Author: vikylenaidoo
+ */
+
+#ifndef TASKS_BOSCH_SENSOR_HANDLER_H_
+#define TASKS_BOSCH_SENSOR_HANDLER_H_
+
+//--------------------------INCLUDES---------------------------//
+#include "bmp280.h"
+#include "bmx055.h"
+#include "spi.h"
+#include "var.h"
+
+//------------------------ TYPE DEFINES --------------------------//
+
+struct SensorData{
+
+	/*Acceleration data
+	 *Format:	12 bits = 8bits MSB + 4bits LSB*/
+	uint8_t AccX_LSB;
+	uint8_t AccX_MSB;
+	uint8_t AccY_LSB;
+	uint8_t AccY_MSB;
+	uint8_t AccZ_LSB;
+	uint8_t AccZ_MSB;
+
+	//Gyro Data
+	uint8_t GyroX_LSB;
+	uint8_t GyroX_MSB;
+	uint8_t GyroY_LSB;
+	uint8_t GyroY_MSB;
+	uint8_t GyroZ_LSB;
+	uint8_t GyroZ_MSB;
+
+	/*	Magneto Data		width		structure					format
+	 * 		XY Axis: 		13 bits	 	8bits MSB + 5bits LSB		2s complement
+	 *  	 Z Axis:
+	 */
+	uint8_t GyroX_LSB;
+	uint8_t GyroX_MSB;
+	uint8_t GyroY_LSB;
+	uint8_t GyroY_MSB;
+	uint8_t GyroZ_LSB;
+	uint8_t GyroZ_MSB;
+
+
+
+};
+
+
+//------------------------FUNCTION HEADERS--------------------------//
+Sensor_StatusTypeDef sensor_check_id();
+Sensor_StatusTypeDef sensor_config();
+
+Sensor_StatusTypeDef sensor_read_baro(uint8_t *buff, uint8_t length);
+Sensor_StatusTypeDef sensor_read_acc(uint8_t *buff, uint8_t length);
+Sensor_StatusTypeDef sensor_read_gyro(uint8_t *buff, uint8_t length);
+Sensor_StatusTypeDef sensor_read_mag(uint8_t *buff, uint8_t length);
+
+
+
+
+
+
+
+
+
+
+#endif /* TASKS_BOSCH_SENSOR_HANDLER_H_ */

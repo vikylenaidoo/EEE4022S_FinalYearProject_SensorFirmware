@@ -33,7 +33,7 @@ int main(void){
 
 	status = sensor_config();
 
-	uart_initialise();
+	//uart_initialise();
 
 	/*
 	uint16_t log_buffer_x[20];
@@ -82,11 +82,15 @@ int main(void){
 		/*if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE))
 			data = uart_receive(UART_DEVICE_GNSS);
 		 */
-		for(int i=0; i<1000; i++){
+
+		//gnss_read_new_data();
+		sensor_read_all();
+
+		/*for(int i=0; i<10000; i++){
 			for(int i=0; i<1000; i++){
 				continue;
 			}
-		}
+		}*/
 
 	}
 

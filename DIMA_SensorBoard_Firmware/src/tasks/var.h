@@ -8,6 +8,7 @@
 #ifndef TASKS_VAR_H_
 #define TASKS_VAR_H_
 
+
 //-------------------PUBLIC DEFINES----------------------//
 #define GNSS_RX_DMA_Priority			13
 #define GNSS_RX_DMA_Sub_Priority		0
@@ -23,6 +24,7 @@
 
 #define MEM2MEM_DMA_Priority			14
 #define MEM2MEM_DMA_Sub_Priority		0
+
 
 
 

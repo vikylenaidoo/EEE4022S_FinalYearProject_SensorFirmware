@@ -11,10 +11,11 @@
 //-----------------------INCLUDES----------------------------------------//
 #include "stm32f4xx_usart.h"
 #include "var.h"
+#include "gnss.h"
 //---------------------TASKS INCLUDES-----------------------------------//
 
 //---------------------PUBLIC DEFINES---------------------------------//
-#define GNSS_BUFFER_SIZE		2048	//total bytes received from UBX-NAV-PVT message = 100
+#define GNSS_BUFFER_SIZE		1024	//total bytes received from UBX-NAV-PVT message = 100
 								//header=2 class=1 ID=1 length=2 payload=92 chksum=2
 
 //-------------------PUBLIC VARIABLES----------------------------------//

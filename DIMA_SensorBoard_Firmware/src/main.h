@@ -10,5 +10,6 @@
 
 #include "tasks/bosch_sensor_handler.h"
 #include "tasks/uart.h"
+#include "tasks/gnss.h"
 
 #endif /* MAIN_H_ */
