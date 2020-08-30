@@ -10,6 +10,7 @@ Author:		Vikyle Naidoo
 #include "stm32f4xx.h"
 #include "main.h"
 
+
 /* Private macro */
 /* Private variables */
 /* Private function prototypes */
@@ -33,7 +34,8 @@ int main(void){
 
 	status = sensor_config();
 
-	//uart_initialise();
+	uart_initialise();
+
 
 	/*
 	uint16_t log_buffer_x[20];
@@ -58,7 +60,7 @@ int main(void){
 	//uint8_t mag_buffer [8];
 	*/
 
-	uint8_t data = 0;
+
 	while (1){
 
 		//sensor_read_baro(baro_buffer, 6);
@@ -83,14 +85,14 @@ int main(void){
 			data = uart_receive(UART_DEVICE_GNSS);
 		 */
 
-		//gnss_read_new_data();
-		sensor_read_all();
+		gnss_read_new_data();
+		//sensor_read_all();
 
-		/*for(int i=0; i<10000; i++){
+		for(int i=0; i<10000; i++){
 			for(int i=0; i<1000; i++){
 				continue;
 			}
-		}*/
+		}
 
 	}
 

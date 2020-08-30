@@ -1,9 +1,10 @@
 uart.c:62:13:reset_gnss_rx_buffer	16	static
 uart.c:67:13:reset_gnss_log_buffer	16	static
-uart.c:73:13:initialise_dma_gnss	72	static
-uart.c:156:6:uart_initialise	40	static
-uart.c:224:6:uart_send	16	static
-uart.c:228:9:uart_receive	24	static
-uart.c:251:6:DMA2_Stream2_IRQHandler	8	static
-uart.c:275:6:DMA2_Stream0_IRQHandler	8	static
-uart.c:288:6:USART1_IRQHandler	16	static
+uart.c:73:13:initialise_dma_jetson	4	static
+uart.c:77:13:initialise_dma_gnss	72	static
+uart.c:180:6:uart_initialise	40	static
+uart.c:253:6:uart_send	16	static
+uart.c:257:9:uart_receive	24	static
+uart.c:280:6:DMA2_Stream2_IRQHandler	8	static
+uart.c:316:6:DMA2_Stream0_IRQHandler	8	static
+uart.c:331:6:USART1_IRQHandler	16	static

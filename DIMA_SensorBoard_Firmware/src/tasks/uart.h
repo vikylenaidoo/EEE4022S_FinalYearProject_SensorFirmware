@@ -15,8 +15,16 @@
 //---------------------TASKS INCLUDES-----------------------------------//
 
 //---------------------PUBLIC DEFINES---------------------------------//
-#define GNSS_BUFFER_SIZE		1024	//total bytes received from UBX-NAV-PVT message = 100
-								//header=2 class=1 ID=1 length=2 payload=92 chksum=2
+#define GNSS_NMEA
+
+#ifdef GNSS_NMEA
+	#define GNSS_BUFFER_SIZE		1024	//total bytes received from UBX-NAV-PVT message = 100
+
+#else
+#define	GNSS_BUFFER_SIZE			100
+									//header=2 class=1 ID=1 length=2 payload=92 chksum=2
+#endif
+
 
 //-------------------PUBLIC VARIABLES----------------------------------//
 uint8_t GNSS_RX_BUFFER[GNSS_BUFFER_SIZE];	//To store bytes recieved from uart_gnss over dma2

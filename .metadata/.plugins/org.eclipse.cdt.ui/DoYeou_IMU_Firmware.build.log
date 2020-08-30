@@ -1,4 +1,4 @@
-11:41:56 **** Incremental Build of configuration Debug for project DoYeou_IMU_Firmware ****
+17:36:59 **** Incremental Build of configuration Debug for project DoYeou_IMU_Firmware ****
 Info: Internal Builder is used for build
 arm-atollic-eabi-gcc -c ../src/tasks/memory.c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DSTM32F4XX -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -I../src -I../Libraries/CMSIS/Include -I../Libraries/Device/STM32F4xx/Include -I../Libraries/STM32F4xx_StdPeriph_Driver/inc -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o src/tasks/memory.o 
 In file included from ../src/tasks/memory.c:9:0:
@@ -7,5 +7,5 @@ In file included from ../src/tasks/memory.c:9:0:
                       ^
 compilation terminated.
 
-11:41:57 Build Finished (took 722ms)
+17:37:00 Build Finished (took 835ms)
 
