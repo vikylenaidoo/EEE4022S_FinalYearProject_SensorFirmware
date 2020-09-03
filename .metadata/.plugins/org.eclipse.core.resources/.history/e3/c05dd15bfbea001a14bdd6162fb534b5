@@ -28,7 +28,7 @@
 
 //-------------------PUBLIC VARIABLES----------------------------------//
 uint8_t GNSS_RX_BUFFER[GNSS_BUFFER_SIZE];	//To store bytes recieved from uart_gnss over dma2
-volatile uint16_t GNSS_DATA_LENGTH;
+volatile uint8_t GNSS_DATA_LENGTH;
 uint8_t GNSS_LOG_BUFFER[GNSS_BUFFER_SIZE];
 
 typedef enum {

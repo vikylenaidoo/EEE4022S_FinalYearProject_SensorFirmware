@@ -23,23 +23,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   9 .ARM.attributes 00000030  00000000  00000000  00020010  2**0
                   CONTENTS, READONLY
- 10 .debug_info   00005652  00000000  00000000  00020040  2**0
+ 10 .debug_info   00005679  00000000  00000000  00020040  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 000012f5  00000000  00000000  00025692  2**0
+ 11 .debug_abbrev 000012f5  00000000  00000000  000256b9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_aranges 00000700  00000000  00000000  00026988  2**3
+ 12 .debug_aranges 00000700  00000000  00000000  000269b0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000628  00000000  00000000  00027088  2**3
+ 13 .debug_ranges 00000628  00000000  00000000  000270b0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   00002994  00000000  00000000  000276b0  2**0
+ 14 .debug_line   00002994  00000000  00000000  000276d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    0000252c  00000000  00000000  0002a044  2**0
+ 15 .debug_str    0000252c  00000000  00000000  0002a06c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .comment      0000007c  00000000  00000000  0002c570  2**0
+ 16 .comment      0000007c  00000000  00000000  0002c598  2**0
                   CONTENTS, READONLY
- 17 .debug_frame  00001bf0  00000000  00000000  0002c5ec  2**2
+ 17 .debug_frame  00001bf0  00000000  00000000  0002c614  2**2
                   CONTENTS, READONLY, DEBUGGING
- 18 .stabstr      0000003f  00000000  00000000  0002e1dc  2**0
+ 18 .stabstr      0000003f  00000000  00000000  0002e204  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -3887,8 +3887,8 @@ void gnss_read_new_data(){
  80014ee:	3301      	adds	r3, #1
  80014f0:	607b      	str	r3, [r7, #4]
  80014f2:	4b07      	ldr	r3, [pc, #28]	; (8001510 <gnss_read_new_data+0x44>)
- 80014f4:	781b      	ldrb	r3, [r3, #0]
- 80014f6:	b2db      	uxtb	r3, r3
+ 80014f4:	881b      	ldrh	r3, [r3, #0]
+ 80014f6:	b29b      	uxth	r3, r3
  80014f8:	461a      	mov	r2, r3
  80014fa:	687b      	ldr	r3, [r7, #4]
  80014fc:	429a      	cmp	r2, r3
@@ -4702,7 +4702,7 @@ void uart_initialise(){
  80019c2:	f7fe ffb5 	bl	8000930 <GPIO_PinAFConfig>
 
 	/* -------------USART 1 configuration-------------------- */
-	USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
+	USART_InitStructure.USART_Mode = USART_Mode_Tx|USART_Mode_Rx;
  80019c6:	230c      	movs	r3, #12
  80019c8:	827b      	strh	r3, [r7, #18]
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -4864,7 +4864,7 @@ void USART_GNSS_IRQHandler(){
  8001a90:	f7ff faa3 	bl	8000fda <USART_GetITStatus>
  8001a94:	4603      	mov	r3, r0
  8001a96:	2b00      	cmp	r3, #0
- 8001a98:	d031      	beq.n	8001afe <USART1_IRQHandler+0x7a>
+ 8001a98:	d032      	beq.n	8001b00 <USART1_IRQHandler+0x7c>
 	//if(USART_GetFlagStatus(USART_GNSS, USART_FLAG_IDLE)){
 
 		// Disable DMA RX Stream
@@ -4898,46 +4898,45 @@ void USART_GNSS_IRQHandler(){
  8001aca:	607b      	str	r3, [r7, #4]
 		GNSS_DATA_LENGTH = GNSS_BUFFER_SIZE - temp;
  8001acc:	687b      	ldr	r3, [r7, #4]
- 8001ace:	b2db      	uxtb	r3, r3
- 8001ad0:	425b      	negs	r3, r3
- 8001ad2:	b2da      	uxtb	r2, r3
- 8001ad4:	4b0e      	ldr	r3, [pc, #56]	; (8001b10 <USART1_IRQHandler+0x8c>)
- 8001ad6:	701a      	strb	r2, [r3, #0]
+ 8001ace:	b29b      	uxth	r3, r3
+ 8001ad0:	f5c3 6380 	rsb	r3, r3, #1024	; 0x400
+ 8001ad4:	b29a      	uxth	r2, r3
+ 8001ad6:	4b0e      	ldr	r3, [pc, #56]	; (8001b10 <USART1_IRQHandler+0x8c>)
+ 8001ad8:	801a      	strh	r2, [r3, #0]
 
 		//reset the data counter
 		DMA_SetCurrDataCounter(DMA_Stream_USART_GNSS_RX, GNSS_BUFFER_SIZE);
- 8001ad8:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 8001adc:	480b      	ldr	r0, [pc, #44]	; (8001b0c <USART1_IRQHandler+0x88>)
- 8001ade:	f7fe fd1d 	bl	800051c <DMA_SetCurrDataCounter>
+ 8001ada:	f44f 6180 	mov.w	r1, #1024	; 0x400
+ 8001ade:	480b      	ldr	r0, [pc, #44]	; (8001b0c <USART1_IRQHandler+0x88>)
+ 8001ae0:	f7fe fd1c 	bl	800051c <DMA_SetCurrDataCounter>
 		//gnss_read_new_data();
 //		reset_gnss_rx_buffer();
 
 
 		/* Enable DMA transfer */
 		DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
- 8001ae2:	2101      	movs	r1, #1
- 8001ae4:	4809      	ldr	r0, [pc, #36]	; (8001b0c <USART1_IRQHandler+0x88>)
- 8001ae6:	f7fe fcfd 	bl	80004e4 <DMA_Cmd>
+ 8001ae4:	2101      	movs	r1, #1
+ 8001ae6:	4809      	ldr	r0, [pc, #36]	; (8001b0c <USART1_IRQHandler+0x88>)
+ 8001ae8:	f7fe fcfc 	bl	80004e4 <DMA_Cmd>
 		while (DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != ENABLE) { ; }
- 8001aea:	bf00      	nop
- 8001aec:	4807      	ldr	r0, [pc, #28]	; (8001b0c <USART1_IRQHandler+0x88>)
- 8001aee:	f7fe fd31 	bl	8000554 <DMA_GetCmdStatus>
- 8001af2:	4603      	mov	r3, r0
- 8001af4:	2b01      	cmp	r3, #1
- 8001af6:	d1f9      	bne.n	8001aec <USART1_IRQHandler+0x68>
+ 8001aec:	bf00      	nop
+ 8001aee:	4807      	ldr	r0, [pc, #28]	; (8001b0c <USART1_IRQHandler+0x88>)
+ 8001af0:	f7fe fd30 	bl	8000554 <DMA_GetCmdStatus>
+ 8001af4:	4603      	mov	r3, r0
+ 8001af6:	2b01      	cmp	r3, #1
+ 8001af8:	d1f9      	bne.n	8001aee <USART1_IRQHandler+0x6a>
 
 		//clear usart IDLE interrupt
 		USART_ReceiveData(USART_GNSS);
- 8001af8:	4803      	ldr	r0, [pc, #12]	; (8001b08 <USART1_IRQHandler+0x84>)
- 8001afa:	f7ff f9e1 	bl	8000ec0 <USART_ReceiveData>
+ 8001afa:	4803      	ldr	r0, [pc, #12]	; (8001b08 <USART1_IRQHandler+0x84>)
+ 8001afc:	f7ff f9e0 	bl	8000ec0 <USART_ReceiveData>
 	}
 
 }
- 8001afe:	bf00      	nop
- 8001b00:	3708      	adds	r7, #8
- 8001b02:	46bd      	mov	sp, r7
- 8001b04:	bd80      	pop	{r7, pc}
- 8001b06:	bf00      	nop
+ 8001b00:	bf00      	nop
+ 8001b02:	3708      	adds	r7, #8
+ 8001b04:	46bd      	mov	sp, r7
+ 8001b06:	bd80      	pop	{r7, pc}
  8001b08:	40011000 	.word	0x40011000
  8001b0c:	40026440 	.word	0x40026440
  8001b10:	20000848 	.word	0x20000848

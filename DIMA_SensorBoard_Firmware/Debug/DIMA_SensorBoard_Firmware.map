@@ -16,7 +16,7 @@ errno               0x4               /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9
 SensorDataGlobal    0x1a              src/main.o
 GNSS_LOG_BUFFER     0x400             src/main.o
 GNSS_RX_BUFFER      0x400             src/main.o
-GNSS_DATA_LENGTH    0x1               src/main.o
+GNSS_DATA_LENGTH    0x2               src/main.o
 
 Discarded input sections
 
@@ -2094,13 +2094,13 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
  .bss           0x0000000020000010       0x1c /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtbegin.o
  *(.bss*)
  *(COMMON)
- COMMON         0x000000002000002c      0x81d src/main.o
+ COMMON         0x000000002000002c      0x81e src/main.o
                 0x000000002000002c                SensorDataGlobal
                 0x0000000020000048                GNSS_LOG_BUFFER
                 0x0000000020000448                GNSS_RX_BUFFER
                 0x0000000020000848                GNSS_DATA_LENGTH
                 0x000000002000084c                . = ALIGN (0x4)
- *fill*         0x0000000020000849        0x3 
+ *fill*         0x000000002000084a        0x2 
                 0x000000002000084c                _ebss = .
                 0x000000002000084c                __bss_end__ = _ebss
 
@@ -2166,21 +2166,21 @@ LOAD /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-
                 0x0000000000000390       0x22 /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ARMTools/bin/../lib/gcc/arm-atollic-eabi/6.3.1/armv7e-m/fpu/crtn.o
 OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x5652
+.debug_info     0x0000000000000000     0x5679
  .debug_info    0x0000000000000000      0x54d Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
  .debug_info    0x000000000000054d      0x74c Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.o
  .debug_info    0x0000000000000c99      0x628 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.o
  .debug_info    0x00000000000012c1      0xc98 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.o
  .debug_info    0x0000000000001f59      0xb1a Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.o
  .debug_info    0x0000000000002a73      0x9d5 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
- .debug_info    0x0000000000003448      0x309 src/main.o
- .debug_info    0x0000000000003751       0x9f src/startup_stm32f40xx.o
- .debug_info    0x00000000000037f0      0x154 src/stm32f4xx_it.o
- .debug_info    0x0000000000003944      0x5dd src/system_stm32f4xx.o
- .debug_info    0x0000000000003f21      0x574 src/tasks/bosch_sensor_handler.o
- .debug_info    0x0000000000004495      0x161 src/tasks/gnss.o
- .debug_info    0x00000000000045f6      0x6b2 src/tasks/spi.o
- .debug_info    0x0000000000004ca8      0x9aa src/tasks/uart.o
+ .debug_info    0x0000000000003448      0x31f src/main.o
+ .debug_info    0x0000000000003767       0x9f src/startup_stm32f40xx.o
+ .debug_info    0x0000000000003806      0x154 src/stm32f4xx_it.o
+ .debug_info    0x000000000000395a      0x5dd src/system_stm32f4xx.o
+ .debug_info    0x0000000000003f37      0x574 src/tasks/bosch_sensor_handler.o
+ .debug_info    0x00000000000044ab      0x177 src/tasks/gnss.o
+ .debug_info    0x0000000000004622      0x6b2 src/tasks/spi.o
+ .debug_info    0x0000000000004cd4      0x9a5 src/tasks/uart.o
 
 .debug_abbrev   0x0000000000000000     0x12f5
  .debug_abbrev  0x0000000000000000      0x172 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.o
@@ -2274,7 +2274,7 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_str     0x00000000000014f5      0x423 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.o
                                         0x73c (size before relaxing)
  .debug_str     0x0000000000001918      0x1da src/main.o
-                                        0x3ee (size before relaxing)
+                                        0x402 (size before relaxing)
  .debug_str     0x0000000000001af2       0xa6 src/stm32f4xx_it.o
                                         0x29c (size before relaxing)
  .debug_str     0x0000000000001b98       0x8f src/system_stm32f4xx.o
@@ -2282,7 +2282,7 @@ OUTPUT(DIMA_SensorBoard_Firmware.elf elf32-littlearm)
  .debug_str     0x0000000000001c27      0x1b6 src/tasks/bosch_sensor_handler.o
                                         0x582 (size before relaxing)
  .debug_str     0x0000000000001ddd       0x27 src/tasks/gnss.o
-                                        0x269 (size before relaxing)
+                                        0x27d (size before relaxing)
  .debug_str     0x0000000000001e04       0xdc src/tasks/spi.o
                                         0x646 (size before relaxing)
  .debug_str     0x0000000000001ee0      0x64c src/tasks/uart.o

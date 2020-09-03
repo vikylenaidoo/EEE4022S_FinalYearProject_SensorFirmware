@@ -210,7 +210,7 @@ void uart_initialise(){
 	GPIO_PinAFConfig(GPIO_USART_GNSS, GPIO_Pin_USART_GNSS_RX_Src, GPIO_AF_USART_GNSS);
 
 	/* -------------USART 1 configuration-------------------- */
-	USART_InitStructure.USART_Mode = USART_Mode_Tx|USART_Mode_Rx;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;

@@ -40,7 +40,7 @@
 #define DMA_GNSS_RX_IRQHandler					DMA2_Stream2_IRQHandler
 #define DMA_GNSS_TX_IRQHandler					DMA2_Stream7_IRQHandler
 
-#define DMA_Stream_GNSS_IT						DMA_IT_TCIF2
+#define DMA_IT_TC_GNSS_RX						DMA_IT_TCIF2
 #define DMA_FLAG_GNSS_RX_TC						DMA_FLAG_TCIF2
 
 // DMA MEM TO MEM
@@ -70,6 +70,10 @@ static void reset_gnss_log_buffer(){
 	}
 }
 
+static void initialise_dma_jetson(void){
+	//todo: for transmitting data packet from memory to uart_jetson
+}
+
 static void initialise_dma_gnss(void){
 	//DMA CONFIG
 	DMA_InitTypeDef DMA_InitStructure;
@@ -97,27 +101,44 @@ static void initialise_dma_gnss(void){
 	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
 
 	DMA_InitStructure.DMA_Channel = DMA_Channel_USART_GNSS_RX;
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
 	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;
 	DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
 	DMA_InitStructure.DMA_BufferSize = GNSS_BUFFER_SIZE;
+
+	#ifdef GNSS_NMEA
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+	#else
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
+	#endif
 
 	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 
 	DMA_Init(DMA_Stream_USART_GNSS_RX, &DMA_InitStructure);
 
-	// enable the interrupt in the NVIC
+
+	// enable the TE interrupt in the NVIC
 	NVIC_InitStructure.NVIC_IRQChannel = DMA_GNSS_RX_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = GNSS_RX_DMA_Priority;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = GNSS_RX_DMA_Sub_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_RX_DMA_TE_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART_RX_DMA_TE_Sub_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	DMA_ITConfig(DMA_Stream_USART_GNSS_RX, DMA_IT_TE, ENABLE);
+
+#ifndef GNSS_NMEA
+	//enable the DMA TC interrupt
+	NVIC_InitStructure.NVIC_IRQChannel = DMA_GNSS_RX_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = GNSS_RX_DMA_TC_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = GNSS_RX_DMA_Sub_TC_Priority;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	DMA_ITConfig(DMA_Stream_USART_GNSS_RX, DMA_IT_TC, ENABLE);
 
-	/* -----------------------------------UART - MEM ----------------------*/
+#endif
+
+	// -----------------------------------MEM TO MEM --------------------------------//
 	/* shared DMA configuration values */
-	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)GNSS_RX_BUFFER;
+	/*DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)GNSS_RX_BUFFER;
 	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Enable;
 	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
@@ -136,7 +157,8 @@ static void initialise_dma_gnss(void){
 	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 
-	//DMA_Init(DMA_Stream_USART_MEM, &DMA_InitStructure);
+	DMA_Init(DMA_Stream_USART_MEM, &DMA_InitStructure);
+
 
 	// enable the interrupt in the NVIC
 	NVIC_InitStructure.NVIC_IRQChannel = DMA_USART_MEM_IRQn;
@@ -145,7 +167,9 @@ static void initialise_dma_gnss(void){
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	//NVIC_Init(&NVIC_InitStructure);
 	//DMA_ITConfig(DMA_Stream_USART_MEM, DMA_USART_MEM_IT, ENABLE);
+	*/
 
+	//------------------ START DMA -----------------------------//
 
 	DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
 	while (DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX ) != ENABLE) { ; }
@@ -194,14 +218,17 @@ void uart_initialise(){
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_Init(USART_GNSS, &USART_InitStructure);
 
+	/*
 	//------------- USART 1 RXNE interrupt configuration ----------------//
 	NVIC_InitStructure.NVIC_IRQChannel = USART_GNSS_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_RXNE_Priority; //USART_IDLE_Priority;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART_RXNE_Sub_Priority; //USART_IDLE_Sub_Priority;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	//NVIC_Init(&NVIC_InitStructure);
-	//USART_ITConfig(USART_GNSS, USART_IT_RXNE, ENABLE);
+	NVIC_Init(&NVIC_InitStructure);
+	USART_ITConfig(USART_GNSS, USART_IT_RXNE, ENABLE);
+	*/
 
+#ifdef GNSS_NMEA
 	//------------- USART 1 IDLE interrupt configuration ----------------//
 	NVIC_InitStructure.NVIC_IRQChannel = USART_GNSS_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_IDLE_Priority; //USART_IDLE_Priority;
@@ -209,6 +236,8 @@ void uart_initialise(){
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	USART_ITConfig(USART_GNSS, USART_IT_IDLE, ENABLE);
+
+#endif
 
 	//Enable UART 1
 	USART_Cmd(USART_GNSS, ENABLE);
@@ -249,22 +278,39 @@ uint8_t uart_receive(UART_DeviceSelectTypeDef device){
 
 //DMA UART TO MEM INTERRUPTS
 void DMA_GNSS_RX_IRQHandler(void){
-	//if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_Stream_GNSS_IT)){
-	if(DMA_GetFlagStatus(DMA_Stream_USART_GNSS_RX, DMA_FLAG_GNSS_RX_TC)){
-		/* Clear DMA Stream Transfer Complete interrupt pending bit */
-		DMA_ClearITPendingBit(DMA_Stream_USART_GNSS_RX, DMA_Stream_GNSS_IT);
 
-		GNSS_DATA_LENGTH = GNSS_BUFFER_SIZE - DMA_GetCurrDataCounter(DMA_Stream_USART_GNSS_RX);
-		reset_gnss_log_buffer(); //clear buffer to be written to
+#ifndef GNSS_NMEA
+	/*transfer complete*/
+	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX)){
+	//if(DMA_GetFlagStatus(DMA_Stream_USART_GNSS_RX, DMA_FLAG_GNSS_RX_TC)){
+
+		//GNSS_DATA_LENGTH = GNSS_BUFFER_SIZE - DMA_GetCurrDataCounter(DMA_Stream_USART_GNSS_RX);
+		//reset_gnss_log_buffer(); //clear buffer to be written to
 
 		//DMA_SetCurrDataCounter(DMA_Stream_USART_MEM, GNSS_DATA_LENGTH); //set how many bytes to transfer
 		/* Enable DMA transfer mem to mem*/
 		//DMA_Cmd(DMA_Stream_USART_MEM, ENABLE);
 		//while (DMA_GetCmdStatus(DMA_Stream_USART_MEM) != ENABLE) { ; }
 
+
+		//reset DMA stream
+		DMA_Cmd(DMA_Stream_USART_GNSS_RX, DISABLE);
+		while(DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != DISABLE){;}
+
+
+
+		/* Clear DMA Stream Transfer Complete interrupt pending bit */
+		DMA_ClearITPendingBit(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX);
+	}
+#endif
+	/*transfer error*/
+	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TE)){
+		;
 	}
 
+
 }
+
 
 //DMA MEM OT MEM INTERRUPTS
 void DMA_USART_MEM_IRQHandler (void){
@@ -279,7 +325,9 @@ void DMA_USART_MEM_IRQHandler (void){
 	}
 }
 
+
 //UART INTERRUPTS
+#ifdef GNSS_NMEA
 void USART_GNSS_IRQHandler(){
 	/*if(USART_GetFlagStatus(USART_GNSS, USART_FLAG_RXNE)){
 	//if(USART_GetITStatus(USART_GNSS, USART_IT_RXNE)){
@@ -302,6 +350,7 @@ void USART_GNSS_IRQHandler(){
 
 		//clear DMA Flag
 		DMA_ClearFlag(DMA_Stream_USART_GNSS_RX,DMA_FLAG_GNSS_RX_TC);
+		USART_ClearFlag(USART_GNSS, USART_FLAG_RXNE);
 
 		//find the lenght of data
 		volatile uint32_t temp = DMA_GetCurrDataCounter(DMA_Stream_USART_GNSS_RX);
@@ -309,29 +358,22 @@ void USART_GNSS_IRQHandler(){
 
 		//reset the data counter
 		DMA_SetCurrDataCounter(DMA_Stream_USART_GNSS_RX, GNSS_BUFFER_SIZE);
+		//temp = DMA_GetCurrDataCounter(DMA_Stream_USART_GNSS_RX);
 
-
-		/* Clear USART registers */
-
-		//USART_ClearITPendingBit(USART_GNSS, USART_IT_IDLE);
-		//tmp = USART_GetITStatus(USART_GNSS, USART_IT_IDLE);
-		//tmp = USART_ReceiveData(USART_GNSS);
-		//(void)tmp;
-
-		reset_gnss_rx_buffer();
+		//gnss_read_new_data();
+//		reset_gnss_rx_buffer();
 
 
 		/* Enable DMA transfer */
 		DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
 		while (DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != ENABLE) { ; }
 
-
-
-		//return;
+		//clear usart IDLE interrupt
+		USART_ReceiveData(USART_GNSS);
 	}
 
 }
-
+#endif
 
 
 
