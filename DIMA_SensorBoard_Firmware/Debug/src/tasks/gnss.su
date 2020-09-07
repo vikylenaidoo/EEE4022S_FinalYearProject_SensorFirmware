@@ -1,1 +1,2 @@
-gnss.c:14:6:gnss_read_new_data	16	static
+gnss.c:15:13:gnss_ubx_checksum	24	static
+gnss.c:41:20:gnss_read_new_data	16	static

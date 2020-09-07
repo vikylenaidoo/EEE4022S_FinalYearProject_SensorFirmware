@@ -230,47 +230,47 @@ Sensor_StatusTypeDef sensor_read_all(){
 	if(sensor_read_acc(acc_buffer, ACC_READ_LENGTH) != SENS_OK)
 		return SENS_ERROR;
 
-	SensorDataGlobal.AccX_LSB = (acc_buffer[0])&ACC_MASK_LSB;
-	SensorDataGlobal.AccX_MSB = acc_buffer[1];
-	SensorDataGlobal.AccY_LSB = (acc_buffer[2])&ACC_MASK_LSB;
-	SensorDataGlobal.AccY_MSB = acc_buffer[3];
-	SensorDataGlobal.AccZ_LSB = (acc_buffer[4])&ACC_MASK_LSB;
-	SensorDataGlobal.AccZ_MSB = acc_buffer[5];
+	GlobalDataUnion.GlobalDataStruct.AccX_LSB = (acc_buffer[0])&ACC_MASK_LSB;
+	GlobalDataUnion.GlobalDataStruct.AccX_MSB = acc_buffer[1];
+	GlobalDataUnion.GlobalDataStruct.AccY_LSB = (acc_buffer[2])&ACC_MASK_LSB;
+	GlobalDataUnion.GlobalDataStruct.AccY_MSB = acc_buffer[3];
+	GlobalDataUnion.GlobalDataStruct.AccZ_LSB = (acc_buffer[4])&ACC_MASK_LSB;
+	GlobalDataUnion.GlobalDataStruct.AccZ_MSB = acc_buffer[5];
 
 	//read gyro data
 	if(sensor_read_gyro(gyro_buffer, GYRO_READ_LENGTH))
 		return SENS_ERROR;
 
-	SensorDataGlobal.GyroX_LSB = gyro_buffer[0];
-	SensorDataGlobal.GyroX_MSB = gyro_buffer[1];
-	SensorDataGlobal.GyroY_LSB = gyro_buffer[2];
-	SensorDataGlobal.GyroY_MSB = gyro_buffer[3];
-	SensorDataGlobal.GyroZ_LSB = gyro_buffer[4];
-	SensorDataGlobal.GyroZ_MSB = gyro_buffer[5];
+	GlobalDataUnion.GlobalDataStruct.GyroX_LSB = gyro_buffer[0];
+	GlobalDataUnion.GlobalDataStruct.GyroX_MSB = gyro_buffer[1];
+	GlobalDataUnion.GlobalDataStruct.GyroY_LSB = gyro_buffer[2];
+	GlobalDataUnion.GlobalDataStruct.GyroY_MSB = gyro_buffer[3];
+	GlobalDataUnion.GlobalDataStruct.GyroZ_LSB = gyro_buffer[4];
+	GlobalDataUnion.GlobalDataStruct.GyroZ_MSB = gyro_buffer[5];
 
 	//read mag data
 	if(sensor_read_mag(mag_buffer, MAG_READ_LENGTH)!= SENS_OK)
 		return SENS_ERROR;
 
-	SensorDataGlobal.MagX_LSB = mag_buffer[0]&MAG_MASK_XY_LSB;
-	SensorDataGlobal.MagX_MSB = mag_buffer[1];
-	SensorDataGlobal.MagY_LSB = mag_buffer[2]&MAG_MASK_XY_LSB;
-	SensorDataGlobal.MagY_MSB = mag_buffer[3];
-	SensorDataGlobal.MagZ_LSB = mag_buffer[4]&MAG_MASK_Z_LSB;
-	SensorDataGlobal.MagZ_MSB = mag_buffer[5];
-	SensorDataGlobal.MagHall_LSB = mag_buffer[6]&MAG_MASK_HALL_LSB;
-	SensorDataGlobal.MagHall_MSB = mag_buffer[7];
+	GlobalDataUnion.GlobalDataStruct.MagX_LSB = mag_buffer[0]&MAG_MASK_XY_LSB;
+	GlobalDataUnion.GlobalDataStruct.MagX_MSB = mag_buffer[1];
+	GlobalDataUnion.GlobalDataStruct.MagY_LSB = mag_buffer[2]&MAG_MASK_XY_LSB;
+	GlobalDataUnion.GlobalDataStruct.MagY_MSB = mag_buffer[3];
+	GlobalDataUnion.GlobalDataStruct.MagZ_LSB = mag_buffer[4]&MAG_MASK_Z_LSB;
+	GlobalDataUnion.GlobalDataStruct.MagZ_MSB = mag_buffer[5];
+	GlobalDataUnion.GlobalDataStruct.MagHall_LSB = mag_buffer[6]&MAG_MASK_HALL_LSB;
+	GlobalDataUnion.GlobalDataStruct.MagHall_MSB = mag_buffer[7];
 
 	//read baro data
 	if(sensor_read_baro(baro_buffer, ACC_READ_LENGTH)!= SENS_OK)
 		return SENS_ERROR;
 
-	SensorDataGlobal.BaroPress_MSB = baro_buffer[0];
-	SensorDataGlobal.BaroPress_LSB = baro_buffer[1];
-	SensorDataGlobal.BaroPress_XLSB = baro_buffer[2]&BARO_MASK_XLSB;
-	SensorDataGlobal.BaroTemp_MSB = baro_buffer[3];
-	SensorDataGlobal.BaroTemp_LSB = baro_buffer[4];
-	SensorDataGlobal.BaroTemp_XLSB = baro_buffer[5]&BARO_MASK_XLSB;
+	GlobalDataUnion.GlobalDataStruct.BaroPress_MSB = baro_buffer[0];
+	GlobalDataUnion.GlobalDataStruct.BaroPress_LSB = baro_buffer[1];
+	GlobalDataUnion.GlobalDataStruct.BaroPress_XLSB = baro_buffer[2]&BARO_MASK_XLSB;
+	GlobalDataUnion.GlobalDataStruct.BaroTemp_MSB = baro_buffer[3];
+	GlobalDataUnion.GlobalDataStruct.BaroTemp_LSB = baro_buffer[4];
+	GlobalDataUnion.GlobalDataStruct.BaroTemp_XLSB = baro_buffer[5]&BARO_MASK_XLSB;
 
 
 

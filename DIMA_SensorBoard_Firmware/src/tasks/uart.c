@@ -10,7 +10,8 @@
 #include "uart.h"
 
 //------------------------------DEFINES--------------------------//
-/*GNSS UART*/
+
+/*----------------------------GNSS UART-------------------------*/
 #define RCC_APBPeriph_USART_GNSS	   			RCC_APB2Periph_USART1
 #define RCC_AHBPeriph_USART_GNSS	   			RCC_AHB1Periph_GPIOB
 #define USART_GNSS								USART1
@@ -55,7 +56,37 @@
 #define DMA_USART_MEM_IRQHandler				DMA2_Stream0_IRQHandler
 
 
-/*JETSON UART*/
+/*---------------------JETSON UART-----------------------------------------*/
+#define RCC_APBPeriph_USART_JETSON	   			RCC_APB1Periph_USART3
+#define RCC_AHBPeriph_USART_JETSON   			RCC_AHB1Periph_GPIOD
+#define USART_JETSON							USART3
+#define USART_BaudRate_JETSON					115200
+
+#define GPIO_USART_JETSON						GPIOD
+#define GPIO_Pin_USART_JETSON_TX				GPIO_Pin_8
+#define GPIO_Pin_USART_JETSON_RX				GPIO_Pin_9
+#define GPIO_Pin_USART_JETSON_TX_Src			GPIO_PinSource8
+#define GPIO_Pin_USART_JETSON_RX_Src			GPIO_PinSource9
+
+#define GPIO_AF_USART_JETSON					GPIO_AF_USART3
+
+#define USART_JETSON_IRQn						USART3_IRQn
+#define USART_JETSON_IRQHandler					USART3_IRQHandler
+
+//DMA JETSON MEM TO TX
+#define RCC_AHBPeriph_JETSON_DMA				RCC_AHB1Periph_DMA1
+#define DMA_Channel_USART_JETSON_RX				DMA_Channel_4
+#define DMA_Channel_USART_JETSON_TX				DMA_Channel_4
+#define DMA_Stream_USART_JETSON_RX				DMA1_Stream1
+#define DMA_Stream_USART_JETSON_TX				DMA1_Stream3
+
+#define DMA_JETSON_RX_IRQn						DMA1_Stream1_IRQn
+#define DMA_JETSON_TX_IRQn						DMA1_Stream3_IRQn
+#define DMA_JETSON_RX_IRQHandler				DMA1_Stream1_IRQHandler
+#define DMA_JETSON_TX_IRQHandler				DMA1_Stream3_IRQHandler
+
+#define DMA_IT_TC_JETSON_TX						DMA_IT_TCIF3
+#define DMA_FLAG_TC_JETSON_TX					DMA_FLAG_TCIF3
 
 
 //------------------------STATIC FUNCTIONS-------------------//
@@ -64,16 +95,82 @@ static void reset_gnss_rx_buffer(){
 		GNSS_RX_BUFFER[i] = 0;
 	}
 }
-static void reset_gnss_log_buffer(){
-	for(int i=0; i<GNSS_BUFFER_SIZE; i++){
-		GNSS_LOG_BUFFER[i] = 0;
-	}
-}
 
+
+/* Initialise DMA for sending to JETSON
+ * source: 		GlobalDataUSART_JESTON (USART3)
+ * destination: USART_JESTON (USART3)
+ * mode			memory to peripheral
+ */
 static void initialise_dma_jetson(void){
 	//todo: for transmitting data packet from memory to uart_jetson
+	//DMA CONFIG
+	DMA_InitTypeDef DMA_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+
+	USART_DMACmd(USART_JETSON, USART_DMAReq_Tx, ENABLE);	//enable dma interface for this uart
+	RCC_AHB1PeriphClockCmd(RCC_AHBPeriph_JETSON_DMA,ENABLE);
+
+	// De-initialize DMA RX & TX Stream
+	DMA_DeInit(DMA_Stream_USART_JETSON_RX);
+	while (DMA_GetCmdStatus(DMA_Stream_USART_JETSON_RX ) != DISABLE) { ; }
+	DMA_DeInit(DMA_Stream_USART_JETSON_TX);
+	while (DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX ) != DISABLE) { ; }
+
+	//---------------------------------Memory to Peripherral Mode---------------------//
+	//shared DMA configuration values:
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&(USART_JETSON->DR));	//data destination
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+
+	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)GlobalDataUnion.GlobalDataArray;	//data source
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+
+	DMA_InitStructure.DMA_Channel = DMA_Channel_USART_JETSON_TX;
+	DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;
+	DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
+	DMA_InitStructure.DMA_BufferSize = GLOBAL_DATA_BUFFER_SIZE;
+
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
+	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
+	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
+
+	//initialise dma
+	DMA_Init(DMA_Stream_USART_JETSON_TX, &DMA_InitStructure);
+
+	// enable the TE interrupt in the NVIC
+	NVIC_InitStructure.NVIC_IRQChannel = DMA_JETSON_TX_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_TX_DMA_TE_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART_TX_DMA_TE_Sub_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	DMA_ITConfig(DMA_Stream_USART_JETSON_TX, DMA_IT_TE, ENABLE);
+
+	//enable the DMA TC interrupt
+	/*NVIC_InitStructure.NVIC_IRQChannel = DMA_JETSON_TX_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_RX_DMA_TC_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART_RX_DMA_TC_Sub_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	DMA_ITConfig(DMA_Stream_USART_JETSON_TX, DMA_IT_TC, ENABLE);
+	 */
+
+	//------------------ START DMA -----------------------------//
+	DMA_Cmd(DMA_Stream_USART_JETSON_TX, ENABLE);
+	while (DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX) != ENABLE) { ; }
+
+
 }
 
+
+/* Initialise DMA for receiving from GNSS
+ * source: 		USART_GNSS (USART1)
+ * destination: GNSS_RX_BUFFER
+ * mode: 		Peripheral to memmory
+ */
 static void initialise_dma_gnss(void){
 	//DMA CONFIG
 	DMA_InitTypeDef DMA_InitStructure;
@@ -128,46 +225,13 @@ static void initialise_dma_gnss(void){
 #ifndef GNSS_NMEA
 	//enable the DMA TC interrupt
 	NVIC_InitStructure.NVIC_IRQChannel = DMA_GNSS_RX_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = GNSS_RX_DMA_TC_Priority;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = GNSS_RX_DMA_Sub_TC_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = USART_RX_DMA_TC_Priority;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = USART_RX_DMA_TC_Sub_Priority;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	DMA_ITConfig(DMA_Stream_USART_GNSS_RX, DMA_IT_TC, ENABLE);
 
 #endif
-
-	// -----------------------------------MEM TO MEM --------------------------------//
-	/* shared DMA configuration values */
-	/*DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)GNSS_RX_BUFFER;
-	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
-	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Enable;
-	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
-
-	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)GNSS_LOG_BUFFER;
-	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
-	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
-
-	DMA_InitStructure.DMA_Channel = DMA_Channel_USART_MEM;
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;
-	DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToMemory;
-	DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
-	DMA_InitStructure.DMA_BufferSize = GNSS_BUFFER_SIZE;
-
-	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
-	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
-
-	DMA_Init(DMA_Stream_USART_MEM, &DMA_InitStructure);
-
-
-	// enable the interrupt in the NVIC
-	NVIC_InitStructure.NVIC_IRQChannel = DMA_USART_MEM_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = MEM2MEM_DMA_Priority;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = MEM2MEM_DMA_Sub_Priority;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	//NVIC_Init(&NVIC_InitStructure);
-	//DMA_ITConfig(DMA_Stream_USART_MEM, DMA_USART_MEM_IT, ENABLE);
-	*/
 
 	//------------------ START DMA -----------------------------//
 
@@ -175,9 +239,54 @@ static void initialise_dma_gnss(void){
 	while (DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX ) != ENABLE) { ; }
 }
 
-//-----------------------PUBLIC FUNCTIONS------------------//
+static void initialise_uart_jetson(){
+	//@todo: decide which uart line for jetson
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
 
-void uart_initialise(){
+	/* Enable USART_JETSON clock */
+	RCC_APB1PeriphClockCmd(RCC_APBPeriph_USART_JETSON, ENABLE);
+	/* Enable GPIO clock for USART_JETSON pins */
+	RCC_AHB1PeriphClockCmd(RCC_AHBPeriph_USART_JETSON, ENABLE);
+
+	/*----------USART3 GPIO Configuration -------------------------------*/
+
+	/* Configure USART3 pins: TX & RX */
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+
+	// USART TX pin configuration
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_USART_JETSON_TX;	//pin 8
+	GPIO_Init(GPIO_USART_JETSON, &GPIO_InitStructure);
+
+	// USART RX pin configuration
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_USART_JETSON_RX; 	//pin 9
+	GPIO_Init(GPIO_USART_JETSON, &GPIO_InitStructure);
+
+	// Connect USART pins to AF
+	GPIO_PinAFConfig(GPIO_USART_JETSON, GPIO_Pin_USART_JETSON_TX_Src, GPIO_AF_USART_JETSON); //
+	GPIO_PinAFConfig(GPIO_USART_JETSON, GPIO_Pin_USART_JETSON_RX_Src, GPIO_AF_USART_JETSON);
+
+	/* -------------USART3 configuration-------------------- */
+	USART_InitStructure.USART_Mode = USART_Mode_Tx|USART_Mode_Rx;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_BaudRate = USART_BaudRate_JETSON;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_Init(USART_JETSON, &USART_InitStructure);
+
+	//Enable UART 1
+	USART_Cmd(USART_JETSON, ENABLE);
+
+	initialise_dma_jetson();
+
+}
+
+static void initialise_uart_gnss(){
 	reset_gnss_rx_buffer();
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -242,18 +351,66 @@ void uart_initialise(){
 	//Enable UART 1
 	USART_Cmd(USART_GNSS, ENABLE);
 
-	//@todo: clear buffer till end of data stream @ <CR><LF>, then enable dma to start at new $
-
 	initialise_dma_gnss();
+}
+
+//--------------------------PUBLIC FUNCTIONS---------------------------------//
+
+void uart_initialise(){
+	initialise_uart_gnss();
+	initialise_uart_jetson();
+}
 
 
+
+/*send globa data packet to jetson over uart*/
+UART_StatusTypeDef uart_send_to_jetson(){
+	//GlobalData.start_token = '$';
+
+	//populate global data union
+	GlobalDataUnion.GlobalDataStruct.start_token = '$';
+	if(sensor_read_all() != SENS_OK)
+		return UART_SEND_ERROR;
+
+	if(gnss_read_new_data() != GNSS_OK)
+		return UART_SEND_ERROR;
+
+	uint16_t counter = DMA_GetCurrDataCounter(DMA_Stream_USART_JETSON_TX);
+	FlagStatus flag = DMA_GetFlagStatus(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX);
+	FunctionalState status = DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX);
+
+	if(DMA_GetFlagStatus(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX)){
+
+		//disable the dma
+		DMA_Cmd(DMA_Stream_USART_JETSON_TX, DISABLE);
+		while(DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX) != DISABLE){;}
+
+		//clear dma tc flag
+		DMA_ClearFlag(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX);
+		//DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX);
+
+		//reset the dma & enable
+		DMA_SetCurrDataCounter(DMA_Stream_USART_JETSON_TX, GLOBAL_DATA_BUFFER_SIZE);
+		DMA_Cmd(DMA_Stream_USART_JETSON_TX, ENABLE);
+		while(DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX) != ENABLE){;}
+
+
+	}
+	else{
+		return UART_SEND_ERROR;
+	}
+
+	return UART_OK;
 
 }
 
+/*send data to selected device*/
 void uart_send(uint8_t data_out, UART_DeviceSelectTypeDef device){
 	//todo
 }
 
+
+/*receive data from the selected uart device*/
 uint8_t uart_receive(UART_DeviceSelectTypeDef device){
 	uint8_t data;
 	switch (device) {
@@ -276,28 +433,31 @@ uint8_t uart_receive(UART_DeviceSelectTypeDef device){
 
 //---------------------------------------INTERRUPT HANDLERS-----------------------------------///
 
+void DMA_JETSON_TX_IRQHandler(void){
+
+	/*transfer complete*/
+	if(DMA_GetITStatus(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX)){
+		DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX);
+	}
+
+	/*transfer error*/
+	if(DMA_GetITStatus(DMA_Stream_USART_JETSON_TX, DMA_IT_TE)){
+		DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TE);
+	}
+
+}
+
+
 //DMA UART TO MEM INTERRUPTS
 void DMA_GNSS_RX_IRQHandler(void){
 
 #ifndef GNSS_NMEA
 	/*transfer complete*/
 	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX)){
-	//if(DMA_GetFlagStatus(DMA_Stream_USART_GNSS_RX, DMA_FLAG_GNSS_RX_TC)){
-
-		//GNSS_DATA_LENGTH = GNSS_BUFFER_SIZE - DMA_GetCurrDataCounter(DMA_Stream_USART_GNSS_RX);
-		//reset_gnss_log_buffer(); //clear buffer to be written to
-
-		//DMA_SetCurrDataCounter(DMA_Stream_USART_MEM, GNSS_DATA_LENGTH); //set how many bytes to transfer
-		/* Enable DMA transfer mem to mem*/
-		//DMA_Cmd(DMA_Stream_USART_MEM, ENABLE);
-		//while (DMA_GetCmdStatus(DMA_Stream_USART_MEM) != ENABLE) { ; }
-
 
 		//reset DMA stream
-		DMA_Cmd(DMA_Stream_USART_GNSS_RX, DISABLE);
-		while(DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != DISABLE){;}
-
-
+		DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
+		while(DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != ENABLE){;}
 
 		/* Clear DMA Stream Transfer Complete interrupt pending bit */
 		DMA_ClearITPendingBit(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX);
@@ -305,26 +465,26 @@ void DMA_GNSS_RX_IRQHandler(void){
 #endif
 	/*transfer error*/
 	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TE)){
-		;
+		//int a = 1;
 	}
 
 
 }
 
-
+/*
 //DMA MEM OT MEM INTERRUPTS
 void DMA_USART_MEM_IRQHandler (void){
-	/* Test on DMA Stream Transfer Complete interrupt */
+	//Test on DMA Stream Transfer Complete interrupt
 	if (DMA_GetFlagStatus(DMA_Stream_USART_MEM, DMA_FLAG_USART_MEM_TC) != RESET){
-		/* Clear DMA Stream Transfer Complete interrupt pending bit */
+		// Clear DMA Stream Transfer Complete interrupt pending bit
 		DMA_ClearITPendingBit(DMA_Stream_USART_MEM, DMA_Stream_USART_MEM_IT);
 
-		/* Enable DMA transfer from uart rx*/
+		// Enable DMA transfer from uart rx
 		DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
 		while (DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX ) != ENABLE) { ; }
 	}
 }
-
+*/
 
 //UART INTERRUPTS
 #ifdef GNSS_NMEA

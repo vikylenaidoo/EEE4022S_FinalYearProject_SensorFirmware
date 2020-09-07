@@ -83,7 +83,7 @@ struct SensorData{
 
 };
 
-struct SensorData SensorDataGlobal;
+//struct SensorData SensorDataGlobal;
 
 
 //------------------------FUNCTION HEADERS--------------------------//
