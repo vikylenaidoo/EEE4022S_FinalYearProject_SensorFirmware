@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DIMA_SensorBoard_Firmware/src/tasks/interrupts&apos; to &apos;interrupts.c&apos;" description="Rename resource &apos;interrupts&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/tasks/interrupts" name="interrupts.c" stamp="1600698800061" updateReferences="true"/>
+</session>

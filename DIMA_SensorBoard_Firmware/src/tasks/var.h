@@ -75,8 +75,8 @@ typedef enum{
 struct GlobalData_Struct{
 
 	//---------------------------START TOKEN----------------------//
-	uint8_t start_token;
-
+	uint8_t start_token1;
+	uint8_t start_token2;
 	//--------------------------SENSOR DATA-----------------------------//
 
 
@@ -134,6 +134,9 @@ struct GlobalData_Struct{
 	//------------------------GNSS UBX MESSAGE---------------------------------//
 
 	uint8_t GNSS_UBX_MESSAGE [UBX_MESSAGE_SIZE]; //length of ubx message including header + checksum
+
+	//------------------------CRC32 CHECKSUM--------------------------------//
+	uint32_t CRC32_CHECKSUM; //32bit checksum to
 
 };
 

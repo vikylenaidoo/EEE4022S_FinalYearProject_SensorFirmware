@@ -36,12 +36,17 @@ int main(void){
 
 	uart_initialise();
 
+	exti_initialise();
+
 	//GlobalData.start_token = '$';
 
 	while (1){
 
 		//Sensor_StatusTypeDef sensor_status = sensor_read_all();
 		//GNSS_StatusTypeDef gnss_status = gnss_read_new_data();
+
+
+
 		UART_StatusTypeDef uart_status = uart_send_to_jetson();
 
 		for(int i=0; i<10000; i++){
@@ -49,6 +54,7 @@ int main(void){
 				continue;
 			}
 		}
+
 
 	}
 

@@ -1,0 +1,2 @@
+interrupts.c:21:6:exti_initialise	32	static
+interrupts.c:67:6:EXTI15_10_IRQHandler	16	static

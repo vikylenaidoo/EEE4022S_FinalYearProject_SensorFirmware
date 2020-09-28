@@ -1,0 +1,35 @@
+/*
+ * interrupts.c
+ *
+ *  Created on: 21 Sep 2020
+ *      Author: vikylenaidoo
+ */
+
+//------------------------------------------ INCLUDES ------------------------------//
+#include "interrupts.h"
+//------------------------------------------ DEFINES ------------------------------//
+
+//------------------------------------------STATIC FUNCTIONS ------------------------------//
+
+
+
+//------------------------------------------PUBLIC FUNCTIONS ------------------------------//
+void exti_configure(){
+	/* Enable clock for SYSCFG */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+	/* Enable clock for GPIOx */
+	RCC_AHBPeriphClockCmd_EXTI_GPIO(RCC_AHBPeriph_EXTI_GPIO, ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+
+	//configure input port
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_25MHz;
+
+
+}
+
+
+//------------------------------------------ INTERRUPT HANDLER ------------------------------//

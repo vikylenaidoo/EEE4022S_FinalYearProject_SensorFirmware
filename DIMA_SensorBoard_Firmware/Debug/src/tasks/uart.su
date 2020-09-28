@@ -3,9 +3,11 @@ uart.c:105:13:initialise_dma_jetson	72	static
 uart.c:174:13:initialise_dma_gnss	72	static
 uart.c:242:13:initialise_uart_jetson	40	static
 uart.c:289:13:initialise_uart_gnss	40	static
-uart.c:359:6:uart_initialise	8	static
-uart.c:367:20:uart_send_to_jetson	16	static
-uart.c:408:6:uart_send	16	static
-uart.c:414:9:uart_receive	24	static
-uart.c:436:6:DMA1_Stream3_IRQHandler	8	static
-uart.c:452:6:DMA2_Stream2_IRQHandler	8	static
+uart.c:357:13:initialise_crc	8	static
+uart.c:364:6:uart_initialise	8	static
+uart.c:373:20:uart_send_to_jetson	24	static
+uart.c:422:6:uart_send	16	static
+uart.c:428:9:uart_receive	24	static
+uart.c:447:10:CRC_calculate_8bit_datablock	24	static
+uart.c:459:6:DMA1_Stream3_IRQHandler	8	static
+uart.c:475:6:DMA2_Stream2_IRQHandler	8	static

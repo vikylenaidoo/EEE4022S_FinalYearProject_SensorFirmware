@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_MymLAO4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_MymLAe4BEeq00-T5hnKdjg" bindingContexts="_MynaUO4BEeq00-T5hnKdjg">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/main.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.asm.AsmEditor&quot; name=&quot;startup_stm32f40xx.s&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/startup_stm32f40xx.s&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/startup_stm32f40xx.s&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_dma.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_dma.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_gpio.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;bosch_sensor_handler.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;bosch_sensor_handler.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnss.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/gnss.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/gnss.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;var.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_usart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_usart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnss.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/gnss.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/gnss.h&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/main.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;var.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_crc.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_crc.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;memory.c&quot; tooltip=&quot;DoYeou_IMU_Firmware/src/tasks/memory.c&quot;>&#xA;&lt;persistable path=&quot;/DoYeou_IMU_Firmware/src/tasks/memory.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnssio.c&quot; tooltip=&quot;DoYeou_IMU_Firmware/src/tasks/gnssio.c&quot;>&#xA;&lt;persistable path=&quot;/DoYeou_IMU_Firmware/src/tasks/gnssio.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;interrupts.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/interrupts.c&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/interrupts.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;interrupts.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/interrupts.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/interrupts.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_exti.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;interrupt.c&quot; tooltip=&quot;DoYeou_IMU_Firmware/src/tasks/interrupt.c&quot;>&#xA;&lt;persistable path=&quot;/DoYeou_IMU_Firmware/src/tasks/interrupt.c&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;misc.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/misc.h&quot;>&#xA;&lt;persistable path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/misc.h&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;var.h&quot; tooltip=&quot;DoYeou_IMU_Firmware/src/tasks/var.h&quot;>&#xA;&lt;persistable path=&quot;/DoYeou_IMU_Firmware/src/tasks/var.h&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_MymLAe4BEeq00-T5hnKdjg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_MymLAu4BEeq00-T5hnKdjg" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
@@ -96,7 +96,7 @@
               <children xsi:type="advanced:Placeholder" xmi:id="_MymLCu4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_MymybO4BEeq00-T5hnKdjg"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_MymLC-4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.views.ContentOutline" ref="_MymywO4BEeq00-T5hnKdjg"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_MymLDO4BEeq00-T5hnKdjg" containerData="8895" selectedElement="_MymLDe4BEeq00-T5hnKdjg">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_MymLDO4BEeq00-T5hnKdjg" containerData="8895" selectedElement="_MymLE-4BEeq00-T5hnKdjg">
               <children xsi:type="basic:PartSashContainer" xmi:id="_MymLDe4BEeq00-T5hnKdjg" containerData="7500" selectedElement="_MymLDu4BEeq00-T5hnKdjg" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_MymLDu4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_MymM_O4BEeq00-T5hnKdjg">
                   <tags>Maximized</tags>
@@ -184,7 +184,7 @@
           <tags>persp.viewSC:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
           <tags>persp.showIn:org.eclipse.tm.terminal.view.ui.TerminalsView</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_MymLHu4BEeq00-T5hnKdjg" selectedElement="_MymLH-4BEeq00-T5hnKdjg" horizontal="true">
-            <children xsi:type="basic:PartSashContainer" xmi:id="_MymLH-4BEeq00-T5hnKdjg" containerData="6923" selectedElement="_MymLIO4BEeq00-T5hnKdjg">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_MymLH-4BEeq00-T5hnKdjg" containerData="6923" selectedElement="_MymLK-4BEeq00-T5hnKdjg">
               <children xsi:type="basic:PartSashContainer" xmi:id="_MymLIO4BEeq00-T5hnKdjg" containerData="2444" selectedElement="_MymLIe4BEeq00-T5hnKdjg" horizontal="true">
                 <children xsi:type="basic:PartSashContainer" xmi:id="_MymLIe4BEeq00-T5hnKdjg" containerData="6000" selectedElement="_MymLIu4BEeq00-T5hnKdjg" horizontal="true">
                   <children xsi:type="basic:PartStack" xmi:id="_MymLIu4BEeq00-T5hnKdjg" elementId="topLeft" containerData="5000" selectedElement="_MymLI-4BEeq00-T5hnKdjg">
@@ -276,16 +276,14 @@
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_MymM_O4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.editorss" selectedElement="_MymM_e4BEeq00-T5hnKdjg">
       <children xsi:type="basic:PartSashContainer" xmi:id="_MymM_e4BEeq00-T5hnKdjg" selectedElement="_MymM_u4BEeq00-T5hnKdjg" horizontal="true">
-        <children xsi:type="basic:PartStack" xmi:id="_MymM_u4BEeq00-T5hnKdjg" elementId="PartStack@12e08133" containerData="5722" selectedElement="_MymM_-4BEeq00-T5hnKdjg">
+        <children xsi:type="basic:PartStack" xmi:id="_MymM_u4BEeq00-T5hnKdjg" elementId="PartStack@12e08133" containerData="5722" selectedElement="_MymyLe4BEeq00-T5hnKdjg">
           <tags>active</tags>
           <tags>noFocus</tags>
           <children xsi:type="basic:Part" xmi:id="_MymM_-4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="main.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.c&quot; partName=&quot;main.c&quot; title=&quot;main.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/main.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1106&quot; selectionTopPixel=&quot;357&quot;/>&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.c&quot; partName=&quot;main.c&quot; title=&quot;main.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/main.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;602&quot; selectionTopPixel=&quot;327&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
-            <tags>active</tags>
-            <tags>activeOnClose</tags>
             <menus xsi:type="menu:PopupMenu" xmi:id="_MymNAO4BEeq00-T5hnKdjg" elementId="#CEditorContext">
               <tags>menuContribution:popup</tags>
               <tags>popup:#CEditorContext</tags>
@@ -336,7 +334,7 @@
             </menus>
           </children>
           <children xsi:type="basic:Part" xmi:id="_MymNCe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="main.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.h&quot; partName=&quot;main.h&quot; title=&quot;main.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/main.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;174&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;main.h&quot; partName=&quot;main.h&quot; title=&quot;main.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/main.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/main.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;228&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
@@ -373,33 +371,13 @@
               <tags>popup:#OverviewRulerContext</tags>
             </menus>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_MymNEO4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="gnss.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnss.c&quot; partName=&quot;gnss.c&quot; title=&quot;gnss.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/gnss.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/gnss.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;852&quot; selectionTopPixel=&quot;340&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymNEe4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyK-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyLO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
           <children xsi:type="basic:Part" xmi:id="_MymyLe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="uart.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.c&quot; partName=&quot;uart.c&quot; title=&quot;uart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;14774&quot; selectionTopPixel=&quot;6557&quot;/>&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.c&quot; partName=&quot;uart.c&quot; title=&quot;uart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;14580&quot; selectionTopPixel=&quot;6511&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
+            <tags>active</tags>
+            <tags>activeOnClose</tags>
             <menus xsi:type="menu:PopupMenu" xmi:id="_MymyLu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
               <tags>menuContribution:popup</tags>
               <tags>popup:#CEditorContext</tags>
@@ -417,70 +395,42 @@
               <tags>popup:#OverviewRulerContext</tags>
             </menus>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_MymyMe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="gnssio.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnssio.c&quot; partName=&quot;gnssio.c&quot; title=&quot;gnssio.c&quot; tooltip=&quot;DoYeou_IMU_Firmware/src/tasks/gnssio.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DoYeou_IMU_Firmware/src/tasks/gnssio.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;934&quot; selectionTopPixel=&quot;513&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyMu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyM-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyNO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_aR4XAPDoEeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_usart.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_usart.c&quot; partName=&quot;stm32f4xx_usart.c&quot; title=&quot;stm32f4xx_usart.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1194&quot; selectionTopPixel=&quot;294&quot;/>&#xA;&lt;/editor>"/>
+          <children xsi:type="basic:Part" xmi:id="_Z4qr0PwXEeqHDtfSOGWUew" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="interrupts.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;interrupts.c&quot; partName=&quot;interrupts.c&quot; title=&quot;interrupts.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/interrupts.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/interrupts.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2097&quot; selectionTopPixel=&quot;697&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_C-i5wPDwEeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_dma.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_dma.h&quot; partName=&quot;stm32f4xx_dma.h&quot; title=&quot;stm32f4xx_dma.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;9&quot; selectionOffset=&quot;20412&quot; selectionTopPixel=&quot;7157&quot;/>&#xA;&lt;/editor>"/>
+          <children xsi:type="basic:Part" xmi:id="_AGQ2wAGTEeuEsOU0Qh1-Zg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="uart.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.h&quot; partName=&quot;uart.h&quot; title=&quot;uart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;601&quot; selectionTopPixel=&quot;441&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_gchhEPD4Eeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_usart.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_usart.h&quot; partName=&quot;stm32f4xx_usart.h&quot; title=&quot;stm32f4xx_usart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;15&quot; selectionOffset=&quot;11781&quot; selectionTopPixel=&quot;4658&quot;/>&#xA;&lt;/editor>"/>
+          <children xsi:type="basic:Part" xmi:id="_DVdWoAGTEeuEsOU0Qh1-Zg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_crc.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_crc.h&quot; partName=&quot;stm32f4xx_crc.h&quot; title=&quot;stm32f4xx_crc.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1998&quot; selectionTopPixel=&quot;795&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
           </children>
-          <children xsi:type="basic:Part" xmi:id="_rB8WEPFEEeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_dma.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_dma.c&quot; partName=&quot;stm32f4xx_dma.c&quot; title=&quot;stm32f4xx_dma.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dma.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;21&quot; selectionOffset=&quot;51954&quot; selectionTopPixel=&quot;20787&quot;/>&#xA;&lt;/editor>"/>
+          <children xsi:type="basic:Part" xmi:id="_GG_DEAGTEeuEsOU0Qh1-Zg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx_crc.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx_crc.c&quot; partName=&quot;stm32f4xx_crc.c&quot; title=&quot;stm32f4xx_crc.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_crc.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2805&quot; selectionTopPixel=&quot;834&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_BncG0PFGEeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="stm32f4xx.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;stm32f4xx.h&quot; partName=&quot;stm32f4xx.h&quot; title=&quot;stm32f4xx.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/Libraries/Device/STM32F4xx/Include/stm32f4xx.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;17&quot; selectionOffset=&quot;8710&quot; selectionTopPixel=&quot;2737&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_17-v0PFGEeqpt9fsUI-vyQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="startup_stm32f40xx.s" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/s_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.asm.AsmEditor&quot; name=&quot;startup_stm32f40xx.s&quot; partName=&quot;startup_stm32f40xx.s&quot; title=&quot;startup_stm32f40xx.s&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/startup_stm32f40xx.s&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/startup_stm32f40xx.s&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3056&quot; selectionTopPixel=&quot;1275&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.asm.AsmEditor</tags>
             <tags>removeOnHide</tags>
           </children>
         </children>
         <children xsi:type="basic:PartStack" xmi:id="_MymyNe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.primaryDataStack" containerData="4278" selectedElement="_MymyNu4BEeq00-T5hnKdjg">
           <tags>org.eclipse.e4.primaryDataStack</tags>
           <tags>EditorStack</tags>
+          <children xsi:type="basic:Part" xmi:id="_cboX0PwXEeqHDtfSOGWUew" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="interrupts.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;interrupts.h&quot; partName=&quot;interrupts.h&quot; title=&quot;interrupts.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/interrupts.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/interrupts.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;594&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+            <tags>Editor</tags>
+            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
+            <tags>removeOnHide</tags>
+          </children>
           <children xsi:type="basic:Part" xmi:id="_MymyNu4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="var.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;var.h&quot; partName=&quot;var.h&quot; title=&quot;var.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3553&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
+            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;var.h&quot; partName=&quot;var.h&quot; title=&quot;var.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/var.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1730&quot; selectionTopPixel=&quot;771&quot;/>&#xA;&lt;/editor>"/>
             <tags>Editor</tags>
             <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
             <tags>removeOnHide</tags>
@@ -513,94 +463,6 @@
               <tags>popup:#AbstractTextEditorRulerContext</tags>
             </menus>
             <menus xsi:type="menu:PopupMenu" xmi:id="_MymyPO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_MymyPe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="uart.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;uart.h&quot; partName=&quot;uart.h&quot; title=&quot;uart.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/uart.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1241&quot; selectionTopPixel=&quot;425&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyPu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyP-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyQO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_MymyQe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="gnss.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;gnss.h&quot; partName=&quot;gnss.h&quot; title=&quot;gnss.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/gnss.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/gnss.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2530&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyQu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyQ-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyRO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_MymyRe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="bosch_sensor_handler.h" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;bosch_sensor_handler.h&quot; partName=&quot;bosch_sensor_handler.h&quot; title=&quot;bosch_sensor_handler.h&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.h&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.h&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;15&quot; selectionOffset=&quot;2874&quot; selectionTopPixel=&quot;1241&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyRu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyR-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymySO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#OverviewRulerContext</tags>
-            </menus>
-          </children>
-          <children xsi:type="basic:Part" xmi:id="_MymySe4BEeq00-T5hnKdjg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="bosch_sensor_handler.c" iconURI="platform:/plugin/org.eclipse.cdt.ui/icons/obj16/c_file_obj.gif" closeable="true">
-            <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.cdt.ui.editor.CEditor&quot; name=&quot;bosch_sensor_handler.c&quot; partName=&quot;bosch_sensor_handler.c&quot; title=&quot;bosch_sensor_handler.c&quot; tooltip=&quot;DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.c&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/DIMA_SensorBoard_Firmware/src/tasks/bosch_sensor_handler.c&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;6703&quot; selectionTopPixel=&quot;3570&quot;/>&#xA;&lt;/editor>"/>
-            <tags>Editor</tags>
-            <tags>org.eclipse.cdt.ui.editor.CEditor</tags>
-            <tags>removeOnHide</tags>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymySu4BEeq00-T5hnKdjg" elementId="#CEditorContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.EditorContext</tags>
-              <tags>popup:#AbstractTextEditorContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyS-4BEeq00-T5hnKdjg" elementId="#CEditorRulerContext">
-              <tags>menuContribution:popup</tags>
-              <tags>popup:#CEditorRulerContext</tags>
-              <tags>popup:org.eclipse.cdt.ui.editor.CEditor.RulerContext</tags>
-              <tags>popup:#AbstractTextEditorRulerContext</tags>
-            </menus>
-            <menus xsi:type="menu:PopupMenu" xmi:id="_MymyTO4BEeq00-T5hnKdjg" elementId="#OverviewRulerContext">
               <tags>menuContribution:popup</tags>
               <tags>popup:#OverviewRulerContext</tags>
             </menus>
@@ -1448,7 +1310,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Mym0Au4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_dmU74PRtEeq_P8LDf1BJzQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Myopze4BEeq00-T5hnKdjg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_EpUhUAGKEeuEsOU0Qh1-Zg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Myopze4BEeq00-T5hnKdjg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Mym0J-4BEeq00-T5hnKdjg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1472,7 +1334,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Mym0cO4BEeq00-T5hnKdjg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_dmXYIfRtEeq_P8LDf1BJzQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_MyopQe4BEeq00-T5hnKdjg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_EpoqYAGKEeuEsOU0Qh1-Zg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_MyopQe4BEeq00-T5hnKdjg"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Mym0ge4BEeq00-T5hnKdjg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>

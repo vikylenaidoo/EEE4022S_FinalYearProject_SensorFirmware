@@ -12,6 +12,7 @@
 #include "stm32f4xx_usart.h"
 #include "var.h"
 #include "gnss.h"
+#include "stm32f4xx_crc.h"
 //---------------------TASKS INCLUDES-----------------------------------//
 
 //---------------------PUBLIC DEFINES---------------------------------//
@@ -45,6 +46,8 @@ void uart_send(uint8_t data_out, UART_DeviceSelectTypeDef device);
 uint8_t uart_receive(UART_DeviceSelectTypeDef device);
 
 UART_StatusTypeDef uart_send_to_jetson();
+
+uint32_t CRC_calculate_8bit_datablock(uint8_t data[], uint8_t length);
 
 
 

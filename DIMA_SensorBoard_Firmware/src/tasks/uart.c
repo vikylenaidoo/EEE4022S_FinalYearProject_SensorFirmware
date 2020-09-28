@@ -354,11 +354,17 @@ static void initialise_uart_gnss(){
 	initialise_dma_gnss();
 }
 
+static void initialise_crc(){
+	RCC->AHB1ENR |= RCC_AHB1ENR_CRCEN;
+	CRC_ResetDR();
+}
+
 //--------------------------PUBLIC FUNCTIONS---------------------------------//
 
 void uart_initialise(){
 	initialise_uart_gnss();
 	initialise_uart_jetson();
+	initialise_crc();
 }
 
 
@@ -368,12 +374,20 @@ UART_StatusTypeDef uart_send_to_jetson(){
 	//GlobalData.start_token = '$';
 
 	//populate global data union
-	GlobalDataUnion.GlobalDataStruct.start_token = '$';
-	if(sensor_read_all() != SENS_OK)
+	GlobalDataUnion.GlobalDataStruct.start_token1 = '$';
+	GlobalDataUnion.GlobalDataStruct.start_token2 = '$';
+	if(sensor_read_all() != SENS_OK) //add data from sensors
 		return UART_SEND_ERROR;
 
-	if(gnss_read_new_data() != GNSS_OK)
+	if(gnss_read_new_data() != GNSS_OK) ///add data from gnss
 		return UART_SEND_ERROR;
+
+	//calculate checksum
+	uint8_t length = GLOBAL_DATA_BUFFER_SIZE - sizeof(uint32_t);
+	uint32_t crc = CRC_calculate_8bit_datablock(GlobalDataUnion.GlobalDataArray, length);
+	GlobalDataUnion.GlobalDataStruct.CRC32_CHECKSUM = crc;
+
+	//send data
 
 	uint16_t counter = DMA_GetCurrDataCounter(DMA_Stream_USART_JETSON_TX);
 	FlagStatus flag = DMA_GetFlagStatus(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX);
@@ -430,6 +444,15 @@ uint8_t uart_receive(UART_DeviceSelectTypeDef device){
 	return data;
 }
 
+uint32_t CRC_calculate_8bit_datablock(uint8_t data[], uint8_t length){
+	CRC_ResetDR();
+	uint8_t index = 0;
+
+	for(index = 0; index < length; index++){
+		CRC->DR = data[index];
+	}
+	return (CRC->DR);
+}
 
 //---------------------------------------INTERRUPT HANDLERS-----------------------------------///
 

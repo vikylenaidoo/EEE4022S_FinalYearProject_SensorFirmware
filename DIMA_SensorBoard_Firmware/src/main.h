@@ -11,5 +11,6 @@
 #include "tasks/bosch_sensor_handler.h"
 #include "tasks/uart.h"
 #include "tasks/gnss.h"
+#include "tasks/interrupts.h"
 
 #endif /* MAIN_H_ */
