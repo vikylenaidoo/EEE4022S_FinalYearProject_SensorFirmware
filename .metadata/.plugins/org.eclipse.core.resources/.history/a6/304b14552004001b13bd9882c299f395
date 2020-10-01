@@ -60,7 +60,7 @@
 #define RCC_APBPeriph_USART_JETSON	   			RCC_APB1Periph_USART3
 #define RCC_AHBPeriph_USART_JETSON   			RCC_AHB1Periph_GPIOD
 #define USART_JETSON							USART3
-#define USART_BaudRate_JETSON					460800//115200
+#define USART_BaudRate_JETSON					57600//115200
 
 #define GPIO_USART_JETSON						GPIOD
 #define GPIO_Pin_USART_JETSON_TX				GPIO_Pin_8
@@ -273,17 +273,11 @@ static void initialise_uart_jetson(){
 	/* -------------USART3 configuration-------------------- */
 	USART_InitStructure.USART_Mode = USART_Mode_Tx|USART_Mode_Rx;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_2;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
 	USART_InitStructure.USART_BaudRate = USART_BaudRate_JETSON;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-
-	//oversampling
-	//USART_OverSampling8Cmd(USART_JETSON, ENABLE);
-
 	USART_Init(USART_JETSON, &USART_InitStructure);
-
-
 
 	//Enable UART 1
 	USART_Cmd(USART_JETSON, ENABLE);

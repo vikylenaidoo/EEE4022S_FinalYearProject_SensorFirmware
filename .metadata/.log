@@ -3782,3 +3782,96 @@ Binding(ALT+CTRL+T,
 
 !ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 16:56:07.950
 !MESSAGE Unloading product manager
+!SESSION 2020-09-28 17:24:30.825 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_ZA
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 17:24:37.293
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 17:24:37.318
+!MESSAGE OS info: Linux, 5.4.0-48-generic, amd64
+
+!ENTRY TrueSTUDIO 1 0 2020-09-28 17:24:38.760
+!MESSAGE Target: STM32, Version: 9.0.0, Build date: 20180117-1023, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-09-28 17:24:38.760
+!MESSAGE Workspace: /media/vikylenaidoo/Data/Documents/UCT/4/EEE4022S/source_code
+
+!ENTRY org.eclipse.jface 2 0 2020-09-28 17:24:41.821
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-09-28 17:24:41.821
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c82ad22,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f80d8c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-09-28 17:24:46.528
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-09-28 17:24:46.712
+!MESSAGE Code Review is up.
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 17:25:43.287
+!MESSAGE Unloading product manager
+!SESSION 2020-09-28 17:42:39.788 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_ZA
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 17:42:44.314
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-09-28 17:42:44.325
+!MESSAGE OS info: Linux, 5.4.0-48-generic, amd64
+
+!ENTRY TrueSTUDIO 1 0 2020-09-28 17:42:46.625
+!MESSAGE Target: STM32, Version: 9.0.0, Build date: 20180117-1023, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.0.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-09-28 17:42:46.625
+!MESSAGE Workspace: /media/vikylenaidoo/Data/Documents/UCT/4/EEE4022S/source_code
+
+!ENTRY org.eclipse.jface 2 0 2020-09-28 17:42:50.096
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-09-28 17:42:50.096
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@c82ad22,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3f80d8c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-09-28 17:42:58.352
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-09-28 17:42:58.495
+!MESSAGE Code Review is up.
