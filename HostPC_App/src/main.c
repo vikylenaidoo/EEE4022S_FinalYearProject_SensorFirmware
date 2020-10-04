@@ -8,15 +8,16 @@ int main(){
         return 1;
     }
 
+    /*
     printf("------------------2nd serial device--------------\n");
     int serial_port_2 = serial_setup();
     if(serial_port_2 < 0){
         serial_close(serial_port_1);
         return 1;
-    }
+    }*/
 
 
-    printf("p1: %d \np2: %d\n", serial_port_1, serial_port_2);
+    printf("p1: %d \n", serial_port_1);
 
 
     isActive=1;
@@ -35,6 +36,7 @@ int main(){
         //write message
         int w = serial_write(serial_port_1, message, strlen(message));
 
+        /*
         //read message
         char read_buffer[256];
         memset(&read_buffer, '\0', sizeof(read_buffer));
@@ -42,11 +44,11 @@ int main(){
         //int n = read(serial_port_2, &read_buffer, sizeof(read_buffer));
         int n = serial_read(serial_port_2, read_buffer, sizeof(read_buffer));
         printf("data read %d bytes from serial2: \n%s \n",n , read_buffer);
-        
+        */
     }
 
     serial_close(serial_port_1);
-    serial_close(serial_port_2);
+    //serial_close(serial_port_2);
     return 0;
 }
 
