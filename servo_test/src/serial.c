@@ -8,7 +8,8 @@
 
 int serial_setup(){
     printf("---------------starting serial setup--------------\n");
-
+    
+    /*
     //get serial device from user
     printf("Please enter the serial device: eg. ttyUSB0\n");
     char input_serial_name[16];
@@ -19,6 +20,7 @@ int serial_setup(){
     char serial_name[32];
     strcpy(serial_name, "/dev/");
     strcat(serial_name, input_serial_name);
+    */
     
     //int *serial_port = &serial_port_1;
 
@@ -26,13 +28,13 @@ int serial_setup(){
         serial_port = &serial_port_2;
     }*/
 
-    int serial_port = open(serial_name, O_RDWR);
+    int serial_port = open("/dev/ttyACM0", O_RDWR);
 
     //printf("-------serial port: %d\n", serial_port_1);
 
     //check for error
     if (serial_port < 0) {
-        printf("The serial device %s is invalid, exiting program\n", input_serial_name);
+        //printf("The serial device %s is invalid, exiting program\n", input_serial_name);
         printf("Error %i from open: %s\n", errno, strerror(errno));
         return -1;
     }
@@ -70,7 +72,7 @@ int serial_setup(){
     tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
 
     //configure tty timeouts: no blocking, return immediately what is available
-    tty.c_cc[VTIME] = 5;
+    tty.c_cc[VTIME] = 1;
     tty.c_cc[VMIN] = 0;
 
     // Set in/out baud rate to be 9600
@@ -83,7 +85,7 @@ int serial_setup(){
         return -1;
     }
 
-    printf("The serial device %s is successfully open and setup on port %d\n", serial_name, serial_port);
+    printf("The serial device is successfully open and setup on port %d\n", serial_port);
     return serial_port;
 }
 
@@ -93,7 +95,7 @@ void serial_close(int sp){
 
 }
 
-int serial_write(int serial_port, char data[], size_t length){
+int serial_write(int serial_port, void *data, size_t length){
     return write(serial_port, data, length);
 
 }

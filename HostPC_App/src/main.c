@@ -14,15 +14,16 @@ int main(){
     if(serial_port_2 < 0){
         serial_close(serial_port_1);
         return 1;
-    }*/
-
+    }
+    */
 
     printf("p1: %d \n", serial_port_1);
+    //printf("p2: %d \n", serial_port_2);
 
 
     isActive=1;
     while(isActive){
-        printf("Enter message to send, type quit to exit\n");
+ /*       printf("Enter message to send, type quit to exit\n");
         char message[64];
         scanf("%s", message);
 
@@ -30,21 +31,31 @@ int main(){
             isActive=0;
             break;
         }
-
+ */   
         //printf("length of %s is %d \n", message, (int)strlen(message));
+            
 
         //write message
+        char message[] = "test"; //{'a', 'a'};
+        //int w = serial_write(serial_port_1, message, 2);
+        
         int w = serial_write(serial_port_1, message, strlen(message));
 
-        /*
+        
+        //printf("%s\n", message);
+
+/*        
         //read message
-        char read_buffer[256];
+        char read_buffer[64];
         memset(&read_buffer, '\0', sizeof(read_buffer));
 
         //int n = read(serial_port_2, &read_buffer, sizeof(read_buffer));
         int n = serial_read(serial_port_2, read_buffer, sizeof(read_buffer));
-        printf("data read %d bytes from serial2: \n%s \n",n , read_buffer);
-        */
+        if(n){
+            printf("data read %d bytes from serial: \n%s \n",n , read_buffer);
+        }
+*/      
+        usleep(200000);        
     }
 
     serial_close(serial_port_1);
