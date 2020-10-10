@@ -386,9 +386,7 @@ UART_StatusTypeDef uart_send_to_jetson(){
 		return UART_SEND_ERROR;
 
 	if(gnss_read_new_data() != GNSS_OK) ///add data from gnss
-		;
-		//return UART_SEND_ERROR; //maybe stil send data without updating gnss instead
-
+		return UART_SEND_ERROR;
 
 	//calculate checksum
 	uint8_t length = GLOBAL_DATA_BUFFER_SIZE - sizeof(uint32_t);

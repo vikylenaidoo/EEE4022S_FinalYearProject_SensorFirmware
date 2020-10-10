@@ -5,15 +5,15 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   00000188  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         00002030  08000188  08000188  00010188  2**2
+  1 .text         00002024  08000188  08000188  00010188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000000  080021b8  080021b8  00020010  2**0
+  2 .rodata       00000000  080021ac  080021ac  00020010  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .init_array   00000004  080021b8  080021b8  000121b8  2**2
+  3 .init_array   00000004  080021ac  080021ac  000121ac  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  4 .fini_array   00000004  080021bc  080021bc  000121bc  2**2
+  4 .fini_array   00000004  080021b0  080021b0  000121b0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  5 .data         00000010  20000000  080021c0  00020000  2**2
+  5 .data         00000010  20000000  080021b4  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   6 .ccmram       00000000  10000000  10000000  00020010  2**0
                   CONTENTS
@@ -31,11 +31,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_ranges 00000718  00000000  00000000  000296a8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   0000333e  00000000  00000000  00029dc0  2**0
+ 14 .debug_line   0000333f  00000000  00000000  00029dc0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    00002b2b  00000000  00000000  0002d0fe  2**0
+ 15 .debug_str    00002b2b  00000000  00000000  0002d0ff  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .comment      0000007c  00000000  00000000  0002fc29  2**0
+ 16 .comment      0000007c  00000000  00000000  0002fc2a  2**0
                   CONTENTS, READONLY
  17 .debug_frame  00001fec  00000000  00000000  0002fca8  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -58,7 +58,7 @@ Disassembly of section .text:
  800019e:	bd10      	pop	{r4, pc}
  80001a0:	20000010 	.word	0x20000010
  80001a4:	00000000 	.word	0x00000000
- 80001a8:	080021a0 	.word	0x080021a0
+ 80001a8:	08002194 	.word	0x08002194
 
 080001ac <frame_dummy>:
  80001ac:	b508      	push	{r3, lr}
@@ -70,7 +70,7 @@ Disassembly of section .text:
  80001ba:	bd08      	pop	{r3, pc}
  80001bc:	00000000 	.word	0x00000000
  80001c0:	20000014 	.word	0x20000014
- 80001c4:	080021a0 	.word	0x080021a0
+ 80001c4:	08002194 	.word	0x08002194
 
 080001c8 <NVIC_Init>:
   * @param  NVIC_InitStruct: pointer to a NVIC_InitTypeDef structure that contains
@@ -3127,7 +3127,7 @@ LoopFillZerobss:
  8001186:	f000 f841 	bl	800120c <SystemInit>
 /* Call static constructors */
     bl __libc_init_array
- 800118a:	f000 ffe5 	bl	8002158 <__libc_init_array>
+ 800118a:	f000 ffdf 	bl	800214c <__libc_init_array>
 /* Call the application's entry point.*/
   bl  main
  800118e:	f7ff ffcf 	bl	8001130 <main>
@@ -3136,7 +3136,7 @@ LoopFillZerobss:
   ldr   sp, =_estack    /* Atollic update: set stack pointer */
  8001194:	20020000 	.word	0x20020000
   ldr  r3, =_sidata
- 8001198:	080021c0 	.word	0x080021c0
+ 8001198:	080021b4 	.word	0x080021b4
   ldr  r0, =_sdata
  800119c:	20000000 	.word	0x20000000
   ldr  r3, =_edata
@@ -4346,6 +4346,7 @@ GNSS_StatusTypeDef gnss_read_new_data(){
  80017a6:	2302      	movs	r3, #2
  80017a8:	e011      	b.n	80017ce <gnss_read_new_data+0x3e>
 
+
 	//copy full ubx message to global data struct
 	for(uint8_t i=0; i<GNSS_BUFFER_SIZE; i++){
  80017aa:	2300      	movs	r3, #0
@@ -4367,7 +4368,10 @@ GNSS_StatusTypeDef gnss_read_new_data(){
  80017c6:	79fb      	ldrb	r3, [r7, #7]
  80017c8:	2b63      	cmp	r3, #99	; 0x63
  80017ca:	d9f1      	bls.n	80017b0 <gnss_read_new_data+0x20>
+		}
+
 	}
+	*/
 
 	return GNSS_OK;
  80017cc:	2300      	movs	r3, #0
@@ -5771,11 +5775,11 @@ UART_StatusTypeDef uart_send_to_jetson(){
 
 	//populate global data union
 	GlobalDataUnion.GlobalDataStruct.start_token1 = '$';
- 8001fca:	4b30      	ldr	r3, [pc, #192]	; (800208c <uart_send_to_jetson+0xc8>)
+ 8001fca:	4b2d      	ldr	r3, [pc, #180]	; (8002080 <uart_send_to_jetson+0xbc>)
  8001fcc:	2224      	movs	r2, #36	; 0x24
  8001fce:	701a      	strb	r2, [r3, #0]
 	GlobalDataUnion.GlobalDataStruct.start_token2 = '$';
- 8001fd0:	4b2e      	ldr	r3, [pc, #184]	; (800208c <uart_send_to_jetson+0xc8>)
+ 8001fd0:	4b2b      	ldr	r3, [pc, #172]	; (8002080 <uart_send_to_jetson+0xbc>)
  8001fd2:	2224      	movs	r2, #36	; 0x24
  8001fd4:	705a      	strb	r2, [r3, #1]
 	if(sensor_read_all() != SENS_OK) //add data from sensors
@@ -5785,304 +5789,300 @@ UART_StatusTypeDef uart_send_to_jetson(){
  8001fde:	d001      	beq.n	8001fe4 <uart_send_to_jetson+0x20>
 		return UART_SEND_ERROR;
  8001fe0:	2303      	movs	r3, #3
- 8001fe2:	e04e      	b.n	8002082 <uart_send_to_jetson+0xbe>
+ 8001fe2:	e049      	b.n	8002078 <uart_send_to_jetson+0xb4>
 
 	if(gnss_read_new_data() != GNSS_OK) ///add data from gnss
  8001fe4:	f7ff fbd4 	bl	8001790 <gnss_read_new_data>
- 8001fe8:	4603      	mov	r3, r0
- 8001fea:	2b00      	cmp	r3, #0
- 8001fec:	d001      	beq.n	8001ff2 <uart_send_to_jetson+0x2e>
-		return UART_SEND_ERROR;
- 8001fee:	2303      	movs	r3, #3
- 8001ff0:	e047      	b.n	8002082 <uart_send_to_jetson+0xbe>
+		;
+		//return UART_SEND_ERROR; //maybe stil send data without updating gnss instead
+
 
 	//calculate checksum
 	uint8_t length = GLOBAL_DATA_BUFFER_SIZE - sizeof(uint32_t);
- 8001ff2:	2380      	movs	r3, #128	; 0x80
- 8001ff4:	73fb      	strb	r3, [r7, #15]
+ 8001fe8:	2380      	movs	r3, #128	; 0x80
+ 8001fea:	73fb      	strb	r3, [r7, #15]
 	uint32_t crc = CRC_calculate_8bit_datablock(GlobalDataUnion.GlobalDataArray, length);
- 8001ff6:	7bfb      	ldrb	r3, [r7, #15]
- 8001ff8:	4619      	mov	r1, r3
- 8001ffa:	4824      	ldr	r0, [pc, #144]	; (800208c <uart_send_to_jetson+0xc8>)
- 8001ffc:	f000 f84a 	bl	8002094 <CRC_calculate_8bit_datablock>
- 8002000:	60b8      	str	r0, [r7, #8]
+ 8001fec:	7bfb      	ldrb	r3, [r7, #15]
+ 8001fee:	4619      	mov	r1, r3
+ 8001ff0:	4823      	ldr	r0, [pc, #140]	; (8002080 <uart_send_to_jetson+0xbc>)
+ 8001ff2:	f000 f849 	bl	8002088 <CRC_calculate_8bit_datablock>
+ 8001ff6:	60b8      	str	r0, [r7, #8]
 	GlobalDataUnion.GlobalDataStruct.CRC32_CHECKSUM = crc;
- 8002002:	4a22      	ldr	r2, [pc, #136]	; (800208c <uart_send_to_jetson+0xc8>)
- 8002004:	68bb      	ldr	r3, [r7, #8]
- 8002006:	f8c2 3080 	str.w	r3, [r2, #128]	; 0x80
+ 8001ff8:	4a21      	ldr	r2, [pc, #132]	; (8002080 <uart_send_to_jetson+0xbc>)
+ 8001ffa:	68bb      	ldr	r3, [r7, #8]
+ 8001ffc:	f8c2 3080 	str.w	r3, [r2, #128]	; 0x80
 
 	//send data
 
 	uint16_t counter = DMA_GetCurrDataCounter(DMA_Stream_USART_JETSON_TX);
- 800200a:	4821      	ldr	r0, [pc, #132]	; (8002090 <uart_send_to_jetson+0xcc>)
- 800200c:	f7fe faa1 	bl	8000552 <DMA_GetCurrDataCounter>
- 8002010:	4603      	mov	r3, r0
- 8002012:	80fb      	strh	r3, [r7, #6]
+ 8002000:	4820      	ldr	r0, [pc, #128]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002002:	f7fe faa6 	bl	8000552 <DMA_GetCurrDataCounter>
+ 8002006:	4603      	mov	r3, r0
+ 8002008:	80fb      	strh	r3, [r7, #6]
 	FlagStatus flag = DMA_GetFlagStatus(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX);
- 8002014:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
- 8002018:	481d      	ldr	r0, [pc, #116]	; (8002090 <uart_send_to_jetson+0xcc>)
- 800201a:	f7fe fabf 	bl	800059c <DMA_GetFlagStatus>
- 800201e:	4603      	mov	r3, r0
- 8002020:	717b      	strb	r3, [r7, #5]
+ 800200a:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
+ 800200e:	481d      	ldr	r0, [pc, #116]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002010:	f7fe fac4 	bl	800059c <DMA_GetFlagStatus>
+ 8002014:	4603      	mov	r3, r0
+ 8002016:	717b      	strb	r3, [r7, #5]
 	FunctionalState status = DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX);
- 8002022:	481b      	ldr	r0, [pc, #108]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002024:	f7fe faa2 	bl	800056c <DMA_GetCmdStatus>
- 8002028:	4603      	mov	r3, r0
- 800202a:	713b      	strb	r3, [r7, #4]
+ 8002018:	481a      	ldr	r0, [pc, #104]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 800201a:	f7fe faa7 	bl	800056c <DMA_GetCmdStatus>
+ 800201e:	4603      	mov	r3, r0
+ 8002020:	713b      	strb	r3, [r7, #4]
 
 	if(DMA_GetFlagStatus(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX)){
- 800202c:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
- 8002030:	4817      	ldr	r0, [pc, #92]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002032:	f7fe fab3 	bl	800059c <DMA_GetFlagStatus>
- 8002036:	4603      	mov	r3, r0
- 8002038:	2b00      	cmp	r3, #0
- 800203a:	d01f      	beq.n	800207c <uart_send_to_jetson+0xb8>
+ 8002022:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
+ 8002026:	4817      	ldr	r0, [pc, #92]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002028:	f7fe fab8 	bl	800059c <DMA_GetFlagStatus>
+ 800202c:	4603      	mov	r3, r0
+ 800202e:	2b00      	cmp	r3, #0
+ 8002030:	d01f      	beq.n	8002072 <uart_send_to_jetson+0xae>
 
 		//disable the dma
 		DMA_Cmd(DMA_Stream_USART_JETSON_TX, DISABLE);
- 800203c:	2100      	movs	r1, #0
- 800203e:	4814      	ldr	r0, [pc, #80]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002040:	f7fe fa5c 	bl	80004fc <DMA_Cmd>
+ 8002032:	2100      	movs	r1, #0
+ 8002034:	4813      	ldr	r0, [pc, #76]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002036:	f7fe fa61 	bl	80004fc <DMA_Cmd>
 		while(DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX) != DISABLE){;}
- 8002044:	bf00      	nop
- 8002046:	4812      	ldr	r0, [pc, #72]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002048:	f7fe fa90 	bl	800056c <DMA_GetCmdStatus>
- 800204c:	4603      	mov	r3, r0
- 800204e:	2b00      	cmp	r3, #0
- 8002050:	d1f9      	bne.n	8002046 <uart_send_to_jetson+0x82>
+ 800203a:	bf00      	nop
+ 800203c:	4811      	ldr	r0, [pc, #68]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 800203e:	f7fe fa95 	bl	800056c <DMA_GetCmdStatus>
+ 8002042:	4603      	mov	r3, r0
+ 8002044:	2b00      	cmp	r3, #0
+ 8002046:	d1f9      	bne.n	800203c <uart_send_to_jetson+0x78>
 
 		//clear dma tc flag
 		DMA_ClearFlag(DMA_Stream_USART_JETSON_TX, DMA_FLAG_TC_JETSON_TX);
- 8002052:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
- 8002056:	480e      	ldr	r0, [pc, #56]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002058:	f7fe fadc 	bl	8000614 <DMA_ClearFlag>
+ 8002048:	f04f 51c0 	mov.w	r1, #402653184	; 0x18000000
+ 800204c:	480d      	ldr	r0, [pc, #52]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 800204e:	f7fe fae1 	bl	8000614 <DMA_ClearFlag>
 		//DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX);
 
 		//reset the dma & enable
 		DMA_SetCurrDataCounter(DMA_Stream_USART_JETSON_TX, GLOBAL_DATA_BUFFER_SIZE);
- 800205c:	2184      	movs	r1, #132	; 0x84
- 800205e:	480c      	ldr	r0, [pc, #48]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002060:	f7fe fa68 	bl	8000534 <DMA_SetCurrDataCounter>
+ 8002052:	2184      	movs	r1, #132	; 0x84
+ 8002054:	480b      	ldr	r0, [pc, #44]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002056:	f7fe fa6d 	bl	8000534 <DMA_SetCurrDataCounter>
 		DMA_Cmd(DMA_Stream_USART_JETSON_TX, ENABLE);
- 8002064:	2101      	movs	r1, #1
- 8002066:	480a      	ldr	r0, [pc, #40]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002068:	f7fe fa48 	bl	80004fc <DMA_Cmd>
+ 800205a:	2101      	movs	r1, #1
+ 800205c:	4809      	ldr	r0, [pc, #36]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 800205e:	f7fe fa4d 	bl	80004fc <DMA_Cmd>
 		while(DMA_GetCmdStatus(DMA_Stream_USART_JETSON_TX) != ENABLE){;}
- 800206c:	bf00      	nop
- 800206e:	4808      	ldr	r0, [pc, #32]	; (8002090 <uart_send_to_jetson+0xcc>)
- 8002070:	f7fe fa7c 	bl	800056c <DMA_GetCmdStatus>
- 8002074:	4603      	mov	r3, r0
- 8002076:	2b01      	cmp	r3, #1
- 8002078:	d1f9      	bne.n	800206e <uart_send_to_jetson+0xaa>
- 800207a:	e001      	b.n	8002080 <uart_send_to_jetson+0xbc>
+ 8002062:	bf00      	nop
+ 8002064:	4807      	ldr	r0, [pc, #28]	; (8002084 <uart_send_to_jetson+0xc0>)
+ 8002066:	f7fe fa81 	bl	800056c <DMA_GetCmdStatus>
+ 800206a:	4603      	mov	r3, r0
+ 800206c:	2b01      	cmp	r3, #1
+ 800206e:	d1f9      	bne.n	8002064 <uart_send_to_jetson+0xa0>
+ 8002070:	e001      	b.n	8002076 <uart_send_to_jetson+0xb2>
 
 
 	}
 	else{
 		return UART_SEND_ERROR;
- 800207c:	2303      	movs	r3, #3
- 800207e:	e000      	b.n	8002082 <uart_send_to_jetson+0xbe>
+ 8002072:	2303      	movs	r3, #3
+ 8002074:	e000      	b.n	8002078 <uart_send_to_jetson+0xb4>
 	}
 
 	return UART_OK;
- 8002080:	2300      	movs	r3, #0
+ 8002076:	2300      	movs	r3, #0
 
 }
- 8002082:	4618      	mov	r0, r3
- 8002084:	3710      	adds	r7, #16
- 8002086:	46bd      	mov	sp, r7
- 8002088:	bd80      	pop	{r7, pc}
- 800208a:	bf00      	nop
- 800208c:	200000cc 	.word	0x200000cc
- 8002090:	40026058 	.word	0x40026058
+ 8002078:	4618      	mov	r0, r3
+ 800207a:	3710      	adds	r7, #16
+ 800207c:	46bd      	mov	sp, r7
+ 800207e:	bd80      	pop	{r7, pc}
+ 8002080:	200000cc 	.word	0x200000cc
+ 8002084:	40026058 	.word	0x40026058
 
-08002094 <CRC_calculate_8bit_datablock>:
+08002088 <CRC_calculate_8bit_datablock>:
 	}
 
 	return data;
 }
 
 uint32_t CRC_calculate_8bit_datablock(uint8_t data[], uint8_t length){
- 8002094:	b580      	push	{r7, lr}
- 8002096:	b084      	sub	sp, #16
- 8002098:	af00      	add	r7, sp, #0
- 800209a:	6078      	str	r0, [r7, #4]
- 800209c:	460b      	mov	r3, r1
- 800209e:	70fb      	strb	r3, [r7, #3]
+ 8002088:	b580      	push	{r7, lr}
+ 800208a:	b084      	sub	sp, #16
+ 800208c:	af00      	add	r7, sp, #0
+ 800208e:	6078      	str	r0, [r7, #4]
+ 8002090:	460b      	mov	r3, r1
+ 8002092:	70fb      	strb	r3, [r7, #3]
 	CRC_ResetDR();
- 80020a0:	f7fe f8f4 	bl	800028c <CRC_ResetDR>
+ 8002094:	f7fe f8fa 	bl	800028c <CRC_ResetDR>
 	uint8_t index = 0;
- 80020a4:	2300      	movs	r3, #0
- 80020a6:	73fb      	strb	r3, [r7, #15]
+ 8002098:	2300      	movs	r3, #0
+ 800209a:	73fb      	strb	r3, [r7, #15]
 
 	for(index = 0; index < length; index++){
- 80020a8:	2300      	movs	r3, #0
- 80020aa:	73fb      	strb	r3, [r7, #15]
- 80020ac:	e008      	b.n	80020c0 <CRC_calculate_8bit_datablock+0x2c>
+ 800209c:	2300      	movs	r3, #0
+ 800209e:	73fb      	strb	r3, [r7, #15]
+ 80020a0:	e008      	b.n	80020b4 <CRC_calculate_8bit_datablock+0x2c>
 		CRC->DR = data[index];
- 80020ae:	4909      	ldr	r1, [pc, #36]	; (80020d4 <CRC_calculate_8bit_datablock+0x40>)
- 80020b0:	7bfb      	ldrb	r3, [r7, #15]
- 80020b2:	687a      	ldr	r2, [r7, #4]
- 80020b4:	4413      	add	r3, r2
- 80020b6:	781b      	ldrb	r3, [r3, #0]
- 80020b8:	600b      	str	r3, [r1, #0]
+ 80020a2:	4909      	ldr	r1, [pc, #36]	; (80020c8 <CRC_calculate_8bit_datablock+0x40>)
+ 80020a4:	7bfb      	ldrb	r3, [r7, #15]
+ 80020a6:	687a      	ldr	r2, [r7, #4]
+ 80020a8:	4413      	add	r3, r2
+ 80020aa:	781b      	ldrb	r3, [r3, #0]
+ 80020ac:	600b      	str	r3, [r1, #0]
 	for(index = 0; index < length; index++){
- 80020ba:	7bfb      	ldrb	r3, [r7, #15]
- 80020bc:	3301      	adds	r3, #1
- 80020be:	73fb      	strb	r3, [r7, #15]
- 80020c0:	7bfa      	ldrb	r2, [r7, #15]
- 80020c2:	78fb      	ldrb	r3, [r7, #3]
- 80020c4:	429a      	cmp	r2, r3
- 80020c6:	d3f2      	bcc.n	80020ae <CRC_calculate_8bit_datablock+0x1a>
+ 80020ae:	7bfb      	ldrb	r3, [r7, #15]
+ 80020b0:	3301      	adds	r3, #1
+ 80020b2:	73fb      	strb	r3, [r7, #15]
+ 80020b4:	7bfa      	ldrb	r2, [r7, #15]
+ 80020b6:	78fb      	ldrb	r3, [r7, #3]
+ 80020b8:	429a      	cmp	r2, r3
+ 80020ba:	d3f2      	bcc.n	80020a2 <CRC_calculate_8bit_datablock+0x1a>
 	}
 	return (CRC->DR);
- 80020c8:	4b02      	ldr	r3, [pc, #8]	; (80020d4 <CRC_calculate_8bit_datablock+0x40>)
- 80020ca:	681b      	ldr	r3, [r3, #0]
+ 80020bc:	4b02      	ldr	r3, [pc, #8]	; (80020c8 <CRC_calculate_8bit_datablock+0x40>)
+ 80020be:	681b      	ldr	r3, [r3, #0]
 }
- 80020cc:	4618      	mov	r0, r3
- 80020ce:	3710      	adds	r7, #16
- 80020d0:	46bd      	mov	sp, r7
- 80020d2:	bd80      	pop	{r7, pc}
- 80020d4:	40023000 	.word	0x40023000
+ 80020c0:	4618      	mov	r0, r3
+ 80020c2:	3710      	adds	r7, #16
+ 80020c4:	46bd      	mov	sp, r7
+ 80020c6:	bd80      	pop	{r7, pc}
+ 80020c8:	40023000 	.word	0x40023000
 
-080020d8 <DMA1_Stream3_IRQHandler>:
+080020cc <DMA1_Stream3_IRQHandler>:
 
 //---------------------------------------INTERRUPT HANDLERS-----------------------------------///
 
 void DMA_JETSON_TX_IRQHandler(void){
- 80020d8:	b580      	push	{r7, lr}
- 80020da:	af00      	add	r7, sp, #0
+ 80020cc:	b580      	push	{r7, lr}
+ 80020ce:	af00      	add	r7, sp, #0
 
 	/*transfer complete*/
 	if(DMA_GetITStatus(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX)){
- 80020dc:	490b      	ldr	r1, [pc, #44]	; (800210c <DMA1_Stream3_IRQHandler+0x34>)
- 80020de:	480c      	ldr	r0, [pc, #48]	; (8002110 <DMA1_Stream3_IRQHandler+0x38>)
- 80020e0:	f7fe fb00 	bl	80006e4 <DMA_GetITStatus>
- 80020e4:	4603      	mov	r3, r0
- 80020e6:	2b00      	cmp	r3, #0
- 80020e8:	d003      	beq.n	80020f2 <DMA1_Stream3_IRQHandler+0x1a>
+ 80020d0:	490b      	ldr	r1, [pc, #44]	; (8002100 <DMA1_Stream3_IRQHandler+0x34>)
+ 80020d2:	480c      	ldr	r0, [pc, #48]	; (8002104 <DMA1_Stream3_IRQHandler+0x38>)
+ 80020d4:	f7fe fb06 	bl	80006e4 <DMA_GetITStatus>
+ 80020d8:	4603      	mov	r3, r0
+ 80020da:	2b00      	cmp	r3, #0
+ 80020dc:	d003      	beq.n	80020e6 <DMA1_Stream3_IRQHandler+0x1a>
 		DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TC_JETSON_TX);
- 80020ea:	4908      	ldr	r1, [pc, #32]	; (800210c <DMA1_Stream3_IRQHandler+0x34>)
- 80020ec:	4808      	ldr	r0, [pc, #32]	; (8002110 <DMA1_Stream3_IRQHandler+0x38>)
- 80020ee:	f7fe fb51 	bl	8000794 <DMA_ClearITPendingBit>
+ 80020de:	4908      	ldr	r1, [pc, #32]	; (8002100 <DMA1_Stream3_IRQHandler+0x34>)
+ 80020e0:	4808      	ldr	r0, [pc, #32]	; (8002104 <DMA1_Stream3_IRQHandler+0x38>)
+ 80020e2:	f7fe fb57 	bl	8000794 <DMA_ClearITPendingBit>
 	}
 
 	/*transfer error*/
 	if(DMA_GetITStatus(DMA_Stream_USART_JETSON_TX, DMA_IT_TE)){
- 80020f2:	2104      	movs	r1, #4
- 80020f4:	4806      	ldr	r0, [pc, #24]	; (8002110 <DMA1_Stream3_IRQHandler+0x38>)
- 80020f6:	f7fe faf5 	bl	80006e4 <DMA_GetITStatus>
- 80020fa:	4603      	mov	r3, r0
- 80020fc:	2b00      	cmp	r3, #0
- 80020fe:	d003      	beq.n	8002108 <DMA1_Stream3_IRQHandler+0x30>
+ 80020e6:	2104      	movs	r1, #4
+ 80020e8:	4806      	ldr	r0, [pc, #24]	; (8002104 <DMA1_Stream3_IRQHandler+0x38>)
+ 80020ea:	f7fe fafb 	bl	80006e4 <DMA_GetITStatus>
+ 80020ee:	4603      	mov	r3, r0
+ 80020f0:	2b00      	cmp	r3, #0
+ 80020f2:	d003      	beq.n	80020fc <DMA1_Stream3_IRQHandler+0x30>
 		DMA_ClearITPendingBit(DMA_Stream_USART_JETSON_TX, DMA_IT_TE);
- 8002100:	2104      	movs	r1, #4
- 8002102:	4803      	ldr	r0, [pc, #12]	; (8002110 <DMA1_Stream3_IRQHandler+0x38>)
- 8002104:	f7fe fb46 	bl	8000794 <DMA_ClearITPendingBit>
+ 80020f4:	2104      	movs	r1, #4
+ 80020f6:	4803      	ldr	r0, [pc, #12]	; (8002104 <DMA1_Stream3_IRQHandler+0x38>)
+ 80020f8:	f7fe fb4c 	bl	8000794 <DMA_ClearITPendingBit>
 	}
 
 }
- 8002108:	bf00      	nop
- 800210a:	bd80      	pop	{r7, pc}
- 800210c:	18008000 	.word	0x18008000
- 8002110:	40026058 	.word	0x40026058
+ 80020fc:	bf00      	nop
+ 80020fe:	bd80      	pop	{r7, pc}
+ 8002100:	18008000 	.word	0x18008000
+ 8002104:	40026058 	.word	0x40026058
 
-08002114 <DMA2_Stream2_IRQHandler>:
+08002108 <DMA2_Stream2_IRQHandler>:
 
 
 //DMA UART TO MEM INTERRUPTS
 void DMA_GNSS_RX_IRQHandler(void){
- 8002114:	b580      	push	{r7, lr}
- 8002116:	af00      	add	r7, sp, #0
+ 8002108:	b580      	push	{r7, lr}
+ 800210a:	af00      	add	r7, sp, #0
 
 #ifndef GNSS_NMEA
 	/*transfer complete*/
 	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX)){
- 8002118:	490d      	ldr	r1, [pc, #52]	; (8002150 <DMA2_Stream2_IRQHandler+0x3c>)
- 800211a:	480e      	ldr	r0, [pc, #56]	; (8002154 <DMA2_Stream2_IRQHandler+0x40>)
- 800211c:	f7fe fae2 	bl	80006e4 <DMA_GetITStatus>
- 8002120:	4603      	mov	r3, r0
- 8002122:	2b00      	cmp	r3, #0
- 8002124:	d00e      	beq.n	8002144 <DMA2_Stream2_IRQHandler+0x30>
+ 800210c:	490d      	ldr	r1, [pc, #52]	; (8002144 <DMA2_Stream2_IRQHandler+0x3c>)
+ 800210e:	480e      	ldr	r0, [pc, #56]	; (8002148 <DMA2_Stream2_IRQHandler+0x40>)
+ 8002110:	f7fe fae8 	bl	80006e4 <DMA_GetITStatus>
+ 8002114:	4603      	mov	r3, r0
+ 8002116:	2b00      	cmp	r3, #0
+ 8002118:	d00e      	beq.n	8002138 <DMA2_Stream2_IRQHandler+0x30>
 
 		//reset DMA stream
 		DMA_Cmd(DMA_Stream_USART_GNSS_RX, ENABLE);
- 8002126:	2101      	movs	r1, #1
- 8002128:	480a      	ldr	r0, [pc, #40]	; (8002154 <DMA2_Stream2_IRQHandler+0x40>)
- 800212a:	f7fe f9e7 	bl	80004fc <DMA_Cmd>
+ 800211a:	2101      	movs	r1, #1
+ 800211c:	480a      	ldr	r0, [pc, #40]	; (8002148 <DMA2_Stream2_IRQHandler+0x40>)
+ 800211e:	f7fe f9ed 	bl	80004fc <DMA_Cmd>
 		while(DMA_GetCmdStatus(DMA_Stream_USART_GNSS_RX) != ENABLE){;}
- 800212e:	bf00      	nop
- 8002130:	4808      	ldr	r0, [pc, #32]	; (8002154 <DMA2_Stream2_IRQHandler+0x40>)
- 8002132:	f7fe fa1b 	bl	800056c <DMA_GetCmdStatus>
- 8002136:	4603      	mov	r3, r0
- 8002138:	2b01      	cmp	r3, #1
- 800213a:	d1f9      	bne.n	8002130 <DMA2_Stream2_IRQHandler+0x1c>
+ 8002122:	bf00      	nop
+ 8002124:	4808      	ldr	r0, [pc, #32]	; (8002148 <DMA2_Stream2_IRQHandler+0x40>)
+ 8002126:	f7fe fa21 	bl	800056c <DMA_GetCmdStatus>
+ 800212a:	4603      	mov	r3, r0
+ 800212c:	2b01      	cmp	r3, #1
+ 800212e:	d1f9      	bne.n	8002124 <DMA2_Stream2_IRQHandler+0x1c>
 
 		/* Clear DMA Stream Transfer Complete interrupt pending bit */
 		DMA_ClearITPendingBit(DMA_Stream_USART_GNSS_RX, DMA_IT_TC_GNSS_RX);
- 800213c:	4904      	ldr	r1, [pc, #16]	; (8002150 <DMA2_Stream2_IRQHandler+0x3c>)
- 800213e:	4805      	ldr	r0, [pc, #20]	; (8002154 <DMA2_Stream2_IRQHandler+0x40>)
- 8002140:	f7fe fb28 	bl	8000794 <DMA_ClearITPendingBit>
+ 8002130:	4904      	ldr	r1, [pc, #16]	; (8002144 <DMA2_Stream2_IRQHandler+0x3c>)
+ 8002132:	4805      	ldr	r0, [pc, #20]	; (8002148 <DMA2_Stream2_IRQHandler+0x40>)
+ 8002134:	f7fe fb2e 	bl	8000794 <DMA_ClearITPendingBit>
 	}
 #endif
 	/*transfer error*/
 	if(DMA_GetITStatus(DMA_Stream_USART_GNSS_RX, DMA_IT_TE)){
- 8002144:	2104      	movs	r1, #4
- 8002146:	4803      	ldr	r0, [pc, #12]	; (8002154 <DMA2_Stream2_IRQHandler+0x40>)
- 8002148:	f7fe facc 	bl	80006e4 <DMA_GetITStatus>
+ 8002138:	2104      	movs	r1, #4
+ 800213a:	4803      	ldr	r0, [pc, #12]	; (8002148 <DMA2_Stream2_IRQHandler+0x40>)
+ 800213c:	f7fe fad2 	bl	80006e4 <DMA_GetITStatus>
 		//int a = 1;
 	}
 
 
 }
- 800214c:	bf00      	nop
- 800214e:	bd80      	pop	{r7, pc}
- 8002150:	10208000 	.word	0x10208000
- 8002154:	40026440 	.word	0x40026440
+ 8002140:	bf00      	nop
+ 8002142:	bd80      	pop	{r7, pc}
+ 8002144:	10208000 	.word	0x10208000
+ 8002148:	40026440 	.word	0x40026440
 
-08002158 <__libc_init_array>:
- 8002158:	b570      	push	{r4, r5, r6, lr}
- 800215a:	4e0d      	ldr	r6, [pc, #52]	; (8002190 <__libc_init_array+0x38>)
- 800215c:	4c0d      	ldr	r4, [pc, #52]	; (8002194 <__libc_init_array+0x3c>)
- 800215e:	1ba4      	subs	r4, r4, r6
- 8002160:	10a4      	asrs	r4, r4, #2
- 8002162:	2500      	movs	r5, #0
- 8002164:	42a5      	cmp	r5, r4
- 8002166:	d109      	bne.n	800217c <__libc_init_array+0x24>
- 8002168:	4e0b      	ldr	r6, [pc, #44]	; (8002198 <__libc_init_array+0x40>)
- 800216a:	4c0c      	ldr	r4, [pc, #48]	; (800219c <__libc_init_array+0x44>)
- 800216c:	f000 f818 	bl	80021a0 <_init>
- 8002170:	1ba4      	subs	r4, r4, r6
- 8002172:	10a4      	asrs	r4, r4, #2
- 8002174:	2500      	movs	r5, #0
- 8002176:	42a5      	cmp	r5, r4
- 8002178:	d105      	bne.n	8002186 <__libc_init_array+0x2e>
- 800217a:	bd70      	pop	{r4, r5, r6, pc}
- 800217c:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 8002180:	4798      	blx	r3
- 8002182:	3501      	adds	r5, #1
- 8002184:	e7ee      	b.n	8002164 <__libc_init_array+0xc>
- 8002186:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
- 800218a:	4798      	blx	r3
- 800218c:	3501      	adds	r5, #1
- 800218e:	e7f2      	b.n	8002176 <__libc_init_array+0x1e>
- 8002190:	080021b8 	.word	0x080021b8
- 8002194:	080021b8 	.word	0x080021b8
- 8002198:	080021b8 	.word	0x080021b8
- 800219c:	080021bc 	.word	0x080021bc
+0800214c <__libc_init_array>:
+ 800214c:	b570      	push	{r4, r5, r6, lr}
+ 800214e:	4e0d      	ldr	r6, [pc, #52]	; (8002184 <__libc_init_array+0x38>)
+ 8002150:	4c0d      	ldr	r4, [pc, #52]	; (8002188 <__libc_init_array+0x3c>)
+ 8002152:	1ba4      	subs	r4, r4, r6
+ 8002154:	10a4      	asrs	r4, r4, #2
+ 8002156:	2500      	movs	r5, #0
+ 8002158:	42a5      	cmp	r5, r4
+ 800215a:	d109      	bne.n	8002170 <__libc_init_array+0x24>
+ 800215c:	4e0b      	ldr	r6, [pc, #44]	; (800218c <__libc_init_array+0x40>)
+ 800215e:	4c0c      	ldr	r4, [pc, #48]	; (8002190 <__libc_init_array+0x44>)
+ 8002160:	f000 f818 	bl	8002194 <_init>
+ 8002164:	1ba4      	subs	r4, r4, r6
+ 8002166:	10a4      	asrs	r4, r4, #2
+ 8002168:	2500      	movs	r5, #0
+ 800216a:	42a5      	cmp	r5, r4
+ 800216c:	d105      	bne.n	800217a <__libc_init_array+0x2e>
+ 800216e:	bd70      	pop	{r4, r5, r6, pc}
+ 8002170:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8002174:	4798      	blx	r3
+ 8002176:	3501      	adds	r5, #1
+ 8002178:	e7ee      	b.n	8002158 <__libc_init_array+0xc>
+ 800217a:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 800217e:	4798      	blx	r3
+ 8002180:	3501      	adds	r5, #1
+ 8002182:	e7f2      	b.n	800216a <__libc_init_array+0x1e>
+ 8002184:	080021ac 	.word	0x080021ac
+ 8002188:	080021ac 	.word	0x080021ac
+ 800218c:	080021ac 	.word	0x080021ac
+ 8002190:	080021b0 	.word	0x080021b0
 
-080021a0 <_init>:
+08002194 <_init>:
+ 8002194:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8002196:	bf00      	nop
+ 8002198:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800219a:	bc08      	pop	{r3}
+ 800219c:	469e      	mov	lr, r3
+ 800219e:	4770      	bx	lr
+
+080021a0 <_fini>:
  80021a0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
  80021a2:	bf00      	nop
  80021a4:	bcf8      	pop	{r3, r4, r5, r6, r7}
  80021a6:	bc08      	pop	{r3}
  80021a8:	469e      	mov	lr, r3
  80021aa:	4770      	bx	lr
-
-080021ac <_fini>:
- 80021ac:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 80021ae:	bf00      	nop
- 80021b0:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 80021b2:	bc08      	pop	{r3}
- 80021b4:	469e      	mov	lr, r3
- 80021b6:	4770      	bx	lr

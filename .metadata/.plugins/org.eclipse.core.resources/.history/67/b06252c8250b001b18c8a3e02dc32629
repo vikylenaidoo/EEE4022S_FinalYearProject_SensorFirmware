@@ -60,7 +60,7 @@
 #define RCC_APBPeriph_USART_JETSON	   			RCC_APB1Periph_USART3
 #define RCC_AHBPeriph_USART_JETSON   			RCC_AHB1Periph_GPIOD
 #define USART_JETSON							USART3
-#define USART_BaudRate_JETSON					460800//115200
+#define USART_BaudRate_JETSON					230400//460800//115200
 
 #define GPIO_USART_JETSON						GPIOD
 #define GPIO_Pin_USART_JETSON_TX				GPIO_Pin_8
@@ -386,9 +386,7 @@ UART_StatusTypeDef uart_send_to_jetson(){
 		return UART_SEND_ERROR;
 
 	if(gnss_read_new_data() != GNSS_OK) ///add data from gnss
-		;
-		//return UART_SEND_ERROR; //maybe stil send data without updating gnss instead
-
+		return UART_SEND_ERROR;
 
 	//calculate checksum
 	uint8_t length = GLOBAL_DATA_BUFFER_SIZE - sizeof(uint32_t);

@@ -42,24 +42,10 @@ GNSS_StatusTypeDef gnss_read_new_data(){
 	if(!gnss_ubx_checksum())
 		return GNSS_READ_ERROR;
 
-
 	//copy full ubx message to global data struct
 	for(uint8_t i=0; i<GNSS_BUFFER_SIZE; i++){
 		GlobalDataUnion.GlobalDataStruct.GNSS_UBX_MESSAGE[i] = GNSS_RX_BUFFER[i];
 	}
-
-
-	/*
-	//copy essential UBX data from rx buffer to global struct
-	int index = 0;
-	for(uint8_t i=0; i<GNSS_BUFFER_SIZE; i++){
-		if( (i>=20&&i<=21) || (i>=23&&i<=39) || (i>=48&&i<=67) || (i==78)){
-			GlobalDataUnion.GlobalDataStruct.GNSS_UBX_MESSAGE[index] = GNSS_RX_BUFFER[i];
-			index++;
-		}
-
-	}
-	*/
 
 	return GNSS_OK;
 

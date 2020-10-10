@@ -13,7 +13,6 @@
 //-------------------PUBLIC DEFINES----------------------//
 
 #define UBX_MESSAGE_SIZE					100
-#define UBX_DATA_SIZE						40
 
 //--------------------PRIORITIES--------------------------//
 #define USART_RX_DMA_TC_Priority			12
@@ -134,7 +133,6 @@ struct GlobalData_Struct{
 
 	//------------------------GNSS UBX MESSAGE---------------------------------//
 
-	//uint8_t GNSS_UBX_MESSAGE [UBX_DATA_SIZE];
 	uint8_t GNSS_UBX_MESSAGE [UBX_MESSAGE_SIZE]; //length of ubx message including header + checksum
 
 	//------------------------CRC32 CHECKSUM--------------------------------//

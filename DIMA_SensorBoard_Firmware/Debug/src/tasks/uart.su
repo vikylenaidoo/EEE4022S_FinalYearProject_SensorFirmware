@@ -6,8 +6,8 @@ uart.c:295:13:initialise_uart_gnss	40	static
 uart.c:363:13:initialise_crc	8	static
 uart.c:370:6:uart_initialise	8	static
 uart.c:379:20:uart_send_to_jetson	24	static
-uart.c:428:6:uart_send	16	static
-uart.c:434:9:uart_receive	24	static
-uart.c:453:10:CRC_calculate_8bit_datablock	24	static
-uart.c:465:6:DMA1_Stream3_IRQHandler	8	static
-uart.c:481:6:DMA2_Stream2_IRQHandler	8	static
+uart.c:430:6:uart_send	16	static
+uart.c:436:9:uart_receive	24	static
+uart.c:455:10:CRC_calculate_8bit_datablock	24	static
+uart.c:467:6:DMA1_Stream3_IRQHandler	8	static
+uart.c:483:6:DMA2_Stream2_IRQHandler	8	static
