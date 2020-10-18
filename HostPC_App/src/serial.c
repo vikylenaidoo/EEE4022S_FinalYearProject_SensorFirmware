@@ -70,7 +70,7 @@ int serial_setup(){
     tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
 
     //configure tty timeouts: no blocking, return immediately what is available
-    tty.c_cc[VTIME] = 5;
+    tty.c_cc[VTIME] = 0;
     tty.c_cc[VMIN] = 0;
 
     // Set in/out baud rate to be 9600

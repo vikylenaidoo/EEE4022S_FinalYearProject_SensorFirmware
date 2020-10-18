@@ -3923,3 +3923,6 @@ Binding(ALT+CTRL+T,
 
 !ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-10-10 18:45:54.412
 !MESSAGE Code Review is up.
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-10 22:46:14.253
+!MESSAGE Unloading product manager
