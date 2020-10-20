@@ -5,6 +5,7 @@
  */
 package dima_userinterface;
 
+import java.nio.ByteBuffer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import jssc.SerialPortList;
+import jssc.SerialPortTimeoutException;
 
 
 /**
@@ -46,6 +48,7 @@ public class Main {
                     if(GUI.sendError){
                         GUI.sendError = false;
                         new JOptionPane().showMessageDialog(GUI, "Error occured when sending command, please try again");
+                        continue;
                     }
                     
                     if(GUI.isNewMessageAvailable){ //send message
@@ -66,6 +69,24 @@ public class Main {
                         /*if(w){
                             System.out.println(LocalDateTime.now());
                         }*/
+                    }
+                    
+                    try {
+                        //try read any data from the serial port
+                        byte[] read_buffer = port.readBytes(68, 10);
+                        
+                        /*for(int i=0; i<4; i++){
+                            System.out.printf("%s \t", Integer.toHexString(Byte.toUnsignedInt(read_buffer[i+64])));
+                        }
+                        System.out.println("");*/
+                        
+                        GUI.updateOutput(read_buffer);
+                        
+                        
+                        
+                    } catch (SerialPortTimeoutException ex) {
+                        //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                        //no data to be read
                     }
                 }
             }
