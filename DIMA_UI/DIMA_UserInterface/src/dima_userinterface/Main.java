@@ -29,18 +29,22 @@ public class Main {
         
         MainGUI GUI = new MainGUI();
         GUI.setVisible(true);
-        
+        SerialPort port;
         
        
         
         try {
-            SerialPort port = GUI.getSerialPort();
+            //SerialPort port = GUI.getSerialPort();
             
 
             
             while(!GUI.isExit){ //10Hz loop to send serial message
                 Thread.sleep(100, 0);
                 
+                
+                
+                port = GUI.getSerialPort();
+                           
                 if(port == null){
                     break;
                 }
